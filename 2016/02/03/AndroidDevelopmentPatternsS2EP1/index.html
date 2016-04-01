@@ -1,0 +1,785 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="ieCGPLaYJPLAp6By_5652iPczS2GIfAPy9XGEkD6-e0" />
+
+
+
+  <meta name="baidu-site-verification" content="780t5iFaTK" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Android,Android Development Patterns,翻译," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="markzhai's home" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="视频见：https://www.youtube.com/watch?v=puhfMX8jb9c视频很短，但是这个主题还是很有价值的，能帮助我们开发者理解应用设计的一些模式规范。
+在我看来，作为一个前端开发者，我们不仅仅是去执行产品设计下发下来的东西，更多的是要去思考什么样的设计/交互是好的，什么样的需求是合理的，成为一个有独立思考的开发者。
+本篇是该系列第二季的第一集，介绍了Snackbar的使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发模式 S2 EP1 - Snackbar, 合适的打断">
+<meta property="og:url" content="http://blog.zhaiyifan.cn/2016/02/03/AndroidDevelopmentPatternsS2EP1/index.html">
+<meta property="og:site_name" content="markzhai's home">
+<meta property="og:description" content="视频见：https://www.youtube.com/watch?v=puhfMX8jb9c视频很短，但是这个主题还是很有价值的，能帮助我们开发者理解应用设计的一些模式规范。
+在我看来，作为一个前端开发者，我们不仅仅是去执行产品设计下发下来的东西，更多的是要去思考什么样的设计/交互是好的，什么样的需求是合理的，成为一个有独立思考的开发者。
+本篇是该系列第二季的第一集，介绍了Snackbar的使用">
+<meta property="og:image" content="http://blog.zhaiyifan.cn/images/android-development-patterns-s2-ep1-1.png">
+<meta property="og:image" content="http://blog.zhaiyifan.cn/images/android-development-patterns-s2-ep1-2.png">
+<meta property="og:updated_time" content="2016-02-03T15:38:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发模式 S2 EP1 - Snackbar, 合适的打断">
+<meta name="twitter:description" content="视频见：https://www.youtube.com/watch?v=puhfMX8jb9c视频很短，但是这个主题还是很有价值的，能帮助我们开发者理解应用设计的一些模式规范。
+在我看来，作为一个前端开发者，我们不仅仅是去执行产品设计下发下来的东西，更多的是要去思考什么样的设计/交互是好的，什么样的需求是合理的，成为一个有独立思考的开发者。
+本篇是该系列第二季的第一集，介绍了Snackbar的使用">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Android开发模式 S2 EP1 - Snackbar, 合适的打断 | markzhai's home </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67533211-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?74dc0d49be7a61e341f6c897ee4d733a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">markzhai's home</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Android开发模式 S2 EP1 - Snackbar, 合适的打断
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-03T15:33:29+08:00" content="2016-02-03">
+            2016-02-03
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Android-Development-Patterns/" itemprop="url" rel="index">
+                  <span itemprop="name">Android Development Patterns</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/03/AndroidDevelopmentPatternsS2EP1/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/AndroidDevelopmentPatternsS2EP1/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>视频见：<a href="https://www.youtube.com/watch?v=puhfMX8jb9c" target="_blank" rel="external">https://www.youtube.com/watch?v=puhfMX8jb9c</a><br>视频很短，但是这个主题还是很有价值的，能帮助我们开发者理解应用设计的一些模式规范。</p>
+<p>在我看来，作为一个前端开发者，我们不仅仅是去执行产品设计下发下来的东西，更多的是要去思考什么样的设计/交互是好的，什么样的需求是合理的，成为一个有独立思考的开发者。</p>
+<p>本篇是该系列第二季的第一集，介绍了Snackbar的使用场景（相信现在大部分的开发者使用的还只是Toast和Alert吧）。</p>
+<h2 id="正文">正文</h2><p>在你的应用中，交互信息的一个细节在于使用屏幕上的提示。但是，当那个信息很重要或者需要用户做决定的时候，你可能想要使用对话框(Alert)。</p>
+<p>在过去，你有2种方式：</p>
+<ol>
+<li>对话框。可以展示信息给用户，并让他们对其进行操作。<br>但是对话框是中断性的（强制用户停下正在做的，来处理你的对话框）。想想，你享受被打断的滋味吗？你喜欢那种去确认你想做的操作的感觉吗？还是喜欢弹出对话框？<br><img src="/images/android-development-patterns-s2-ep1-1.png" alt="android-development-patterns-s2-ep1-1"></li>
+</ol>
+<p>这种交互很让人烦躁，不是么？<br>所以，对话框需要尽可能保守地去使用，这就让我们来到了第二种方式。</p>
+<ol>
+<li>Toast<br>Toast可以确认用户做的事情确实发生了。</li>
+</ol>
+<p>但如果这个操作是破坏性的呢，比如删除？<br>你的用户可能不想去那么做，而现在他们惊慌地在找怎么撤销，并对你在他删除那张美女图片前不进行再次确认而感到无语。卧槽，这是要干啥。</p>
+<p>Snackbar就是为此而生的。</p>
+<p>Snackbar和Toast类似，但它更强大，因为它是可交互的（比如提供你的用户正在找的撤销操作）。<br><img src="/images/android-development-patterns-s2-ep1-2.png" alt="android-development-patterns-s2-ep1-2"></p>
+<p>Snackbar从屏幕底部浮起，用户可以将它划走，或者无视它（过一会自动消失，就像Toast那样）。Snackbar包含了一条短的信息，并能提供一个单一操作，比如撤销。</p>
+<p>所以你现在有3种组件来帮助你使用最完美的方式来打断用户。</p>
+<ul>
+<li>对话框：当用户的反应对你的app流程来说很重要，在这种时候你需要破坏性的干扰。</li>
+<li>Toast：给用户一个不会改变任何东西的小提示。</li>
+<li>Snackbar：前两者之间的区间内，Snackbar是你最好的朋友。</li>
+</ul>
+<h2 id="小结">小结</h2><p>对话框（Alerts）对于和用户交互来说是<strong>很重</strong>的一个操作，但它确实帮助你了解什么是恰当的，从而你的用户不会讨厌你。幸运的是，现在有了一个简单的回答：使用<a href="http://developer.android.com/reference/android/support/design/widget/Snackbar.html" target="_blank" rel="external">Snackbar!</a>。</p>
+<p>有一些微妙的场景，我们不知道如何在Toast和Snackbar之间抉择，那么<a href="http://www.google.com/design/spec/components/snackbars-toasts.html#" target="_blank" rel="external">Google的设计文档</a>包括了你可能需要的所有的详尽细节。如果你仍然希望做错，<a href="http://www.google.com/design/spec/components/dialogs.html#dialogs-behavior" target="_blank" rel="external">Dialog</a>当然也可以使用。但我们相信你能做得更好。所以成为一个更好的开发者，使用更好的选择：Snackbar。</p>
+<p>最后牢骚一句，国内一些app退出的时候还要弹个Dialog问你是不是要退出的交互，真是够了/(ㄒoㄒ)/~~</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-Development-Patterns/" rel="tag">#Android Development Patterns</a>
+          
+            <a href="/tags/翻译/" rel="tag">#翻译</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/04/deeplink-intro/" rel="prev">Deep Link是什么</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/01/realer-than-you-think/" rel="next">比你想象得更真实</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+<!--
+        <p><img src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="" title="" type="image/png"><br>
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享许可协议</a>：本站作品由<a href="http://hukai.me" target="_blank">HuKai</a>创作，采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a>进行许可。
+        <br>，你还可以选择扫描二维码进行打赏-->
+
+<!--
+        <img src="/images/pay2me.jpg" alt=""/>-->
+
+        
+            <p>如果你觉得这篇文章对你有帮助，请点击上面的分享链接让更多人能看到，谢谢!</p>
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/02/03/AndroidDevelopmentPatternsS2EP1/"
+                   data-title="Android开发模式 S2 EP1 - Snackbar, 合适的打断" data-url="http://blog.zhaiyifan.cn/2016/02/03/AndroidDevelopmentPatternsS2EP1/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Mark Zhai (翟一帆)" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Mark Zhai (翟一帆)</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">白驹过隙 忽然而已</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/markzhai" target="_blank">Github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhayaofen" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/#87224330" target="_blank">QQ</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/markzhai" target="_blank">Zhihu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:zhaiyifan56@gmail.com" target="_blank">Email</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://abner-nimengbo.cn" target="_blank">Abner泥阿布(三帅)</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://itangqi.me" target="_blank">Qi Tang</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://yifeiyuan.me" target="_blank">程序亦非猿</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.isming.me/" target="_blank">码农明明桑</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">1.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+Count from 2015/9/13
+<span id="busuanzi_container_site_pv">
+PV: <span id="busuanzi_value_site_pv"></span>
+<span id="busuanzi_container_site_uv">
+  UV: <span id="busuanzi_value_site_uv"></span>
+</span>
+</span>
+
+<div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark Zhai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"markzhai"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

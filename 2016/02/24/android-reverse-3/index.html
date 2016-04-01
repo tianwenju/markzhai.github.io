@@ -1,0 +1,831 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="ieCGPLaYJPLAp6By_5652iPczS2GIfAPy9XGEkD6-e0" />
+
+
+
+  <meta name="baidu-site-verification" content="780t5iFaTK" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Android,Reverse Engineering," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="markzhai's home" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="WORKING - 未完
+前言米娜桑，是时候揭开DEX的面纱了！我们都知道multidex，都知道65535方法数超标，那DEX到底是个什么东西呢？或许又有些同学知道DEX会优化为ODEX，那ODEX又是什么鬼，优化了什么呢？为什么ClassLoader热补丁方案插入构造函数导致CLASS_ISPREVERIFIED为false后，会对性能造成影响，和ODEX又有什么关系呢？
+我们又知道5.0以上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android逆向分析(3) Android可执行文件之谜 - DEX与ODEX, OAT与ELF">
+<meta property="og:url" content="http://blog.zhaiyifan.cn/2016/02/24/android-reverse-3/index.html">
+<meta property="og:site_name" content="markzhai's home">
+<meta property="og:description" content="WORKING - 未完
+前言米娜桑，是时候揭开DEX的面纱了！我们都知道multidex，都知道65535方法数超标，那DEX到底是个什么东西呢？或许又有些同学知道DEX会优化为ODEX，那ODEX又是什么鬼，优化了什么呢？为什么ClassLoader热补丁方案插入构造函数导致CLASS_ISPREVERIFIED为false后，会对性能造成影响，和ODEX又有什么关系呢？
+我们又知道5.0以上">
+<meta property="og:image" content="http://blog.zhaiyifan.cn/images/android-reverse-3-1.png">
+<meta property="og:updated_time" content="2016-02-24T06:47:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android逆向分析(3) Android可执行文件之谜 - DEX与ODEX, OAT与ELF">
+<meta name="twitter:description" content="WORKING - 未完
+前言米娜桑，是时候揭开DEX的面纱了！我们都知道multidex，都知道65535方法数超标，那DEX到底是个什么东西呢？或许又有些同学知道DEX会优化为ODEX，那ODEX又是什么鬼，优化了什么呢？为什么ClassLoader热补丁方案插入构造函数导致CLASS_ISPREVERIFIED为false后，会对性能造成影响，和ODEX又有什么关系呢？
+我们又知道5.0以上">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Android逆向分析(3) Android可执行文件之谜 - DEX与ODEX, OAT与ELF | markzhai's home </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67533211-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?74dc0d49be7a61e341f6c897ee4d733a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">markzhai's home</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Android逆向分析(3) Android可执行文件之谜 - DEX与ODEX, OAT与ELF
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-24T23:09:12+08:00" content="2016-02-24">
+            2016-02-24
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Android-Reverse-Engineering/" itemprop="url" rel="index">
+                  <span itemprop="name">Android Reverse Engineering</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/24/android-reverse-3/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/android-reverse-3/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p><strong>WORKING - 未完</strong></p>
+<h1 id="前言">前言</h1><p>米娜桑，是时候揭开DEX的面纱了！我们都知道multidex，都知道65535方法数超标，那DEX到底是个什么东西呢？或许又有些同学知道DEX会优化为ODEX，那ODEX又是什么鬼，优化了什么呢？为什么ClassLoader热补丁方案插入构造函数导致CLASS_ISPREVERIFIED为false后，会对性能造成影响，和ODEX又有什么关系呢？</p>
+<p>我们又知道5.0以上Android虚拟机变成了Art，那DEX在art上变成了什么呢？为什么安装特别耗时间？有时候我看着我的Nexus6安装一个应用在那进度条读啊读的好像卡住了，有一种想砸了它的想法，所以当我拿到Nexus 5测试机的时候，第一件事就是刷到4.4，不然每次安装的效率实在不能忍（捂脸）。</p>
+<h1 id="DEX是什么">DEX是什么</h1><p>直接把apk当成zip打开后，第一级目录你就会看见有classes.dex，这就是我们要揭开面纱的东西了。</p>
+<h2 id="Why_DEX">Why DEX</h2><p>为什么需要DEX，jar不行吗？相应地，为什么需要Dalvik虚拟机，JVM不行吗？</p>
+<p>Dalvik虚拟机是专门为了Android移动平台设计的。目标系统的RAM有限，数据存储在缓慢的内部闪存上，而且性能和上个世纪的周免系统相当。它们运行Linux，来提供虚拟内存，进程和线程，以及基于UID的安全机制。</p>
+<p>这些特征和限制使我们聚焦在这些目标上：</p>
+<ul>
+<li>类数据，尤其是字节码，必须被多个进程共享，以最小化系统内存使用。</li>
+<li>启动一个新app的开销必须最小化，来保证设备的可响应。</li>
+<li>在独立的文件存储类数据可能导致很多冗余，尤其是字符串。为了保证磁盘空间，我们需要把这些因子提出来。</li>
+<li>解析类数据的fields在类加载的时候增加了很多不必要的开销。把数据值直接当成C类型（比如整数或字符串）使用会更好。</li>
+<li>字节码验证是必要的，却也是缓慢的。所以我们想在app执行外尽量验证更多，以便不要影响app本身体验。</li>
+<li>字节码优化（加速指令，精简方法）对速度和电池生命很重要。</li>
+<li>为了安全原因，进程不能编辑共享代码。</li>
+</ul>
+<p>典型的虚拟机执行从压缩文件解压独立的类，然后把它们存到heap上。这就导致了每个类可能在每个进程有独立的拷贝，从而使得应用启动变慢，因为代码必须被解压（或者至少需要从磁盘的很多小片段去读取）。另一方面，在本地heap放置字节码简化了首次使用时的指令重写，从而可能导致一些不同的优化。</p>
+<p>这些目标指引了一些基本决定：</p>
+<ul>
+<li>多个类被聚集到一个单个的DEX文件。</li>
+<li>DEX文件被映射为只读，并且在进程间共享。</li>
+<li>针对本地系统调整字节码顺序和词对齐。</li>
+<li>字节码验证对所有类都是强制的，但我们想要对一切可能的进行”预验证(pre-verify)”。</li>
+<li>需要重写字节码的优化必须提前执行。</li>
+</ul>
+<p>而Dalvik虚拟机和DEX也就应运而生。</p>
+<h2 id="Hello_DEX">Hello DEX</h2><p>让我们手动来生成一个java，编译成javac，然后转换为dex看看:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'class Foo &#123;'</span>\</span><br><span class="line"><span class="string">'public static void main(String[] args) &#123;'</span>\</span><br><span class="line"><span class="string">'System.out.println("Hello, world"); &#125;&#125;'</span> &gt; Foo.java</span><br><span class="line">javac Foo.java</span><br><span class="line">dx --dex --output=foo.jar Foo.class</span><br><span class="line">adb push foo.jar /sdcard/</span><br><span class="line">adb shell dalvikvm -cp /sdcard/foo.jar Foo</span><br></pre></td></tr></table></figure></p>
+<p>当我们在dx命令的output中指定输出文件后缀为.jar，.zip，或者.apk，名为classes.dex的文件就会被创建并保存在压缩包内。解开Foo.jar你就会看到classes.dex和META-INF文件夹（里面只有一个MANIFEST.MF文件）。</p>
+<p>我们创建完该jar后直接push到设备上，并通过shell直接让dalvik虚拟机去运行它，如果操作无误，会看到命令行的反馈 - Hello, world。</p>
+<h2 id="DEX_in_file_system">DEX in file system</h2><p>这次我打算多画点图，所以看图说话吧:<br><img src="http://blog.zhaiyifan.cn/images/android-reverse-3-1.png" alt="DEX in file system"></p>
+<h2 id="DEX_in_memory">DEX in memory</h2><p>为什么DEX不能被内存映射，或者说，不能直接从zip去执行呢？因为数据是压缩的，文件头也不保证是词对齐的。这些问题可以通过不压缩直接保存为classes.dex和填充zip文件来解决，但会导致数据网络间传输的包体积变大。</p>
+<p>我们需要在使用前把zip包里的classes.dex解压。当我们拿到文件的时候，我们可能还会做些之前提到的其他操作（对齐、优化、验证）。这又引出了另一个问题：谁去负责做这些，我们又该把输出放在哪儿？</p>
+<h1 id="ODEX是什么">ODEX是什么</h1><p>ODEX，全名Optimized DEX，即优化过的DEX。</p>
+<p>有至少3种方法去创建一个“准备好的”DEX文件，即ODEX：</p>
+<ol>
+<li>虚拟机“即时(just in time)”执行。输出会跑到一个特殊的dalvik-cache目录。这只在一些特殊的桌面和工程机的设备上使用（这些机器的build中，dalvik-cache目录的权限不是严格的）。在生产机器上这是不被允许的。</li>
+<li>系统的安装器在程序首次安装时候执行，它有写dalvik-cache的权限。</li>
+<li>构建(build)系统预先执行。相关的 jar / apk 文件还在，但classes.dex被剥离出来了。ODEX和原来的zip包保存在一起，不在dalvik-cache，而是系统镜像的一部分。</li>
+</ol>
+<p>dalvik-cache目录更准确地说是$ANDROID_DATA/data/dalvik-cache。里面的文件的名字来源于源DEX的完整路径。在设备上该目录被system所拥有，而system拥有0771权限，保存在那里的ODEX被系统和应用的组所拥有，权限为0644。数字权限保护的应用会使用640权限来防止其他应用去检测它们。底线是你可以读取自己的与其他大部分应用的DEX文件，但你不能创建、修改，或删除它们。</p>
+<p>前两种方法的执行分为以下三个步骤：</p>
+<p>首先，dalvik-cache文件被创建。这必须在一个有恰当权限的进程进行，所以在“系统安装器”的场景，是在运行为root的installd进程执行的。</p>
+<p>接着，classes.dex从zip包中解压出来。文件头部留出一小块空间给ODEX header。</p>
+<p>最后，文件被内存映射以便访问，并被为当前系统使用进行调整。这包括了字节交换（byte-swapping），结构重新排列（structure realigning），但并没有对DEX文件做有意义的改变。还做了一些其他的基本结构检查，比如确保文件偏移量和数据索引落在有效范围内。</p>
+<p>构建系统不在桌面上运行工具，而宁愿去启动模拟器，强制所有相关DEX文件的即时优化，然后从dalvik-cache把结果提取出来。这样做的原因，在解释完优化后会变得更显而易见。</p>
+<p>一旦代码被字节替换和对齐，我们就可以继续了。我们添加了一些预计算的数据，在文件头填写ODEX header，然后开始执行。然而，如果我们对验证和优化有兴趣，就需要在初始准备后再插入一个步骤。</p>
+<h1 id="dexopt的魔法">dexopt的魔法</h1><p>在Android 2.3版本以前，系统源码中提供了生成odex的工具dexopt-wrapper，位于Android 2.2系统源码的 build/tools/dexpreopt/dexopt-wrapper/ 目录下，查看<code>DexOptWrapper.cpp</code>文件会发现实际调用的是 /system/bin/dexopt 程序。在5.0及以上版本的设备上，你可能已经再也找不到dexopt了，取而代之的是dex2oat。</p>
+<p>我们想要验证和优化DEX文件里的所有类。最简单和安全的方法就是把所有类加载到虚拟机，然后跑一遍。任何加载失败的就是验证/优化失败的。不幸的是，这可能导致一些资源的分配难以释放（比如native共享库的加载），所以我们不想执行在应用运行的虚拟机里。</p>
+<p>解决方案就是起一个叫做dexopt的程序（事实上就是虚拟机的后门）。它会执行一个简短的虚拟机初始化，从引导的类路径加载0个或多个DEX文件，然后开始做一切从目标DEX可以做的验证和优化。结束后，进程退出，释放所有资源。</p>
+<p>因为多个虚拟机可能同时需求同一个DEX文件，文件锁被用来确保dexopt仅被执行一次。</p>
+<h2 id="验证">验证</h2><p>字节码验证过程包含了扫描DEX文件中每一个类每个方法的指令。目的是为了识别非法指令序列以便不会在运行时才发现它们。涉及到的很多运算对“准确的”GC也是必要的。更多信息见<a href="http://crypto.nknu.edu.tw/AOSP/AOSP/dalvik/docs/verifier.html" target="_blank" rel="external">Dalvik字节码验证器笔记</a>。</p>
+<p>为了性能原因，（下节描述的）优化器假设验证器已经运行成功，还会做一些其他可能不安全的假设。默认地，Dalvik会坚持验证所有类，并只优化那些被验证过的类。可以使用命令行flags去禁用验证器。怎么在Android应用框架中控制这些功能的指令见<a href="http://security.nknu.edu.tw/AOSP/AOSP/dalvik/docs/embedded-vm-control.html" target="_blank" rel="external">控制嵌入式虚拟机</a>。</p>
+<p>验证失败的报告是一个复杂的问题。例如，在不同的package中，调用一个package内可见的方法是非法的，会被验证器捕捉到。但我们未必想要在验证期报告它 —— 事实上我们想要在试图调用方法的时候抛出异常。在每个方法调用上检查这些访问flags也是很昂贵的，<a href="http://crypto.nknu.edu.tw/AOSP/AOSP/dalvik/docs/verifier.html" target="_blank" rel="external">Dalvik字节码验证器笔记</a>提到了这个问题。</p>
+<p>成功被验证的类在ODEX有一个flag被设置了，在加载的时候就不会被重新验证。ODEX文件有一个32位的checksum，但那是主要是用来快速检查数据损坏的。</p>
+<h2 id="优化">优化</h2><p>虚拟机解释器通常会在一段代码被首次使用的时候执行某些优化。常量池引用被指向内部数据结构的指针所替代，总是成功的操作或是那些总会以某种方式工作的，会被更简单的形式所替代。这些的一部分需要仅在运行时可用的信息，另一部分在某些特定假设下可以被静态推论出。</p>
+<p>Dalvik优化器做了这些：</p>
+<ul>
+<li>对于虚方法调用，把方法索引替换为vtable索引。</li>
+<li>对于实例变量（field）的get/put，把变量索引替换为字节偏移。另外，把 boolean / byte / char / short 基本变量（variants）合并到单个的32位形式（解释器里更少的代码意味着CPU I-cache里更少的空间）。</li>
+<li>替换一些高频次调用，比如把 String.length() 替换成”内联“的。这可以跳过一些常见的方法调用消耗，直接从解释器切换到native实现。</li>
+<li>删除空方法。最简单的例子就是Object.<init>，啥都没干，但却必须在任何对象被分配的时候执行。指令会被替换为一个新版本的空指令（no-op）形式，除非调试器被attach上去了。</init></li>
+<li>附加预计算数据。例如，虚拟机想要一个类名的哈希表以便查找。不同于在加载DEX文件时候去计算这个，我们可以先计算，以节省堆（heap）空间和所有加载该DEX文件的虚拟机的计算时间。</li>
+</ul>
+<p>大部分的优化显然都会更好。</p>
+<h2 id="Hello_ODEX">Hello ODEX</h2><p>我们继续玩耍之前生成的dex，来做一个odex:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">adb push dexopt-wrapper /sdcard/</span><br><span class="line"></span><br><span class="line">adb shell</span><br><span class="line"><span class="comment"># 不然没权限去/data/local</span></span><br><span class="line">su</span><br><span class="line">chmod <span class="number">777</span> dexopt-wrapper</span><br><span class="line"><span class="comment"># 直接在sdcard执行会提示权限错误</span></span><br><span class="line">cp dexopt-wrapper /data/<span class="built_in">local</span>/</span><br><span class="line">cp foo.jar /data/<span class="built_in">local</span>/</span><br><span class="line"><span class="built_in">cd</span> /data/<span class="built_in">local</span></span><br><span class="line">/dexopt-wrapper foo.jar foo.odex                        </span><br><span class="line">--- BEGIN <span class="string">'foo.jar'</span> (bootstrap=<span class="number">0</span>) ---</span><br><span class="line">--- waiting <span class="keyword">for</span> verify+opt, pid=<span class="number">5220</span></span><br><span class="line">--- would reduce privs here</span><br><span class="line">--- END <span class="string">'foo.jar'</span> (success) ---</span><br><span class="line">cp foo.odex /sdcard</span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line"></span><br><span class="line">adb pull /sdcard/foo.odex .</span><br></pre></td></tr></table></figure></p>
+<p>这样子就拿到了优化后的odex，赶紧把手机还给同事。</p>
+<h1 id="oat与elf">oat与elf</h1><h1 id="下期预告">下期预告</h1><p>下一次让我们利用本次讲到的这些知识，来改一改apktool，让它能重返19岁，反编译腾讯的apk。最后代码会丢到GitHub上。</p>
+<hr>
+<p>参考资料</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/Android_Runtime" target="_blank" rel="external">https://zh.wikipedia.org/wiki/Android_Runtime</a></li>
+<li><a href="http://blog.csdn.net/luoshengyang/article/details/18006645" target="_blank" rel="external">http://blog.csdn.net/luoshengyang/article/details/18006645</a></li>
+<li>AOSP: dalvik/docs</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Reverse-Engineering/" rel="tag">#Reverse Engineering</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/14/android-new-project-from-0-p1/" rel="prev">从零开始的Android新项目1 - 架构搭建篇</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/23/world-class-testing-development-pipeline-for-android-part-2/" rel="next">世界级的Android测试开发流程（二）</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+<!--
+        <p><img src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="" title="" type="image/png"><br>
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享许可协议</a>：本站作品由<a href="http://hukai.me" target="_blank">HuKai</a>创作，采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a>进行许可。
+        <br>，你还可以选择扫描二维码进行打赏-->
+
+<!--
+        <img src="/images/pay2me.jpg" alt=""/>-->
+
+        
+            <p>如果你觉得这篇文章对你有帮助，请点击上面的分享链接让更多人能看到，谢谢!</p>
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/02/24/android-reverse-3/"
+                   data-title="Android逆向分析(3) Android可执行文件之谜 - DEX与ODEX, OAT与ELF" data-url="http://blog.zhaiyifan.cn/2016/02/24/android-reverse-3/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Mark Zhai (翟一帆)" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Mark Zhai (翟一帆)</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">白驹过隙 忽然而已</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/markzhai" target="_blank">Github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhayaofen" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/#87224330" target="_blank">QQ</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/markzhai" target="_blank">Zhihu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:zhaiyifan56@gmail.com" target="_blank">Email</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://abner-nimengbo.cn" target="_blank">Abner泥阿布(三帅)</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://itangqi.me" target="_blank">Qi Tang</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://yifeiyuan.me" target="_blank">程序亦非猿</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.isming.me/" target="_blank">码农明明桑</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DEX是什么"><span class="nav-number">2.</span> <span class="nav-text">DEX是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why_DEX"><span class="nav-number">2.1.</span> <span class="nav-text">Why DEX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello_DEX"><span class="nav-number">2.2.</span> <span class="nav-text">Hello DEX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEX_in_file_system"><span class="nav-number">2.3.</span> <span class="nav-text">DEX in file system</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEX_in_memory"><span class="nav-number">2.4.</span> <span class="nav-text">DEX in memory</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ODEX是什么"><span class="nav-number">3.</span> <span class="nav-text">ODEX是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dexopt的魔法"><span class="nav-number">4.</span> <span class="nav-text">dexopt的魔法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">4.1.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">4.2.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello_ODEX"><span class="nav-number">4.3.</span> <span class="nav-text">Hello ODEX</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#oat与elf"><span class="nav-number">5.</span> <span class="nav-text">oat与elf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下期预告"><span class="nav-number">6.</span> <span class="nav-text">下期预告</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+Count from 2015/9/13
+<span id="busuanzi_container_site_pv">
+PV: <span id="busuanzi_value_site_pv"></span>
+<span id="busuanzi_container_site_uv">
+  UV: <span id="busuanzi_value_site_uv"></span>
+</span>
+</span>
+
+<div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark Zhai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"markzhai"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
