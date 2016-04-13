@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.zhaiyifan.cn/"/>
-  <updated>2016-04-08T14:54:39.000Z</updated>
+  <updated>2016-04-13T07:05:54.000Z</updated>
   <id>http://blog.zhaiyifan.cn/</id>
   
   <author>
@@ -19,13 +19,14 @@
     <link href="http://blog.zhaiyifan.cn/2016/12/31/Blog-Plan-2016/"/>
     <id>http://blog.zhaiyifan.cn/2016/12/31/Blog-Plan-2016/</id>
     <published>2016-12-31T15:59:00.000Z</published>
-    <updated>2016-04-08T14:54:39.000Z</updated>
+    <updated>2016-04-13T07:05:54.000Z</updated>
     <content type="html"><![CDATA[<h1 id="从零开始系列">从零开始系列</h1><p>系列标题取得有问题，其实是面向进阶的Android开发的，相对初学者来说很多地方说的可能不够清楚。<br>后期会考虑一下完善一下，尽可能说的更清楚。</p>
 <p>4月做完BlockCanary分享后尽快把demo先完善了，然后和blog做到同步更新。</p>
 <p>目前想到的后面的几篇</p>
 <ul>
 <li>Retrofit</li>
 <li>Realm</li>
+<li>前端用后台接口设计与撕逼</li>
 <li>基于异常的优雅错误处理架构</li>
 <li>RxJava</li>
 <li>模块化的重用</li>
