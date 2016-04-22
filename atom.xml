@@ -68,14 +68,14 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/</id>
     <published>2016-04-22T02:54:01.000Z</published>
-    <updated>2016-04-22T02:59:11.000Z</updated>
+    <updated>2016-04-22T03:04:12.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <ul>
 <li>原文链接 : <a href="http://www.leanpanda.com/blog/2016/04/06/react-newbies-tutorial/" target="_blank" rel="external">HOMEBLOG React JS: newbies tutorial</a></li>
 <li>原文作者 : Elise Cicognani</li>
 <li>译文出自 : <a href="https://github.com/xitu/gold-miner" target="_blank" rel="external">掘金翻译计划</a></li>
 <li>译者 : <a href="https://github.com/markzhai" target="_blank" rel="external">markzhai</a></li>
-<li>校对者: <a href="https://github.com/JasinYip" target="_blank" rel="external">JasinYip</a></li>
+<li>校对者: <a href="https://github.com/JasinYip" target="_blank" rel="external">JasinYip</a>, <a href="https://github.com/malcolmyu" target="_blank" rel="external">malcolmyu</a></li>
 </ul>
 </blockquote>
 <p>正如你能从标题猜到的，这篇文章的目标是给那些有很少编程经验的读者的。比如，像我这样的人：因为迄今为止，我才探索了变成编程世界6个月。<strong>所以，这将是一篇新手村教程！</strong> 你只需要拥有对 HTML 和 CSS 的理解，以及基本的 JavaScript（JS）知识就能看懂本文。</p>
