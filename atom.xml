@@ -64,6 +64,82 @@
   </entry>
   
   <entry>
+    <title><![CDATA[React.js 新手村教程]]></title>
+    <link href="http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/"/>
+    <id>http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/</id>
+    <published>2016-04-22T02:54:01.000Z</published>
+    <updated>2016-04-22T02:56:18.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<ul>
+<li>原文链接 : <a href="http://www.leanpanda.com/blog/2016/04/06/react-newbies-tutorial/" target="_blank" rel="external">HOMEBLOG React JS: newbies tutorial</a></li>
+<li>原文作者 : Elise Cicognani</li>
+<li>译文出自 : <a href="https://github.com/xitu/gold-miner" target="_blank" rel="external">掘金翻译计划</a></li>
+<li>译者 : <a href="https://github.com/markzhai" target="_blank" rel="external">markzhai</a></li>
+<li>校对者: <a href="https://github.com/JasinYip" target="_blank" rel="external">JasinYip</a></li>
+</ul>
+</blockquote>
+<p>正如你能从标题猜到的，这篇文章的目标是给那些有很少编程经验的读者的。比如，像我这样的人：因为迄今为止，我才探索了变成编程世界6个月。<strong>所以，这将是一篇新手村教程！</strong> 你只需要拥有对 HTML 和 CSS 的理解，以及基本的 JavaScript（JS）知识就能看懂本文。</p>
+<p>注意：在接下来的例子中，我们将会利用 ES6 提供的新能力，来简化写 JS 代码的过程。然而，你也能完全使用ES5来写React。</p>
+<p>预计阅读时间9分钟</p>
+<h3 id="什么是_React_？">什么是 React ？</h3><p>React 是一个 JS 库，由 Facebook 和 Instagram 创建(<a href="https://facebook.github.io/react/" target="_blank" rel="external">https://facebook.github.io/react/</a>)。它通过将应用分为一些动态的、可复用的 <strong>组件</strong>，来使我们可以创建单页应用(<a href="http://www.leanpanda.com/blog/2015/05/25/single-page-application-development/" target="_blank" rel="external">Single Page Applications (SPA)</a>)。</p>
+<p>一个 React 组件是一个继承了由 React 提供的 <strong>Component</strong> 的 JS 类。一个组件代表并定义了一块 HTML 代码，以及任何与这块代码相关的行为，比如点击事件。组件就像是乐高积木，可以用来组建成所需的复杂应用。完全由 JS 代码构成的组件，可以被隔离和复用。基本方法是 <strong>render()</strong>，它简单地返回一片HTML代码。</p>
+<p>这种用来定义 React 组件的语法被称为 <strong>JSX</strong>。该语法由 React 的创建者们所开发，被用来简化 JS-HTML 代码的组件内交互。使用该语法写的代码在变成实际 JS 代码前必须被编译。</p>
+<h3 id="创建一个组件（component）">创建一个组件（component）</h3><p>为了创建我们的组件并将它渲染为一页 HTML，我们首先在我们的 HTML 文件里需要定义一个有唯一 id 的 div。接着，我们将要在 JSX 文件里写代码，以连接 React 组件到使用其 id 的 div，如下面的例子所示。这样做将会指导浏览器在相关 DOM 标签所在的页面渲染组件。</p>
+<iframe height="266" scrolling="no" src="//codepen.io/makhenzi/embed/XXdmvL/?height=266&amp;theme-id=0&amp;default-tab=js,result&amp;embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen &lt;a href=”<a href="http://codepen.io/makhenzi/pen/XXdmvL/&quot;&gt;Start&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi/pen/XXdmvL/&quot;&gt;Start&lt;/a&amp;gt</a>; by Makhenzi (&lt;a href=”<a href="http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt</a>;) on &lt;a href=”<a href="http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt</a>;.</iframe>
+
+<p>See the Pen <a href="http://codepen.io/makhenzi/pen/XXdmvL/" target="_blank" rel="external">Start</a> by Makhenzi (<a href="http://codepen.io/makhenzi" target="_blank" rel="external">@makhenzi</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
+<p>JSX 内的 HTML 标签属性和普通 HTML 内的是几乎一样的；唯一不同的是“class”，在 JSX 里面变成了“className”。类 HTML 语法使用圆括号闭合，而包含 JS 的块则使用尖括号闭合。正如你将看到的。render() <em>总</em> 会返回一个 div，而在其中开发者可以自由引入他们认为合适的任意多的标签和元素。</p>
+<h2 id="例子：海盗的灭绝">例子：海盗的灭绝</h2><p><img src="http://ww4.sinaimg.cn/large/a490147fjw1f2x94p1ev2j20m80etjtt.jpg" alt=""></p>
+<p>如果我们选择使用 React 来创建这张图，我们可以对屏幕上各个日期进行可视化，并在那些日期被点击的时候，才显示对应的温度和海盗数量。</p>
+<p>为此我们需要2个组件：第一个用来渲染日期，并将每个日期链接到给定的海盗数量和温度；第二个则需要用来接收日期上的点击事件对应的信息，如海盗的数量和当时的温度，接着基于这些数据渲染选择的元素。</p>
+<p>前者相当于是“父亲”的角色，并包含多个后面的“子”组件的链接，而后者则紧密依赖于它们的“父亲”。</p>
+<p>React 结构，被称为<a href="https://facebook.github.io/react/docs/working-with-the-browser.html" target="_blank" rel="external">虚拟 DOM</a>，可以使我们在组件的内容发生改变的时候，不需要刷新整个页面，而可以只更新对应组件。为此，组件需要一个内部方法，来保存变量 data 和 赋值给该元素的会被改变的 HTML 属性。这些属性会自行链接到那些我们在组件内定义的，会负责响应变化的方法。</p>
+<h2 id="状态(State)和属性(props)">状态(State)和属性(props)</h2><p>在我们的例子里，那个独立的变量 data 是由日期组成的。这些会根据点击事件所集合的DOM内连锁反应进而根据对应海盗、温度信息而进行改变。所以我们将会根据每个 “DATA” 对象内的对应日期去保存信息。我们还将利用React在父组件内的 <code>this.state={}</code> 属性来以键值对拷贝形式保存变量数据的。</p>
+<p>以这种形式组织程序使得我们可以利用React提供的方法，来以“状态(state)”的形式和数据交互，并对其进行任意更改。</p>
+<p>考虑到我们想要使用 DATA 对象的 key 来渲染 HTML 内的日期，最好可以找到一种方法来在 key 上使用JS的 <code>map()</code> 方法(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="external">Array.prototype.map()</a>)，以便能直接显示返回到 <code>render()</code> 的 HTML。事实上确实有方法可以做到！我们只需要把 JS 代码包裹在双花括号里，并放置在想要代码输出显示的管理该组件的 DOM 块内，然后就好了。</p>
+<p>在这个特殊例子中，我们将在组件内的方法里定义 <code>map()</code> 回调，其将在同一组件的<code>render()</code>内返回一片 HTML 代码。</p>
+<iframe height="266" scrolling="no" src="//codepen.io/makhenzi/embed/XXdmvL/?height=266&amp;theme-id=0&amp;default-tab=js,result&amp;embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen &lt;a href=”<a href="http://codepen.io/makhenzi/pen/XXdmvL/&quot;&gt;Start&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi/pen/XXdmvL/&quot;&gt;Start&lt;/a&amp;gt</a>; by Makhenzi (&lt;a href=”<a href="http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt</a>;) on &lt;a href=”<a href="http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt</a>;.</iframe>
+
+<p>See the Pen <a href="http://codepen.io/makhenzi/pen/qbZbxR/" target="_blank" rel="external">State1</a> by Makhenzi (<a href="http://codepen.io/makhenzi" target="_blank" rel="external">@makhenzi</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
+<p>为了分配点击事件到每个日期，我们将会分配 <code>onClick</code> 属性给它们。</p>
+<p>在该属性中，我们会调用组件的方法，该方法则会定义我们希望在 onClick 事件后触发的状态修改和其他变更。</p>
+<p>在我们的例子里，我们定义该函数为 <code>handleClick()</code>。在 handleClick() 中，我们会调用React方法 <code>setState()</code>，其允许我们在在每个点击事件中去更改状态数据。我们只需要插入一个包含我们想要修改的状态key的对象，并在后者括号内分配给它们新的相关联值。</p>
+<p>总的来说，每次一个日期被点击，被选中的div的onClick属性会调用 <code>HandClick()</code> 方法，该方法会调用 setState() 方法来修改组件的状态。</p>
+<p>每次状态改变，一旦发生React就会自动检查组件的 <code>render()</code> 函数的返回，以寻找基于新状态需要更新的内容。一旦有那样的数据，React就会自动触发一次新的 <code>render()</code> 来更新那些有变更的HTML片段。</p>
+<p>(我很抱歉，在接着的例子里，我插入了三行利用了 Classnames 的代码，一个用来基于状态变更来做CSS管理的小工具，我这么做只是为了给预览一点颜色。我还会使用它在最终的例子里给预览填充一些海盗变量。你可以找到 GitHub 上 Classnames 仓库的链接，还有一个<a href="https://github.com/JedWatson/classnames" target="_blank" rel="external">简要使用向导</a>)</p>
+<iframe height="266" scrolling="no" src="//codepen.io/makhenzi/embed/EPKwRo/?height=266&amp;theme-id=0&amp;default-tab=js,result&amp;embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen &lt;a href=”<a href="http://codepen.io/makhenzi/pen/EPKwRo/&quot;&gt;State2&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi/pen/EPKwRo/&quot;&gt;State2&lt;/a&amp;gt</a>; by Makhenzi (&lt;a href=”<a href="http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt</a>;) on &lt;a href=”<a href="http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt</a>;.</iframe>
+
+<p>See the Pen <a href="http://codepen.io/makhenzi/pen/EPKwRo/" target="_blank" rel="external">State2</a> by Makhenzi (<a href="http://codepen.io/makhenzi" target="_blank" rel="external">@makhenzi</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
+<p>如此，我们的父组件状态已经被设定好根据选中数据去创建子组件（其将会描述海盗数量和对应温度）。</p>
+<p>我们将会在 JSX 文件中创建子组件的实例，正如我们之前对父组件所做的。为了链接子组件到其父亲上，我们只需要在后者的 <code>render()</code> 函数使用同一种语法和一个 HTML 标签去定义关系。如果我们称它为“Child”，它将会在我们插入 <code>&lt;Child /&gt;</code>处所在的 HTML 块内出现。</p>
+<p>我们的子组件还必须根据现在选中数据所关联的海盗和温度，传递数据到其父亲。为此，我们将利用赋给 Child 标签的属性，其名字可以随便取，其信息只对父组件可见。</p>
+<p>如此一来，子组件将可以通过显式访问归属于其父组件的数据，即利用这些“attribute-bridges”，或者 <strong>属性(props)</strong>，来获取到它自己内部信息的访问权。</p>
+<p>所以，每次父组件的状态发生改变，其子组件的属性内容就会自动进行更新。但是，正如子组件的<code>render()</code>方法会显示属性内容，它也会基于单向的数据线性流，根据任何收到的新信息去进行更新。</p>
+<iframe height="266" scrolling="no" src="//codepen.io/makhenzi/embed/EPKbmO/?height=266&amp;theme-id=0&amp;default-tab=js,result&amp;embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen &lt;a href=”<a href="http://codepen.io/makhenzi/pen/EPKbmO/&quot;&gt;Props&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi/pen/EPKbmO/&quot;&gt;Props&lt;/a&amp;gt</a>; by Makhenzi (&lt;a href=”<a href="http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt</a>;) on &lt;a href=”<a href="http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt</a>;.</iframe>
+
+<p>See the Pen <a href="http://codepen.io/makhenzi/pen/EPKbmO/" target="_blank" rel="external">Props</a> by Makhenzi (<a href="http://codepen.io/makhenzi" target="_blank" rel="external">@makhenzi</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
+<p>搞定了！组件们会互相交互，并根据我们的点击在 DOM 里渲染不同数据，而不需要单页去进行刷新。以这个为基础，交互的复杂性和组件的数量可以按需增加，使我们能创建复杂高效的应用。</p>
+<p>如果你被这个库的潜力启发了，<a href="https://react.rocks/" target="_blank" rel="external">不妨看看 react.rocks 网站</a>，在那里你会找到很多有趣的点子来帮助你开始。(:</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<ul>
+<li>原文链接 : <a href="http://www.leanpanda.com/blog/2016/04/06/react-newbies-tutorial/" target="_blank" rel="external">HOMEB]]>
+    </summary>
+    
+      <category term="H5" scheme="http://blog.zhaiyifan.cn/tags/H5/"/>
+    
+      <category term="JavaScript" scheme="http://blog.zhaiyifan.cn/tags/JavaScript/"/>
+    
+      <category term="React.js" scheme="http://blog.zhaiyifan.cn/tags/React-js/"/>
+    
+      <category term="前端" scheme="http://blog.zhaiyifan.cn/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="React.js" scheme="http://blog.zhaiyifan.cn/categories/React-js/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[在 Android N 预览版中使用 Java 8 的新特性]]></title>
     <link href="http://blog.zhaiyifan.cn/2016/04/20/trans-java-8-in-android-n-preview/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/20/trans-java-8-in-android-n-preview/</id>
@@ -1158,7 +1234,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/02/06/learn-vue-js-1/"/>
     <id>http://blog.zhaiyifan.cn/2016/02/06/learn-vue-js-1/</id>
     <published>2016-02-05T16:06:50.000Z</published>
-    <updated>2016-02-10T03:18:36.000Z</updated>
+    <updated>2016-04-22T02:56:21.000Z</updated>
     <content type="html"><![CDATA[<p>大家好，我是doge。噢不，我是markzhai。</p>
 <p>其实一直对前端很好奇，在学校念书的时候，曾在各种项目里用过诸如PHP/RoR/Spring等Web框架搭过大小网站，但一方面很烦写css，另一方面js也就是写写很简单的东西（比如ajax和jquery刷新刷新东西），更多的还是在写业务逻辑，所以这两年看着推陈出新的前端技术和酷炫的效果，有一种自己从没学过的感觉。</p>
 <p>在React Native出现后，更加让我觉得有必要再系统性学习一下js的新技术。而我的良师益友 - 大头鬼则屡次安利我Vue.js(发音 /vjuː/，类似 view)，同时阿里内部在推的weex也是基于Vue.js做的一套跨平台方案。于是决定，不管以后能不能用上weex，先学习一下Vue.js吧。</p>
@@ -1180,6 +1256,8 @@
       <category term="JavaScript" scheme="http://blog.zhaiyifan.cn/tags/JavaScript/"/>
     
       <category term="Vue.js" scheme="http://blog.zhaiyifan.cn/tags/Vue-js/"/>
+    
+      <category term="前端" scheme="http://blog.zhaiyifan.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="Vue.js" scheme="http://blog.zhaiyifan.cn/categories/Vue-js/"/>
     
@@ -1463,70 +1541,6 @@ Web 引用站点 — <span class="string">https:</span><span class="comment">//{
       <category term="翻译" scheme="http://blog.zhaiyifan.cn/tags/%E7%BF%BB%E8%AF%91/"/>
     
       <category term="Android" scheme="http://blog.zhaiyifan.cn/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[BlockCanary — 轻松找出Android App界面卡顿元凶]]></title>
-    <link href="http://blog.zhaiyifan.cn/2016/01/16/BlockCanaryTransparentPerformanceMonitor/"/>
-    <id>http://blog.zhaiyifan.cn/2016/01/16/BlockCanaryTransparentPerformanceMonitor/</id>
-    <published>2016-01-16T05:28:12.000Z</published>
-    <updated>2016-02-19T16:28:17.000Z</updated>
-    <content type="html"><![CDATA[<p>BlockCanary是我利用个人时间开发的Android平台上的一个轻量的，非侵入式的性能监控组件，应用只需要简单地加几行，提供一些该组件需要的上下文环境就可以在使用应用的时候检测主线程上的各种卡顿问题，并通过组件提供的各种信息分析出原因并进行修复。</p>
-<p>开源代码：<a href="https://github.com/moduth/blockcanary" target="_blank" rel="external">moduth/blockcanary</a></p>
-<h2 id="背景">背景</h2><p>在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在出现了卡顿的时候，我们很难定位到底是哪里出现了问题，即便知道是哪一个Activity/Fragment，也仍然需要进去里面一行一行看，动辄数千行的类再加上跳来跳去调来调去的，结果就是不了了之随它去了，实在不行了再优化吧。于是一拖再拖，最后可能压根就改不动了，客户端越来越卡。</p>
-<p>事实上，很多情况下卡顿不是必现的，它们可能与机型、环境、操作等有关，存在偶然性，即使发生了，再去查那如山般的logcat，也不一定能找到卡顿的原因，是我们自己的应用导致的还是其他应用抢占资源导致的？是哪些方法导致的？很难去回朔。有些机型自己修改了api导致的卡顿，还必须拿那台机器才能去调试找原因。</p>
-<p>BlockCanary就是来解决这个问题的。<br>告别打点，告别Debug，哪里卡顿，一目了然。</p>
-<h2 id="介绍">介绍</h2><p>BlockCanary对主线程操作进行了完全透明的监控，并能输出有效的信息，帮助开发分析、定位到问题所在，迅速优化应用。其特点有：</p>
-<ul>
-<li>非侵入式，简单的两行就打开监控，不需要到处打点，破坏代码优雅性。</li>
-<li>精准，输出的信息可以帮助定位到问题所在（精确到行），不需要像Logcat一样，慢慢去找。</li>
-</ul>
-<p>目前包括了核心监控输出文件，以及UI显示卡顿信息功能。仅支持Android端。</p>
-<h2 id="原理">原理</h2><p>熟悉Message/Looper/Handler系列的同学们一定知道<code>Looper.java</code>中这么一段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Looper sMainLooper;  <span class="comment">// guarded by Looper.class</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Initialize the current thread as a looper, marking it as an</span><br><span class="line"> * application's main looper. The main looper for your application</span><br><span class="line"> * is created by the Android environment, so you should never need</span><br><span class="line"> * to call this function yourself.  See also: &#123;<span class="doctag">@link</span> #prepare()&#125;</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepareMainLooper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    prepare(<span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">synchronized</span> (Looper.class) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sMainLooper != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"The main Looper has already been prepared."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        sMainLooper = myLooper();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Returns the application's main looper, which lives in the main thread of the application.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Looper <span class="title">getMainLooper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (Looper.class) &#123;</span><br><span class="line">        <span class="keyword">return</span> sMainLooper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>即整个应用的主线程，只有这一个looper，不管有多少handler，最后都会回到这里。</p>
-<p>如果再细心一点会发现在Looper的loop方法中有这么一段<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        <span class="comment">// This must be in a local variable, in case a UI event sets the logger</span></span><br><span class="line">        Printer logging = me.mLogging;</span><br><span class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logging.println(<span class="string">"&gt;&gt;&gt;&gt;&gt; Dispatching to "</span> + msg.target + <span class="string">" "</span> +</span><br><span class="line">                    msg.callback + <span class="string">": "</span> + msg.what);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        msg.target.dispatchMessage(msg);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logging.println(<span class="string">"&lt;&lt;&lt;&lt;&lt; Finished to "</span> + msg.target + <span class="string">" "</span> + msg.callback);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>是的，就是这个Printer - mLogging，它在每个message处理的前后被调用，而如果主线程卡住了，不就是在dispatchMessage里卡住了吗？</p>
-<p>核心流程图：<br><img src="http://blog.zhaiyifan.cn/images/blockcanary_flow.png" alt="flow"></p>
-<p>该组件利用了主线程的消息队列处理机制，通过</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Looper.getMainLooper().setMessageLogging(mainLooperPrinter);</span><br></pre></td></tr></table></figure>
-<p>并在<code>mainLooperPrinter</code>中判断start和end，来获取主线程dispatch该message的开始和结束时间，并判定该时间超过阈值(如2000毫秒)为主线程卡慢发生，并dump出各种信息，提供开发者分析性能瓶颈。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">println</span><span class="params">(String x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!mStartedPrinting) &#123;</span><br><span class="line">        mStartTimeMillis = System.currentTimeMillis();</span><br><span class="line">        mStartThreadTimeMillis = SystemClock.currentThreadTimeMillis();</span><br><span class="line">        mStartedPrinting = <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        mStartedPrinting = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (isBlock(endTime)) &#123;</span><br><span class="line">            notifyBlockEvent(endTime);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isBlock</span><span class="params">(<span class="keyword">long</span> endTime)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> endTime - mStartTimeMillis &gt; mBlockThresholdMillis;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p><strong>说到此处，想到是不是可以用mainLooperPrinter来做更多事情呢？既然主线程都在这里，那只要parse出app包名的第一行，每次打印出来，是不是就不需要打点也能记录出用户操作路径？ 再者，比如想做onClick到页面创建后的耗时统计，是不是也能用这个原理呢？ 之后可以试试看这个思路（目前存在问题是获取线程堆栈是定时3秒取一次的，很可能一些比较快的方法操作一下子完成了没法在stacktrace里面反映出来）。</strong></p>
-<h2 id="功能">功能</h2><p>BlockCanary会在发生卡顿（通过MonitorEnv的getConfigBlockThreshold设置）的时候记录各种信息，输出到配置目录下的文件，并弹出消息栏通知（可关闭）。</p>
-<p>简单的使用如在开发、测试、Monkey的时候，Debug包启用</p>
-<ul>
-<li>开发可以通过图形展示界面直接看信息，然后进行修复</li>
-<li>测试可以把log丢给开发，也可以通过卡慢详情页右上角的更多按钮，分享到各种聊天软件（不要怀疑，就是抄的LeakCanary）</li>
-<li>Monkey生成一堆的log，找个专人慢慢过滤记录下重要的卡慢吧</li>
-</ul>
-<p>还可以通过Release包用户端定时开启监控并上报log，后台匹配堆栈过滤同类原因，提供给开发更大的样本环境来优化应用。</p>
-<p>本项目提供了一个友好的展示界面，供开发测试直接查看卡慢信息（基于LeakCanary的界面修改）。</p>
-<p>dump的信息包括：</p>
-<ul>
-<li>基本信息：安装包标示、机型、api等级、uid、CPU内核数、进程名、内存、版本号等</li>
-<li>耗时信息：实际耗时、主线程时钟耗时、卡顿开始时间和结束时间</li>
-<li>CPU信息：时间段内CPU是否忙，时间段内的系统CPU/应用CPU占比，I/O占CPU使用率</li>
-<li>堆栈信息：发生卡慢前的最近堆栈，可以用来帮助定位卡慢发生的地方和重现路径</li>
-</ul>
-<p>sample如下图，可以精确定位到代码中哪一个类的哪一行造成了卡慢。<br><img src="http://blog.zhaiyifan.cn/images/blockcanary_log_sample1.png" alt="blockcanary log sample"></p>
-<h2 id="总结">总结</h2><p>BlockCanary作为一个Android组件，目前还有局限性，因为其在一个完整的监控系统中只是一个生产者，还需要对应的消费者去分析日志，比如归类排序，以便看出哪些卡慢更有修复价值，需要优先处理；又比如需要过滤机型，有些奇葩机型的问题造成的卡慢，到底要不要去修复是要斟酌的。扯远一点的话，像是埋点除了统计外，完全还能用来做链路监控，比如一个完整的流程是A -&gt; B -&gt; D -&gt; E, 但是某个时间节点突然A -&gt; B -&gt; D后没有到达E，这时候监控平台就可以发出预警，让开发人员及时定位。很多监控方案都需要C/S两端的配合。</p>
-<p>目前阿里内多个Android项目接入并使用BlockCanary来优化Android应用的性能。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>BlockCanary是我利用个人时间开发的Android平台上的一个轻量的，非侵入式的性能监控组件，应用只需要简单地加几行，提供一些该组件需要的上下文环境就可以在使用应用的时候检测主线程上的各种卡顿问题，并通过组件提供的各种信息分析出原因并进行修复。</p>
-<p>开源代]]>
-    </summary>
-    
-      <category term="Android" scheme="http://blog.zhaiyifan.cn/tags/Android/"/>
-    
-      <category term="BlockCanary" scheme="http://blog.zhaiyifan.cn/tags/BlockCanary/"/>
-    
-      <category term="Performance" scheme="http://blog.zhaiyifan.cn/tags/Performance/"/>
-    
-      <category term="监控" scheme="http://blog.zhaiyifan.cn/tags/%E7%9B%91%E6%8E%A7/"/>
-    
-      <category term="Project" scheme="http://blog.zhaiyifan.cn/categories/Project/"/>
     
   </entry>
   
