@@ -68,7 +68,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/</id>
     <published>2016-04-22T02:54:01.000Z</published>
-    <updated>2016-04-22T02:56:18.000Z</updated>
+    <updated>2016-04-22T02:59:11.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <ul>
 <li>原文链接 : <a href="http://www.leanpanda.com/blog/2016/04/06/react-newbies-tutorial/" target="_blank" rel="external">HOMEBLOG React JS: newbies tutorial</a></li>
@@ -87,7 +87,6 @@
 <h3 id="创建一个组件（component）">创建一个组件（component）</h3><p>为了创建我们的组件并将它渲染为一页 HTML，我们首先在我们的 HTML 文件里需要定义一个有唯一 id 的 div。接着，我们将要在 JSX 文件里写代码，以连接 React 组件到使用其 id 的 div，如下面的例子所示。这样做将会指导浏览器在相关 DOM 标签所在的页面渲染组件。</p>
 <iframe height="266" scrolling="no" src="//codepen.io/makhenzi/embed/XXdmvL/?height=266&amp;theme-id=0&amp;default-tab=js,result&amp;embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen &lt;a href=”<a href="http://codepen.io/makhenzi/pen/XXdmvL/&quot;&gt;Start&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi/pen/XXdmvL/&quot;&gt;Start&lt;/a&amp;gt</a>; by Makhenzi (&lt;a href=”<a href="http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt</a>;) on &lt;a href=”<a href="http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt</a>;.</iframe>
 
-<p>See the Pen <a href="http://codepen.io/makhenzi/pen/XXdmvL/" target="_blank" rel="external">Start</a> by Makhenzi (<a href="http://codepen.io/makhenzi" target="_blank" rel="external">@makhenzi</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
 <p>JSX 内的 HTML 标签属性和普通 HTML 内的是几乎一样的；唯一不同的是“class”，在 JSX 里面变成了“className”。类 HTML 语法使用圆括号闭合，而包含 JS 的块则使用尖括号闭合。正如你将看到的。render() <em>总</em> 会返回一个 div，而在其中开发者可以自由引入他们认为合适的任意多的标签和元素。</p>
 <h2 id="例子：海盗的灭绝">例子：海盗的灭绝</h2><p><img src="http://ww4.sinaimg.cn/large/a490147fjw1f2x94p1ev2j20m80etjtt.jpg" alt=""></p>
 <p>如果我们选择使用 React 来创建这张图，我们可以对屏幕上各个日期进行可视化，并在那些日期被点击的时候，才显示对应的温度和海盗数量。</p>
@@ -100,7 +99,6 @@
 <p>在这个特殊例子中，我们将在组件内的方法里定义 <code>map()</code> 回调，其将在同一组件的<code>render()</code>内返回一片 HTML 代码。</p>
 <iframe height="266" scrolling="no" src="//codepen.io/makhenzi/embed/XXdmvL/?height=266&amp;theme-id=0&amp;default-tab=js,result&amp;embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen &lt;a href=”<a href="http://codepen.io/makhenzi/pen/XXdmvL/&quot;&gt;Start&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi/pen/XXdmvL/&quot;&gt;Start&lt;/a&amp;gt</a>; by Makhenzi (&lt;a href=”<a href="http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt</a>;) on &lt;a href=”<a href="http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt</a>;.</iframe>
 
-<p>See the Pen <a href="http://codepen.io/makhenzi/pen/qbZbxR/" target="_blank" rel="external">State1</a> by Makhenzi (<a href="http://codepen.io/makhenzi" target="_blank" rel="external">@makhenzi</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
 <p>为了分配点击事件到每个日期，我们将会分配 <code>onClick</code> 属性给它们。</p>
 <p>在该属性中，我们会调用组件的方法，该方法则会定义我们希望在 onClick 事件后触发的状态修改和其他变更。</p>
 <p>在我们的例子里，我们定义该函数为 <code>handleClick()</code>。在 handleClick() 中，我们会调用React方法 <code>setState()</code>，其允许我们在在每个点击事件中去更改状态数据。我们只需要插入一个包含我们想要修改的状态key的对象，并在后者括号内分配给它们新的相关联值。</p>
@@ -109,7 +107,6 @@
 <p>(我很抱歉，在接着的例子里，我插入了三行利用了 Classnames 的代码，一个用来基于状态变更来做CSS管理的小工具，我这么做只是为了给预览一点颜色。我还会使用它在最终的例子里给预览填充一些海盗变量。你可以找到 GitHub 上 Classnames 仓库的链接，还有一个<a href="https://github.com/JedWatson/classnames" target="_blank" rel="external">简要使用向导</a>)</p>
 <iframe height="266" scrolling="no" src="//codepen.io/makhenzi/embed/EPKwRo/?height=266&amp;theme-id=0&amp;default-tab=js,result&amp;embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen &lt;a href=”<a href="http://codepen.io/makhenzi/pen/EPKwRo/&quot;&gt;State2&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi/pen/EPKwRo/&quot;&gt;State2&lt;/a&amp;gt</a>; by Makhenzi (&lt;a href=”<a href="http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt</a>;) on &lt;a href=”<a href="http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt</a>;.</iframe>
 
-<p>See the Pen <a href="http://codepen.io/makhenzi/pen/EPKwRo/" target="_blank" rel="external">State2</a> by Makhenzi (<a href="http://codepen.io/makhenzi" target="_blank" rel="external">@makhenzi</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
 <p>如此，我们的父组件状态已经被设定好根据选中数据去创建子组件（其将会描述海盗数量和对应温度）。</p>
 <p>我们将会在 JSX 文件中创建子组件的实例，正如我们之前对父组件所做的。为了链接子组件到其父亲上，我们只需要在后者的 <code>render()</code> 函数使用同一种语法和一个 HTML 标签去定义关系。如果我们称它为“Child”，它将会在我们插入 <code>&lt;Child /&gt;</code>处所在的 HTML 块内出现。</p>
 <p>我们的子组件还必须根据现在选中数据所关联的海盗和温度，传递数据到其父亲。为此，我们将利用赋给 Child 标签的属性，其名字可以随便取，其信息只对父组件可见。</p>
@@ -117,7 +114,6 @@
 <p>所以，每次父组件的状态发生改变，其子组件的属性内容就会自动进行更新。但是，正如子组件的<code>render()</code>方法会显示属性内容，它也会基于单向的数据线性流，根据任何收到的新信息去进行更新。</p>
 <iframe height="266" scrolling="no" src="//codepen.io/makhenzi/embed/EPKbmO/?height=266&amp;theme-id=0&amp;default-tab=js,result&amp;embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen &lt;a href=”<a href="http://codepen.io/makhenzi/pen/EPKbmO/&quot;&gt;Props&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi/pen/EPKbmO/&quot;&gt;Props&lt;/a&amp;gt</a>; by Makhenzi (&lt;a href=”<a href="http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io/makhenzi&quot;&gt;@makhenzi&lt;/a&amp;gt</a>;) on &lt;a href=”<a href="http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt" target="_blank" rel="external">http://codepen.io&quot;&gt;CodePen&lt;/a&amp;gt</a>;.</iframe>
 
-<p>See the Pen <a href="http://codepen.io/makhenzi/pen/EPKbmO/" target="_blank" rel="external">Props</a> by Makhenzi (<a href="http://codepen.io/makhenzi" target="_blank" rel="external">@makhenzi</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
 <p>搞定了！组件们会互相交互，并根据我们的点击在 DOM 里渲染不同数据，而不需要单页去进行刷新。以这个为基础，交互的复杂性和组件的数量可以按需增加，使我们能创建复杂高效的应用。</p>
 <p>如果你被这个库的潜力启发了，<a href="https://react.rocks/" target="_blank" rel="external">不妨看看 react.rocks 网站</a>，在那里你会找到很多有趣的点子来帮助你开始。(:</p>
 ]]></content>
