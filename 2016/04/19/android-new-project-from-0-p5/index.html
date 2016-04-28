@@ -53,7 +53,7 @@ RetrofitOkHttpClient自底向上地，我们需要一个OkHttpClient来设置给
 <meta property="og:description" content="未完
 如期而至的Repository篇，内部实现则由Realm、Retrofit，以及内存级LruCache组成。Repository，顾名思义，即仓库，向上层屏蔽了数据来源和内部实现细节，不需要了解货物来源，只需要拿走就行了。
 RetrofitOkHttpClient自底向上地，我们需要一个OkHttpClient来设置给Retrofit，这里作为实例，放出一段包含大部分你可能会用到的功能的Cl">
-<meta property="og:updated_time" content="2016-04-19T03:32:54.000Z">
+<meta property="og:updated_time" content="2016-04-28T03:13:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目5 - Retrofit & Realm 之 Repository篇">
 <meta name="twitter:description" content="未完
@@ -262,7 +262,7 @@ RetrofitOkHttpClient自底向上地，我们需要一个OkHttpClient来设置给
 <p>这时候就需要创建一个同步的retrofit客户端，其实就是不要去使用RxJava的adapter啦。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MrService <span class="title">getSynchronousInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mSyncInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (MrService.class) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mSyncInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mSyncInstance = <span class="keyword">new</span> MrService(<span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mSyncInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对应地，我们需要定义请求类，这里我们需要使用Call&lt;&gt;去包一下最终解析对象的类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RongCloudApi</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@FormUrlEncoded</span></span><br><span class="line">    <span class="annotation">@POST</span>(<span class="string">"im/getGroupInfo"</span>)</span><br><span class="line">    <span class="function">Call&lt;MrResponse&gt; <span class="title">getGroupInfoSynchronous</span><span class="params">(@Field(<span class="string">"group_id"</span>)</span> String groupId)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@FormUrlEncoded</span></span><br><span class="line">    <span class="annotation">@POST</span>(<span class="string">"user/nameCardLite"</span>)</span><br><span class="line">    <span class="function">Call&lt;MrResponse&gt; <span class="title">getNameCardLiteSynchronous</span><span class="params">(@Field(<span class="string">"uid"</span>)</span> String userId)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="数据格式解析">数据格式解析</h2><h1 id="Realm">Realm</h1><h1 id="LruCache">LruCache</h1><h1 id="Repository层组装">Repository层组装</h1></span>
+<h2 id="数据格式解析">数据格式解析</h2><h1 id="Realm">Realm</h1><h1 id="LruCache">LruCache</h1><h1 id="Repository层组装">Repository层组装</h1><h1 id="统一异常处理">统一异常处理</h1></span>
       
     </div>
 
@@ -392,21 +392,21 @@ RetrofitOkHttpClient自底向上地，我们需要一个OkHttpClient来设置给
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -482,7 +482,7 @@ RetrofitOkHttpClient自底向上地，我们需要一个OkHttpClient来设置给
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Retrofit"><span class="nav-number">1.</span> <span class="nav-text">Retrofit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttpClient"><span class="nav-number">1.1.</span> <span class="nav-text">OkHttpClient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava异步请求"><span class="nav-number">1.2.</span> <span class="nav-text">RxJava异步请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步请求"><span class="nav-number">1.3.</span> <span class="nav-text">同步请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据格式解析"><span class="nav-number">1.4.</span> <span class="nav-text">数据格式解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Realm"><span class="nav-number">2.</span> <span class="nav-text">Realm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LruCache"><span class="nav-number">3.</span> <span class="nav-text">LruCache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Repository层组装"><span class="nav-number">4.</span> <span class="nav-text">Repository层组装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Retrofit"><span class="nav-number">1.</span> <span class="nav-text">Retrofit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttpClient"><span class="nav-number">1.1.</span> <span class="nav-text">OkHttpClient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava异步请求"><span class="nav-number">1.2.</span> <span class="nav-text">RxJava异步请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步请求"><span class="nav-number">1.3.</span> <span class="nav-text">同步请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据格式解析"><span class="nav-number">1.4.</span> <span class="nav-text">数据格式解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Realm"><span class="nav-number">2.</span> <span class="nav-text">Realm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LruCache"><span class="nav-number">3.</span> <span class="nav-text">LruCache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Repository层组装"><span class="nav-number">4.</span> <span class="nav-text">Repository层组装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统一异常处理"><span class="nav-number">5.</span> <span class="nav-text">统一异常处理</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
