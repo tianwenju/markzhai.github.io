@@ -68,7 +68,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/</id>
     <published>2016-04-30T03:14:49.000Z</published>
-    <updated>2016-04-30T08:37:46.000Z</updated>
+    <updated>2016-05-01T04:23:56.000Z</updated>
     <content type="html"><![CDATA[<p><strong>未完</strong></p>
 <p>如期而至的Repository篇，内部实现则由Realm、Retrofit，以及内存级LruCache组成。<br>Repository，顾名思义，即仓库，向上层屏蔽了数据来源和内部实现细节，不需要了解货物来源，只需要拿走就行了。</p>
 <h1 id="Why_Repository">Why Repository</h1><p>首先，为什么我们需要Repository层呢？一言以蔽之，屏蔽细节。</p>
@@ -89,7 +89,7 @@
 <p>如上包含了大部分你可能需要的特性，可以自由进行组合。</p>
 <h2 id="RxJava异步请求">RxJava异步请求</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MrService <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (MrService.class) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mInstance = <span class="keyword">new</span> MrService();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mInstance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">MrService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">MrService</span><span class="params">(<span class="keyword">boolean</span> useRxJava)</span> </span>&#123;</span><br><span class="line">    Retrofit.Builder builder = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">            .baseUrl(IS_DEV ? API_DEV_URL : API_PRODUCT_URL)</span><br><span class="line">            .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">            .client(getClient());</span><br><span class="line">    <span class="keyword">if</span> (useRxJava) &#123;</span><br><span class="line">        builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());</span><br><span class="line">    &#125;</span><br><span class="line">    mRetrofit = builder.build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对应API请求类如<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SystemApi</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="annotation">@FormUrlEncoded</span></span><br><span class="line">    <span class="annotation">@POST</span>(<span class="string">"user/feedback"</span>)</span><br><span class="line">    <span class="function">Observable&lt;MrResponse&gt; <span class="title">feedback</span><span class="params">(@Field(<span class="string">"content"</span>)</span> String content,</span><br><span class="line">                                    @<span class="title">Field</span><span class="params">(<span class="string">"model_name"</span>)</span> String modelName,</span><br><span class="line">                                    @<span class="title">Field</span><span class="params">(<span class="string">"system_version"</span>)</span> String systemVersion,</span><br><span class="line">                                    @<span class="title">Field</span><span class="params">(<span class="string">"img_keys"</span>)</span> List&lt;String&gt; imageKeyList)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="同步请求">同步请求</h2><p>有时候我们需要做同步请求，比如提供结果给一些第三方库，它们可能需要直接返回对应数据（像我最近碰到的融云….）</p>
+<h2 id="同步请求">同步请求</h2><p>有时候我们需要做同步请求，比如提供结果给一些第三方库，它们可能需要直接返回对应数据（像我最近碰到的融云….），而我们只需要拉数据同步返回，对其所在线程和调用事件均一脸懵逼。</p>
 <p>这时候就需要创建一个同步的retrofit客户端，其实就是不要去使用RxJava的adapter啦。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MrService <span class="title">getSynchronousInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mSyncInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (MrService.class) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mSyncInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mSyncInstance = <span class="keyword">new</span> MrService(<span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mSyncInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对应地，我们需要定义请求类，这里我们需要使用Call&lt;&gt;去包一下最终解析对象的类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RongCloudApi</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@FormUrlEncoded</span></span><br><span class="line">    <span class="annotation">@POST</span>(<span class="string">"im/getGroupInfo"</span>)</span><br><span class="line">    <span class="function">Call&lt;MrResponse&gt; <span class="title">getGroupInfoSynchronous</span><span class="params">(@Field(<span class="string">"group_id"</span>)</span> String groupId)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@FormUrlEncoded</span></span><br><span class="line">    <span class="annotation">@POST</span>(<span class="string">"user/nameCardLite"</span>)</span><br><span class="line">    <span class="function">Call&lt;MrResponse&gt; <span class="title">getNameCardLiteSynchronous</span><span class="params">(@Field(<span class="string">"uid"</span>)</span> String userId)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -116,37 +116,36 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/28/about-learning/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/28/about-learning/</id>
     <published>2016-04-28T07:25:06.000Z</published>
-    <updated>2016-04-30T14:42:30.000Z</updated>
+    <updated>2016-05-02T01:38:07.000Z</updated>
     <content type="html"><![CDATA[<p>最近因为在学习一些新的东西，所以Android的东西没有怎么更新。趁着有些闲工夫，简单说说技术上的学习，也算是自己对这几年工作来的一个小结和经验吧。</p>
+<p>希望这篇东西可以给那些在校的，亦或是才踏入工作没多久的程序员同伴们一些帮助。毕竟我自己也曾经止步不前，不知所措迷茫过。</p>
 <h1 id="英语">英语</h1><p>老实说，没有比英语性价比更高的，需要学习的东西了。靠着别人的翻译，或者机翻，终究不是办法的。笔者自己日语英语姑且算是熟练掌握的地步，但在初期直接看那些全英文的书籍，仍然会觉得头痛（谢谢HKUST虐我），但坚持下来就会发现其实计算机的英语还是有一个范围的，多看看熟悉起来，就会觉得并没有什么难，甚至比起很多翻译来说更容易看懂。</p>
 <p>混迹GitHub就会发现国内的很多开发者英语上欠缺还是很大的，尤其是一些description和readme直接就上中文的。即便你英语渣，机翻也行啊。毕竟是计算机社区，英语才是通用语言。用中文去一些国外开发者的仓库里提issue或者回复也是一种很粗鲁的行为。</p>
 <p>如果让我说一种对技术帮助做大的语言，那必然就是英语。有了英语，才能真正地独立学习。</p>
 <h1 id="Google">Google</h1><p>问小白问题之前，你Google过吗？如果让我看到一个开发动不动去搜百度，那我估计会武断地认定他很菜。其实Google是我们最好的老师，只要能正确把握问题的关键字，几乎没有找不到的答案，大部分会在StackOverflow上，其他散落在GitHub、博客等等地方。</p>
 <p>如果你要找的知识实在冷门，比如react native的一些深入用法，android上的视频so阉割这种，那恐怕只能找找做这块的朋友或者自己研究了，国内有一些好心的开发者或许会分享在自己的博客。</p>
 <p>至于科学上网，这个话题相关的技术太多了，请自行找方法，VPN也好，SS也好，都很简单，相对的投入和产出对程序员来说性价比是很高的。实在不想花钱的去用AWS的免费云服务器搭SS也行。</p>
-<h1 id="实践">实践</h1><p>看是没有用的。比如我看一篇关于Hybrid App原理的文章，或许它写得很好，但其实就算看完了，让我自己去写一个，或者讲讲怎么去做一个我们应用的版本，Android/iOS端通用的方案，最后也是支支吾吾说的不知所以。最后还是要去实践做一些Hybrid页面才能真正掌握，能说清楚这里面的原理和应用场景。</p>
+<h1 id="实践">实践</h1><p>看是没有用的。比如看一篇关于Hybrid App原理的文章，或许它写得很好，但其实就算看完了，让我自己去写一个，或者讲讲怎么去做一个我们应用的版本，Android/iOS端通用的方案，最后也是支支吾吾说的不知所以。最后还是要去实践做一些Hybrid页面才能真正掌握，能说清楚这里面的原理和应用场景。</p>
 <p>纸上谈兵终觉浅。</p>
 <h1 id="警惕体力劳动">警惕体力劳动</h1><p>当你的工作成为一种体力劳动，而自己无法从中获得新的体验和知识的时候，需要警惕究竟发生了什么。</p>
-<ul>
-<li><p>想得太少。对做的内容停留在完成的阶段，而不对更好的方案，实现细节去思考更多，比如用了某个API，会不会去仔细看看其究竟是怎么做的。或许你知道Handler，Looper，那你知不知道主线程的一切，四大组件的生命周期，各种View的触摸事件都是消息驱动，在mainLooper里面进行处理的呢？</p>
-</li>
-<li><p>工作内容重复。当Focus在一块上太久之后，难免会碰到这种瓶颈，这时候可以看看是不是能换一块做，比如做做缓存、Hybrid、启动优化、视频等等。可以做的领域很多，实在发现兴趣不在此，换着做后台或者前端也行。如果因为个人原因，比如公司不让换或者可能工资会低很多，挤一挤时间在side project里面搞搞也不错。</p>
-</li>
-<li><p>排期问题。发生在一些项目经理逼得特别紧，老大又比较无能的地方。项目经理为了向上面交待，对工程师说“这个进度能不能再压一下呀”，或者干脆直接不听工程师的意见强行缩短工期，导致没有时间去深入学习。老大明知这种情况，却睁一只眼闭一只眼。这种公司，还是离开为妙。</p>
-</li>
-</ul>
+<h2 id="想得太少">想得太少</h2><p>对做的内容停留在完成的阶段，而不对更好的方案，实现细节去思考更多，比如用了某个API，会不会去仔细看看其究竟是怎么做的。或许你知道Handler，Looper，那你知不知道主线程的一切，四大组件的生命周期，各种View的触摸事件都是消息驱动，在mainLooper里面进行处理的呢？</p>
+<h2 id="工作内容重复">工作内容重复</h2><p>当Focus在一块上太久之后，难免会碰到这种瓶颈，这时候可以看看是不是能换一块做，比如做做缓存、Hybrid、启动优化、视频等等。可以做的领域很多，实在发现兴趣不在此，换着做后台或者前端也行。倘若因为个人原因，比如公司不让换或者可能工资会低很多，挤一挤时间在side project里面搞搞也可以，只是有没有心的问题罢了。</p>
+<p>我面试过一些做Android 5-6年的程序员，但大部分真的连一些优秀的2-3年经验的开发者都远远不如，问设计不懂设计，问流行的开源项目回答就是“好像听说过”。我不希望我认识的开发者以后变成这样的人。但你若是总是重复劳动，难免像这样1年的工作经验重复了5年。</p>
+<p>在额外学习的时候，更多关注的应该是不同的地方，而不是说这个学Python，下个月去学Go，想想语言的差异性在哪里，自己试试看做一些项目，培养全栈工程师的底子（你应该有自己的专长，但也要能从全局的角度思考问题，一个不懂前端的后端老大会导致前端过重不灵活，反正只要自己这儿的模块清晰就好，一个不懂前端的前端老大也会让下面的人不要抱怨，做出来就好）。</p>
+<h2 id="公司问题">公司问题</h2><p>发生在一些项目经理逼得特别紧，老大又比较无能的地方。项目经理为了向上面交待，对工程师说“这个进度能不能再压一下呀”，或者干脆直接不听工程师的意见强行缩短工期，导致没有时间去深入学习。老大明知这种情况，却睁一只眼闭一只眼。这种公司，还是离开为妙。</p>
 <h1 id="记录和总结">记录和总结</h1><p>写博客是为了什么？</p>
 <p>至少对我来说，写下的东西更多是对自己的一个总结和交待。如果我能写下来，至少能证明我有信心自己确实是这么去理解的，没有去坑人。另外，姑且也算是一种成长的足迹吧，偶尔自己还会去看看笔记。</p>
-<p>分享也是目的之一吧，希望大家能互相进步，这样才能促进发展。</p>
+<p>分享也是目的之一，希望大家能互相进步，这样才能促进发展。</p>
 <h1 id="问自己">问自己</h1><p>想清楚自己要的究竟是什么。</p>
 <p>做全还是钻？想做一个超强并发量的后台？想黑别人的系统？想做出精准有效的推荐算法？还是想做别人能实际用到的产品？</p>
 <p>笔者正是因为想要的是后者，所以成为了Android开发（为什么没有选iOS，大约是Android的开放性吸引了我）。而现在，因为发现自己欠缺的（对前端驾轻就熟，大部分的事情对我来说只是体力活，而自己想承担一个完整的项目却又不行），所以又重新拾起了Node.js，看起了ES6，思考设计和产品的问题。</p>
 <hr>
-<p>希望大家都能想清楚自己想做的，要成为的样子。能自主地去学习。毕竟师傅带进门，修行靠个人。</p>
+<p>希望大家都能想清楚自己想做的，要成为的样子。能自主地去学习。毕竟师傅带进门，修行靠个人。我不想鸡汤，大家各自走好，望来日可并肩一起，彼此说一句“很高兴遇见你”。</p>
+<p>原文发布于：<a href="http://blog.zhaiyifan.cn/2016/04/28/about-learning/">http://blog.zhaiyifan.cn/2016/04/28/about-learning/</a></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>最近因为在学习一些新的东西，所以Android的东西没有怎么更新。趁着有些闲工夫，简单说说技术上的学习，也算是自己对这几年工作来的一个小结和经验吧。</p>
-<h1 id="英语">英语</h1><p>老实说，没有比英语性价比更高的，需要学习的东西了。靠着别人的翻译，或者机]]>
+<p>希望这篇东西可以给那些在校的，亦或是才踏入工作没多久的程序员同伴们一些帮助。毕竟我自己也曾经止步不前，不知所措]]>
     </summary>
     
       <category term="Work" scheme="http://blog.zhaiyifan.cn/tags/Work/"/>
