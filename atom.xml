@@ -68,7 +68,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/</id>
     <published>2016-04-30T03:14:49.000Z</published>
-    <updated>2016-05-14T02:49:35.000Z</updated>
+    <updated>2016-05-14T02:56:39.000Z</updated>
     <content type="html"><![CDATA[<p>如期而至的Repository篇，内部实现则由Realm、Retrofit，以及内存级LruCache组成。<br>Repository，顾名思义，即仓库，向上层屏蔽了数据来源和内部实现细节，不需要了解货物来源，只需要拿走就行了。</p>
 <p>由于篇幅问题，将分为上下两篇，本篇主要介绍Retrofit的应用和Repository层组装，下篇会讲解本地缓存（包括Realm和内存缓存）以及基于异常的设计。</p>
 <h1 id="Why_Repository">Why Repository</h1><p>首先，为什么我们需要Repository层呢？一言以蔽之，屏蔽细节。</p>
@@ -80,6 +80,8 @@
 <li>点赞后，即便请求还没发送或者没有收到response，仍然希望显示点赞后的状态。<br>等等。</li>
 </ul>
 <p>如果这些需求，我们都要实现在View或者Presenter中，就会导致充斥大量数据逻辑，目的不单一，难以维护。而Repository层就是来封装这些逻辑的。</p>
+<h1 id="Overview">Overview</h1><p>如图，业务层只能看到repository接口。</p>
+<p><img src="/images/android-new-project-from-0-repository-1.png" alt="Repository Overview"></p>
 <h1 id="Retrofit">Retrofit</h1><p>[Retrofit]（<a href="https://github.com/square/retrofit)是Android界网红公司[Square](https://squareup.com/)所开发维护的一个HTTP网络库，目前最新版本是2.0.2（截止2016年4月30日）。其内部使用了自家的[OkHttp](https://github.com/square/okhttp)。" target="_blank" rel="external">https://github.com/square/retrofit)是Android界网红公司[Square](https://squareup.com/)所开发维护的一个HTTP网络库，目前最新版本是2.0.2（截止2016年4月30日）。其内部使用了自家的[OkHttp](https://github.com/square/okhttp)。</a></p>
 <p>关于Retrofit的实现机制啊简介的，网上已经很多了，这里我就不啰嗦了，官方文档见<a href="http://square.github.io/retrofit/" target="_blank" rel="external">项目主页</a>。这里主要讲讲实际项目中的应用实践。</p>
 <h2 id="import">import</h2><p>root build.gradle:<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> retrofitVersion = <span class="string">"2.0.2"</span></span><br><span class="line"><span class="keyword">def</span> okHttpVersion = <span class="string">'3.2.0'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>.ext &#123;</span><br><span class="line">    libRetrofit = <span class="string">"com.squareup.retrofit2:retrofit:$&#123;retrofitVersion&#125;"</span></span><br><span class="line">    libRetrofitConverterGson = <span class="string">"com.squareup.retrofit2:converter-gson:$&#123;retrofitVersion&#125;"</span></span><br><span class="line">    libRetrofitAdapterRxJava = <span class="string">"com.squareup.retrofit2:adapter-rxjava:$&#123;retrofitVersion&#125;"</span></span><br><span class="line">    libOkHttpLoggingInterceptor = <span class="string">"com.squareup.okhttp3:logging-interceptor:$&#123;okHttpVersion&#125;"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
