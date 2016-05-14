@@ -64,34 +64,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[从零开始的Android新项目6 - Repository层(下) Realm、缓存、异常处理]]></title>
-    <link href="http://blog.zhaiyifan.cn/2016/05/04/android-new-project-from-0-p6/"/>
-    <id>http://blog.zhaiyifan.cn/2016/05/04/android-new-project-from-0-p6/</id>
-    <published>2016-05-04T07:32:55.000Z</published>
-    <updated>2016-05-04T07:43:28.000Z</updated>
-    <content type="html"><![CDATA[<p>占坑</p>
-<h1 id="Realm">Realm</h1><h1 id="内存">内存</h1><h2 id="LruCache">LruCache</h2><h2 id="简单变量存储">简单变量存储</h2><h1 id="统一异常处理">统一异常处理</h1>]]></content>
-    <summary type="html">
-    <![CDATA[<p>占坑</p>
-<h1 id="Realm">Realm</h1><h1 id="内存">内存</h1><h2 id="LruCache">LruCache</h2><h2 id="简单变量存储">简单变量存储</h2><h1 id="统一异常处理">统一异常处理</h1>]]>
-    </summary>
-    
-      <category term="New Android Project From 0" scheme="http://blog.zhaiyifan.cn/tags/New-Android-Project-From-0/"/>
-    
-      <category term="Realm" scheme="http://blog.zhaiyifan.cn/tags/Realm/"/>
-    
-      <category term="Repository" scheme="http://blog.zhaiyifan.cn/tags/Repository/"/>
-    
-      <category term="Android Project From 0" scheme="http://blog.zhaiyifan.cn/categories/Android-Project-From-0/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装]]></title>
     <link href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/</id>
     <published>2016-04-30T03:14:49.000Z</published>
-    <updated>2016-05-14T02:45:33.000Z</updated>
+    <updated>2016-05-14T02:49:35.000Z</updated>
     <content type="html"><![CDATA[<p>如期而至的Repository篇，内部实现则由Realm、Retrofit，以及内存级LruCache组成。<br>Repository，顾名思义，即仓库，向上层屏蔽了数据来源和内部实现细节，不需要了解货物来源，只需要拿走就行了。</p>
 <p>由于篇幅问题，将分为上下两篇，本篇主要介绍Retrofit的应用和Repository层组装，下篇会讲解本地缓存（包括Realm和内存缓存）以及基于异常的设计。</p>
 <h1 id="Why_Repository">Why Repository</h1><p>首先，为什么我们需要Repository层呢？一言以蔽之，屏蔽细节。</p>
@@ -142,6 +119,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseResponse</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@SerializedName</span>(<span class="string">"status_no"</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> statusCode;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@SerializedName</span>(<span class="string">"status_msg"</span>)</span><br><span class="line">    <span class="keyword">private</span> String statusMessage;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@SerializedName</span>(<span class="string">"time"</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> time;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// setter and getter</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteResponse</span> <span class="keyword">extends</span> <span class="title">BaseResponse</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@SerializedName</span>(<span class="string">"other_fields"</span>)</span><br><span class="line">    <span class="keyword">private</span> String otherFields;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对应的判断和error抛出可以参照上小节的，这里就不赘述了。</p>
 <h1 id="Repository层组装实现">Repository层组装实现</h1><p>组装即根据组合各个数据源，如此又分为直接在实现方法中组合结果，亦或是通过DataStoreFactory进行封装。根据复杂度和个人喜好而定，毕竟使用后者需要新增好多类，相对来说有一点重。</p>
+<h2 id="基于接口的设计实现">基于接口的设计实现</h2><p>拿一个最简单的repository，七牛Repository来作例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">QiniuRepository</span> </span>&#123;</span><br><span class="line">    <span class="function">Observable&lt;QiniuToken&gt; <span class="title">getQiniuUploadToken</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QiniuDataRepository</span> <span class="keyword">implements</span> <span class="title">QiniuRepository</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Inject</span></span><br><span class="line">    <span class="keyword">protected</span> QiniuApi mQiniuApi;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Inject</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">QiniuDataRepository</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Observable&lt;QiniuToken&gt; <span class="title">getQiniuUploadToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> RepositoryUtils.extractData(mQiniuApi.getQiniuUploadToken(), QiniuToken.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="DataStoreFactory">DataStoreFactory</h2><p>使用DataStoreFactory封装数据来源：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Singleton</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDataStoreFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Context mContext;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserCache mUserCache;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Inject</span></span><br><span class="line">    <span class="keyword">protected</span> UserApi mUserApi;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Inject</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDataStoreFactory</span><span class="params">(Context context, UserCache userCache)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (context == <span class="keyword">null</span> || userCache == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Constructor parameters cannot be null!!!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        mContext = context.getApplicationContext();</span><br><span class="line">        mUserCache = userCache;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Create &#123;<span class="doctag">@link</span> UserDataStore&#125; from a user id.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDataStore <span class="title">create</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">        UserDataStore userDataStore;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!mUserCache.isExpired() &amp;&amp; mUserCache.isCached(userId)) &#123;</span><br><span class="line">            userDataStore = <span class="keyword">new</span> DiskUserDataStore(mUserCache);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            userDataStore = createCloudDataStore();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> userDataStore;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Create &#123;<span class="doctag">@link</span> UserDataStore&#125; to retrieve data from the Cloud.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDataStore <span class="title">createCloudDataStore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CloudUserDataStore(mUserApi, mUserCache);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>老实说这样的话，一来要写很多方法和接口，二来通过Factory判断创建哪种DataStore还是挺麻烦的，比如用户主页数据我们可以判断，但登陆登出这些，就需要直接指定<code>createCloudDataStore()</code>了，所以个人认为意义不大。</p>
 <h2 id="在实现方法中组合">在实现方法中组合</h2><p>如下是使用DBFlow和网络Api进行组合的一个list获取接口。</p>
@@ -1469,6 +1448,52 @@ Web 引用站点 — <span class="string">https:</span><span class="comment">//{
       <category term="Deep Link" scheme="http://blog.zhaiyifan.cn/tags/Deep-Link/"/>
     
       <category term="Android Introduction" scheme="http://blog.zhaiyifan.cn/categories/Android-Introduction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Android开发模式 S2 EP1 - Snackbar, 合适的打断]]></title>
+    <link href="http://blog.zhaiyifan.cn/2016/02/03/AndroidDevelopmentPatternsS2EP1/"/>
+    <id>http://blog.zhaiyifan.cn/2016/02/03/AndroidDevelopmentPatternsS2EP1/</id>
+    <published>2016-02-03T07:33:29.000Z</published>
+    <updated>2016-02-03T15:38:26.000Z</updated>
+    <content type="html"><![CDATA[<p>视频见：<a href="https://www.youtube.com/watch?v=puhfMX8jb9c" target="_blank" rel="external">https://www.youtube.com/watch?v=puhfMX8jb9c</a><br>视频很短，但是这个主题还是很有价值的，能帮助我们开发者理解应用设计的一些模式规范。</p>
+<p>在我看来，作为一个前端开发者，我们不仅仅是去执行产品设计下发下来的东西，更多的是要去思考什么样的设计/交互是好的，什么样的需求是合理的，成为一个有独立思考的开发者。</p>
+<p>本篇是该系列第二季的第一集，介绍了Snackbar的使用场景（相信现在大部分的开发者使用的还只是Toast和Alert吧）。</p>
+<h2 id="正文">正文</h2><p>在你的应用中，交互信息的一个细节在于使用屏幕上的提示。但是，当那个信息很重要或者需要用户做决定的时候，你可能想要使用对话框(Alert)。</p>
+<p>在过去，你有2种方式：</p>
+<ol>
+<li>对话框。可以展示信息给用户，并让他们对其进行操作。<br>但是对话框是中断性的（强制用户停下正在做的，来处理你的对话框）。想想，你享受被打断的滋味吗？你喜欢那种去确认你想做的操作的感觉吗？还是喜欢弹出对话框？<br><img src="/images/android-development-patterns-s2-ep1-1.png" alt="android-development-patterns-s2-ep1-1"></li>
+</ol>
+<p>这种交互很让人烦躁，不是么？<br>所以，对话框需要尽可能保守地去使用，这就让我们来到了第二种方式。</p>
+<ol>
+<li>Toast<br>Toast可以确认用户做的事情确实发生了。</li>
+</ol>
+<p>但如果这个操作是破坏性的呢，比如删除？<br>你的用户可能不想去那么做，而现在他们惊慌地在找怎么撤销，并对你在他删除那张美女图片前不进行再次确认而感到无语。卧槽，这是要干啥。</p>
+<p>Snackbar就是为此而生的。</p>
+<p>Snackbar和Toast类似，但它更强大，因为它是可交互的（比如提供你的用户正在找的撤销操作）。<br><img src="/images/android-development-patterns-s2-ep1-2.png" alt="android-development-patterns-s2-ep1-2"></p>
+<p>Snackbar从屏幕底部浮起，用户可以将它划走，或者无视它（过一会自动消失，就像Toast那样）。Snackbar包含了一条短的信息，并能提供一个单一操作，比如撤销。</p>
+<p>所以你现在有3种组件来帮助你使用最完美的方式来打断用户。</p>
+<ul>
+<li>对话框：当用户的反应对你的app流程来说很重要，在这种时候你需要破坏性的干扰。</li>
+<li>Toast：给用户一个不会改变任何东西的小提示。</li>
+<li>Snackbar：前两者之间的区间内，Snackbar是你最好的朋友。</li>
+</ul>
+<h2 id="小结">小结</h2><p>对话框（Alerts）对于和用户交互来说是<strong>很重</strong>的一个操作，但它确实帮助你了解什么是恰当的，从而你的用户不会讨厌你。幸运的是，现在有了一个简单的回答：使用<a href="http://developer.android.com/reference/android/support/design/widget/Snackbar.html" target="_blank" rel="external">Snackbar!</a>。</p>
+<p>有一些微妙的场景，我们不知道如何在Toast和Snackbar之间抉择，那么<a href="http://www.google.com/design/spec/components/snackbars-toasts.html#" target="_blank" rel="external">Google的设计文档</a>包括了你可能需要的所有的详尽细节。如果你仍然希望做错，<a href="http://www.google.com/design/spec/components/dialogs.html#dialogs-behavior" target="_blank" rel="external">Dialog</a>当然也可以使用。但我们相信你能做得更好。所以成为一个更好的开发者，使用更好的选择：Snackbar。</p>
+<p>最后牢骚一句，国内一些app退出的时候还要弹个Dialog问你是不是要退出的交互，真是够了/(ㄒoㄒ)/~~</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>视频见：<a href="https://www.youtube.com/watch?v=puhfMX8jb9c" target="_blank" rel="external">https://www.youtube.com/watch?v=puhfMX8jb9c</a><]]>
+    </summary>
+    
+      <category term="Android" scheme="http://blog.zhaiyifan.cn/tags/Android/"/>
+    
+      <category term="Android Development Patterns" scheme="http://blog.zhaiyifan.cn/tags/Android-Development-Patterns/"/>
+    
+      <category term="翻译" scheme="http://blog.zhaiyifan.cn/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Android Development Patterns" scheme="http://blog.zhaiyifan.cn/categories/Android-Development-Patterns/"/>
     
   </entry>
   
