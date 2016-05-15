@@ -64,6 +64,31 @@
   </entry>
   
   <entry>
+    <title><![CDATA[从零开始的Android新项目6 - Repository层(下) Realm、缓存、异常处理]]></title>
+    <link href="http://blog.zhaiyifan.cn/2016/05/15/android-new-project-from-0-p6/"/>
+    <id>http://blog.zhaiyifan.cn/2016/05/15/android-new-project-from-0-p6/</id>
+    <published>2016-05-15T07:32:55.000Z</published>
+    <updated>2016-05-15T07:43:18.000Z</updated>
+    <content type="html"><![CDATA[<p>承接上篇 <a href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/">从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装</a>，本文继续介绍Realm、缓存，以及统一的异常处理设计。</p>
+<h1 id="Realm">Realm</h1><h1 id="内存">内存</h1><h2 id="LruCache">LruCache</h2><h2 id="简单变量存储">简单变量存储</h2><h1 id="统一异常处理">统一异常处理</h1><p>作为Repository层，我们本身不会去处理任何异常和错误（比如请求的错误码），一切都将作为Exception异常抛给上层去做统一处理。</p>
+<h2 id="Observable-error">Observable.error</h2><h2 id="Subscriber-onError">Subscriber.onError</h2><h3 id="handleCommonResponseError">handleCommonResponseError</h3><h3 id="Log_&amp;_上报">Log &amp; 上报</h3><h3 id="ErrorBundle">ErrorBundle</h3><h3 id="ErrorMessageFactory">ErrorMessageFactory</h3><h1 id="总结和下集预告">总结和下集预告</h1><p>本系列两篇文章描述了Android项目中，Repository层的设计与实现，也可以理解它为data或者model层。一个好的Repository层和上层相对独立，内聚完成业务逻辑的数据部分，即便内部有修改，比如添加了缓存，对外仍然保持一致。而好的异常处理设计一方面让代码中不会充斥着莫名其妙的catch，另一方，恰当的错误展示也让用户知道究竟出了什么错，不至于莫名其妙。</p>
+<p>下一次不知是何时相见，希望能为大家带来我们项目中使用React Native进行混合开发的苦与甜。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>承接上篇 <a href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/">从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装]]>
+    </summary>
+    
+      <category term="New Android Project From 0" scheme="http://blog.zhaiyifan.cn/tags/New-Android-Project-From-0/"/>
+    
+      <category term="Realm" scheme="http://blog.zhaiyifan.cn/tags/Realm/"/>
+    
+      <category term="Repository" scheme="http://blog.zhaiyifan.cn/tags/Repository/"/>
+    
+      <category term="Android Project From 0" scheme="http://blog.zhaiyifan.cn/categories/Android-Project-From-0/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装]]></title>
     <link href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/</id>
@@ -1450,52 +1475,6 @@ Web 引用站点 — <span class="string">https:</span><span class="comment">//{
       <category term="Deep Link" scheme="http://blog.zhaiyifan.cn/tags/Deep-Link/"/>
     
       <category term="Android Introduction" scheme="http://blog.zhaiyifan.cn/categories/Android-Introduction/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Android开发模式 S2 EP1 - Snackbar, 合适的打断]]></title>
-    <link href="http://blog.zhaiyifan.cn/2016/02/03/AndroidDevelopmentPatternsS2EP1/"/>
-    <id>http://blog.zhaiyifan.cn/2016/02/03/AndroidDevelopmentPatternsS2EP1/</id>
-    <published>2016-02-03T07:33:29.000Z</published>
-    <updated>2016-02-03T15:38:26.000Z</updated>
-    <content type="html"><![CDATA[<p>视频见：<a href="https://www.youtube.com/watch?v=puhfMX8jb9c" target="_blank" rel="external">https://www.youtube.com/watch?v=puhfMX8jb9c</a><br>视频很短，但是这个主题还是很有价值的，能帮助我们开发者理解应用设计的一些模式规范。</p>
-<p>在我看来，作为一个前端开发者，我们不仅仅是去执行产品设计下发下来的东西，更多的是要去思考什么样的设计/交互是好的，什么样的需求是合理的，成为一个有独立思考的开发者。</p>
-<p>本篇是该系列第二季的第一集，介绍了Snackbar的使用场景（相信现在大部分的开发者使用的还只是Toast和Alert吧）。</p>
-<h2 id="正文">正文</h2><p>在你的应用中，交互信息的一个细节在于使用屏幕上的提示。但是，当那个信息很重要或者需要用户做决定的时候，你可能想要使用对话框(Alert)。</p>
-<p>在过去，你有2种方式：</p>
-<ol>
-<li>对话框。可以展示信息给用户，并让他们对其进行操作。<br>但是对话框是中断性的（强制用户停下正在做的，来处理你的对话框）。想想，你享受被打断的滋味吗？你喜欢那种去确认你想做的操作的感觉吗？还是喜欢弹出对话框？<br><img src="/images/android-development-patterns-s2-ep1-1.png" alt="android-development-patterns-s2-ep1-1"></li>
-</ol>
-<p>这种交互很让人烦躁，不是么？<br>所以，对话框需要尽可能保守地去使用，这就让我们来到了第二种方式。</p>
-<ol>
-<li>Toast<br>Toast可以确认用户做的事情确实发生了。</li>
-</ol>
-<p>但如果这个操作是破坏性的呢，比如删除？<br>你的用户可能不想去那么做，而现在他们惊慌地在找怎么撤销，并对你在他删除那张美女图片前不进行再次确认而感到无语。卧槽，这是要干啥。</p>
-<p>Snackbar就是为此而生的。</p>
-<p>Snackbar和Toast类似，但它更强大，因为它是可交互的（比如提供你的用户正在找的撤销操作）。<br><img src="/images/android-development-patterns-s2-ep1-2.png" alt="android-development-patterns-s2-ep1-2"></p>
-<p>Snackbar从屏幕底部浮起，用户可以将它划走，或者无视它（过一会自动消失，就像Toast那样）。Snackbar包含了一条短的信息，并能提供一个单一操作，比如撤销。</p>
-<p>所以你现在有3种组件来帮助你使用最完美的方式来打断用户。</p>
-<ul>
-<li>对话框：当用户的反应对你的app流程来说很重要，在这种时候你需要破坏性的干扰。</li>
-<li>Toast：给用户一个不会改变任何东西的小提示。</li>
-<li>Snackbar：前两者之间的区间内，Snackbar是你最好的朋友。</li>
-</ul>
-<h2 id="小结">小结</h2><p>对话框（Alerts）对于和用户交互来说是<strong>很重</strong>的一个操作，但它确实帮助你了解什么是恰当的，从而你的用户不会讨厌你。幸运的是，现在有了一个简单的回答：使用<a href="http://developer.android.com/reference/android/support/design/widget/Snackbar.html" target="_blank" rel="external">Snackbar!</a>。</p>
-<p>有一些微妙的场景，我们不知道如何在Toast和Snackbar之间抉择，那么<a href="http://www.google.com/design/spec/components/snackbars-toasts.html#" target="_blank" rel="external">Google的设计文档</a>包括了你可能需要的所有的详尽细节。如果你仍然希望做错，<a href="http://www.google.com/design/spec/components/dialogs.html#dialogs-behavior" target="_blank" rel="external">Dialog</a>当然也可以使用。但我们相信你能做得更好。所以成为一个更好的开发者，使用更好的选择：Snackbar。</p>
-<p>最后牢骚一句，国内一些app退出的时候还要弹个Dialog问你是不是要退出的交互，真是够了/(ㄒoㄒ)/~~</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>视频见：<a href="https://www.youtube.com/watch?v=puhfMX8jb9c" target="_blank" rel="external">https://www.youtube.com/watch?v=puhfMX8jb9c</a><]]>
-    </summary>
-    
-      <category term="Android" scheme="http://blog.zhaiyifan.cn/tags/Android/"/>
-    
-      <category term="Android Development Patterns" scheme="http://blog.zhaiyifan.cn/tags/Android-Development-Patterns/"/>
-    
-      <category term="翻译" scheme="http://blog.zhaiyifan.cn/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="Android Development Patterns" scheme="http://blog.zhaiyifan.cn/categories/Android-Development-Patterns/"/>
     
   </entry>
   

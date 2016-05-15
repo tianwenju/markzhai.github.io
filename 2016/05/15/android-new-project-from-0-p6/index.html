@@ -43,19 +43,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="占坑
-Realm内存LruCache简单变量存储统一异常处理">
+<meta name="description" content="承接上篇 从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装，本文继续介绍Realm、缓存，以及统一的异常处理设计。
+Realm内存LruCache简单变量存储统一异常处理作为Repository层，我们本身不会去处理任何异常和错误（比如请求的错误码），一切都将作为Exception异常抛给上层去做统一处理。
+Observable.err">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始的Android新项目6 - Repository层(下) Realm、缓存、异常处理">
-<meta property="og:url" content="http://blog.zhaiyifan.cn/2015/05/22/android-new-project-from-0-p6/index.html">
+<meta property="og:url" content="http://blog.zhaiyifan.cn/2016/05/15/android-new-project-from-0-p6/index.html">
 <meta property="og:site_name" content="markzhai's home">
-<meta property="og:description" content="占坑
-Realm内存LruCache简单变量存储统一异常处理">
-<meta property="og:updated_time" content="2016-05-14T02:50:05.000Z">
+<meta property="og:description" content="承接上篇 从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装，本文继续介绍Realm、缓存，以及统一的异常处理设计。
+Realm内存LruCache简单变量存储统一异常处理作为Repository层，我们本身不会去处理任何异常和错误（比如请求的错误码），一切都将作为Exception异常抛给上层去做统一处理。
+Observable.err">
+<meta property="og:updated_time" content="2016-05-15T07:43:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目6 - Repository层(下) Realm、缓存、异常处理">
-<meta name="twitter:description" content="占坑
-Realm内存LruCache简单变量存储统一异常处理">
+<meta name="twitter:description" content="承接上篇 从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装，本文继续介绍Realm、缓存，以及统一的异常处理设计。
+Realm内存LruCache简单变量存储统一异常处理作为Repository层，我们本身不会去处理任何异常和错误（比如请求的错误码），一切都将作为Exception异常抛给上层去做统一处理。
+Observable.err">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -208,8 +211,8 @@ Realm内存LruCache简单变量存储统一异常处理">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-05-22T15:32:55+08:00" content="2015-05-22">
-            2015-05-22
+          <time itemprop="dateCreated" datetime="2016-05-15T15:32:55+08:00" content="2016-05-15">
+            2016-05-15
           </time>
         </span>
 
@@ -234,8 +237,8 @@ Realm内存LruCache简单变量存储统一异常处理">
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/05/22/android-new-project-from-0-p6/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/22/android-new-project-from-0-p6/" itemprop="commentsCount"></span>
+              <a href="/2016/05/15/android-new-project-from-0-p6/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/15/android-new-project-from-0-p6/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -249,8 +252,11 @@ Realm内存LruCache简单变量存储统一异常处理">
       
 
       
-        <span itemprop="articleBody"><p>占坑</p>
-<h1 id="Realm">Realm</h1><h1 id="内存">内存</h1><h2 id="LruCache">LruCache</h2><h2 id="简单变量存储">简单变量存储</h2><h1 id="统一异常处理">统一异常处理</h1></span>
+        <span itemprop="articleBody"><p>承接上篇 <a href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/">从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装</a>，本文继续介绍Realm、缓存，以及统一的异常处理设计。</p>
+<h1 id="Realm">Realm</h1><h1 id="内存">内存</h1><h2 id="LruCache">LruCache</h2><h2 id="简单变量存储">简单变量存储</h2><h1 id="统一异常处理">统一异常处理</h1><p>作为Repository层，我们本身不会去处理任何异常和错误（比如请求的错误码），一切都将作为Exception异常抛给上层去做统一处理。</p>
+<h2 id="Observable-error">Observable.error</h2><h2 id="Subscriber-onError">Subscriber.onError</h2><h3 id="handleCommonResponseError">handleCommonResponseError</h3><h3 id="Log_&amp;_上报">Log &amp; 上报</h3><h3 id="ErrorBundle">ErrorBundle</h3><h3 id="ErrorMessageFactory">ErrorMessageFactory</h3><h1 id="总结和下集预告">总结和下集预告</h1><p>本系列两篇文章描述了Android项目中，Repository层的设计与实现，也可以理解它为data或者model层。一个好的Repository层和上层相对独立，内聚完成业务逻辑的数据部分，即便内部有修改，比如添加了缓存，对外仍然保持一致。而好的异常处理设计一方面让代码中不会充斥着莫名其妙的catch，另一方，恰当的错误展示也让用户知道究竟出了什么错，不至于莫名其妙。</p>
+<p>下一次不知是何时相见，希望能为大家带来我们项目中使用React Native进行混合开发的苦与甜。</p>
+</span>
       
     </div>
 
@@ -271,13 +277,13 @@ Realm内存LruCache简单变量存储统一异常处理">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/01/use-mvp-to-write-nice-code/" rel="prev">应用MVP模式写出可维护的优美Android应用</a>
+              <a href="/2016/12/31/Blog-Plan-2016/" rel="prev">Blog计划2016</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/21/import-leakcanary/" rel="next">接入LeakCanary检测内存泄露</a>
+              <a href="/2016/04/30/android-new-project-from-0-p5/" rel="next">从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装</a>
             
           </div>
         </div>
@@ -337,8 +343,8 @@ Realm内存LruCache简单变量存储统一异常处理">
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/05/22/android-new-project-from-0-p6/"
-                   data-title="从零开始的Android新项目6 - Repository层(下) Realm、缓存、异常处理" data-url="http://blog.zhaiyifan.cn/2015/05/22/android-new-project-from-0-p6/">
+              <div class="ds-thread" data-thread-key="2016/05/15/android-new-project-from-0-p6/"
+                   data-title="从零开始的Android新项目6 - Repository层(下) Realm、缓存、异常处理" data-url="http://blog.zhaiyifan.cn/2016/05/15/android-new-project-from-0-p6/">
               </div>
             
           </div>
@@ -464,7 +470,7 @@ Realm内存LruCache简单变量存储统一异常处理">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Realm"><span class="nav-number">1.</span> <span class="nav-text">Realm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存"><span class="nav-number">2.</span> <span class="nav-text">内存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LruCache"><span class="nav-number">2.1.</span> <span class="nav-text">LruCache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单变量存储"><span class="nav-number">2.2.</span> <span class="nav-text">简单变量存储</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统一异常处理"><span class="nav-number">3.</span> <span class="nav-text">统一异常处理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Realm"><span class="nav-number">1.</span> <span class="nav-text">Realm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存"><span class="nav-number">2.</span> <span class="nav-text">内存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LruCache"><span class="nav-number">2.1.</span> <span class="nav-text">LruCache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单变量存储"><span class="nav-number">2.2.</span> <span class="nav-text">简单变量存储</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统一异常处理"><span class="nav-number">3.</span> <span class="nav-text">统一异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Observable-error"><span class="nav-number">3.1.</span> <span class="nav-text">Observable.error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subscriber-onError"><span class="nav-number">3.2.</span> <span class="nav-text">Subscriber.onError</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#handleCommonResponseError"><span class="nav-number">3.2.1.</span> <span class="nav-text">handleCommonResponseError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log_&_上报"><span class="nav-number">3.2.2.</span> <span class="nav-text">Log & 上报</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ErrorBundle"><span class="nav-number">3.2.3.</span> <span class="nav-text">ErrorBundle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ErrorMessageFactory"><span class="nav-number">3.2.4.</span> <span class="nav-text">ErrorMessageFactory</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结和下集预告"><span class="nav-number">4.</span> <span class="nav-text">总结和下集预告</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
