@@ -68,15 +68,15 @@
     <link href="http://blog.zhaiyifan.cn/2016/05/15/android-new-project-from-0-p6/"/>
     <id>http://blog.zhaiyifan.cn/2016/05/15/android-new-project-from-0-p6/</id>
     <published>2016-05-15T07:32:55.000Z</published>
-    <updated>2016-05-18T09:15:33.000Z</updated>
+    <updated>2016-05-19T02:35:42.000Z</updated>
     <content type="html"><![CDATA[<p>承接上篇 <a href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/">从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装</a>，本文继续介绍Realm、缓存，以及统一的异常处理设计。</p>
 <h1 id="Realm">Realm</h1><p><a href="https://realm.io/" target="_blank" rel="external">Realm</a>在移动端数据库中也算是比较有名的一款了，以其跨平台和惊人的速度而闻名。啊，对了，还有文档多。</p>
 <p>这里要黑的就是文档问题，Realm虽然乍一看文档很多，但是老实说，写的挺乱的。不过总体来说，实践和应用中感觉还不错，性能好，也比较方便，比起不稳定的DBFlow和麻烦至极的GreenDao来好了太多了，唯一的美中不足就是so比较大，会增大包的体积1MB。</p>
-<h2 id="Get_Started">Get Started</h2><p>从Realm 0.90开始，用法与之前有了改变：</p>
+<h2 id="引入">引入</h2><p>从Realm 0.90开始，用法与之前有了改变：</p>
 <p>在root的build.gralde中:<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">dependencies</span> &#123;</span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">"io.realm:realm-gradle-plugin:0.90.1"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后在对应需要应用到Realm的，比如data module的build.gradle:<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'realm-android'</span></span><br></pre></td></tr></table></figure></p>
 <p>即可使用Realm。</p>
-<h2 id="RealmObject">RealmObject</h2><p>使用起来也很方便，比如我们想要缓存用户的信息</p>
+<h2 id="使用">使用</h2><p>使用起来也很方便，比如我们想要缓存用户的信息</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserPo</span> <span class="keyword">extends</span> <span class="title">RealmObject</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@PrimaryKey</span></span><br><span class="line">    <span class="keyword">public</span> String id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> String headerUrl;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">long</span> updateTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样就对应了一个表，其主键为id，另外有3列name, headerUrl, 以及updateTime。</p>
 <p>如果想要查询，只需要：</p>
@@ -102,6 +102,9 @@
 <h3 id="Log_&amp;_上报">Log &amp; 上报</h3><p>出错了当然要上报啦，bugly、友盟，本地写文件打zip包上传，Logger做的就是写文件log了，这些常见的app都会去做，这里就不赘述了。</p>
 <h1 id="总结和下集预告">总结和下集预告</h1><p>本系列两篇文章描述了Android项目中，Repository层的设计与实现，也可以理解它为data或者model层。一个好的Repository层和上层相对独立，内聚完成业务逻辑的数据部分，即便内部有修改，比如添加了缓存，对外仍然保持一致。而好的异常处理设计一方面让代码中不会充斥着杂七杂八的 try &amp; catch，另一方，恰当的错误展示也让用户知道究竟出了什么错，不至于莫名其妙。</p>
 <p>下一次不知是何时相见，希望能为大家带来我们项目中使用React Native进行混合开发的苦与甜。</p>
+<p><strong>另外，打个小广告，本司的新产品Crew已经在各大Android应用市场上线，专注于职场垂直社交。一搜和兴趣相投的人聊天。iOS版本正在审核中。</strong></p>
+<p><em>2个字找到志趣相投的职场伙伴，秒搜陌生人同类，智能自动破冰。多关键字叠加，高效率锁定职场同僚。精准匹配兴趣对象，超轻聊天，更能一键组建群聊，加入一群人的狂欢。</em></p>
+<p>demo没空写了，反正我也没混淆，直接反编译来黑我吧。哈哈。有bug或者功能上的意见建议欢迎直接反馈给我。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>承接上篇 <a href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/">从零开始的Android新项目5 - Repository层(上) Retrofit、Repository组装]]>
@@ -124,7 +127,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/</id>
     <published>2016-04-30T03:14:49.000Z</published>
-    <updated>2016-05-14T16:25:52.000Z</updated>
+    <updated>2016-05-19T02:35:37.000Z</updated>
     <content type="html"><![CDATA[<p>如期而至的Repository篇，内部实现则由Realm、Retrofit，以及内存级LruCache组成。<br>Repository，顾名思义，即仓库，向上层屏蔽了数据来源和内部实现细节，不需要了解货物来源，只需要拿走就行了。</p>
 <p>由于篇幅问题，将分为上下两篇，本篇主要介绍Retrofit的应用和Repository层组装，下篇会讲解本地缓存（包括Realm和内存缓存）以及基于异常的设计。</p>
 <h1 id="Why_Repository">Why Repository</h1><p>首先，为什么我们需要Repository层呢？一言以蔽之，屏蔽细节。</p>
@@ -187,6 +190,7 @@
 <h1 id="总结">总结</h1><p>本篇为Repository层的上篇，主要介绍了组合及Retrofit的应用。下篇将会讲述数据库，内存Cache，以及统一的异常处理设计。</p>
 <p><strong>另外，打个小广告，本司的新产品Crew已经在各大Android应用市场上线，专注于职场垂直社交。一搜和兴趣相投的人聊天。iOS版本正在审核中。</strong></p>
 <p><em>2个字找到志趣相投的职场伙伴，秒搜陌生人同类，智能自动破冰。多关键字叠加，高效率锁定职场同僚。精准匹配兴趣对象，超轻聊天，更能一键组建群聊，加入一群人的狂欢。</em></p>
+<p>demo没空写了，反正我也没混淆，直接反编译来黑我吧。哈哈。有bug或者功能上的意见建议欢迎直接反馈给我。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>如期而至的Repository篇，内部实现则由Realm、Retrofit，以及内存级LruCache组成。<br>Repository，顾名思义，即仓库，向上层屏蔽了数据来源和内部实现细节，不需要了解货物来源，只需要拿走就行了。</p>
