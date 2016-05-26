@@ -357,7 +357,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/20/trans-java-8-in-android-n-preview/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/20/trans-java-8-in-android-n-preview/</id>
     <published>2016-04-20T03:48:40.000Z</published>
-    <updated>2016-04-20T03:49:35.000Z</updated>
+    <updated>2016-05-26T04:14:07.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <ul>
 <li>原文链接 : <a href="https://medium.com/@sergii/java-8-in-android-n-preview-76184e2ab7ad#.ywf5x3l8w" target="_blank" rel="external">Java 8 in Android N Preview</a></li>
@@ -407,6 +407,7 @@
 <figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="component">buttonFahrenheit.setOnClickListener(view1 -&gt; &#123;</span><br><span class="line">   fahrenheitThermometer<span class="string">.setCelsius(currentCelsius)</span>;</span><br><span class="line">   String text = fahrenheitThermometer<span class="string">.getFormattedValue()</span>;</span><br><span class="line">   makeText(MainActivity<span class="string">.this</span>, text, Toast<span class="string">.LENGTH_SHORT).show()</span>;</span><br><span class="line">&#125;</span>);</span><br></pre></td></tr></table></figure>
 <p>例子的完整源码可见 <a href="https://github.com/sergiiz/AndroidNPreviewJ8" target="_blank" rel="external">GitHub repository<sup class="readableLinkFootnote">[14]</sup></a>。</p>
 <h3 id="总结">总结</h3><p>在这篇文章中，我们了解了Java 8的用例，以及目前其在Android N Preview SDK的实现情况。我们也看到了当前Jack编译器的限制，及其在最后发布前可能被修复的功能。在demo项目中我们检验了如何去使用新的Java 8特性，以及它们可以被应用的target SDK版本。</p>
+<p>声明：本文已独家授权微信公众号Android程序员（AndroidTrending）在微信公众号平台原创首发。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<blockquote>
