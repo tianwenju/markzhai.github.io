@@ -68,10 +68,22 @@
     <link href="http://blog.zhaiyifan.cn/2016/06/16/android-data-binding-1/"/>
     <id>http://blog.zhaiyifan.cn/2016/06/16/android-data-binding-1/</id>
     <published>2016-06-15T16:19:00.000Z</published>
-    <updated>2016-06-15T16:20:39.000Z</updated>
-    <content type="html"></content>
+    <updated>2016-06-19T07:29:08.000Z</updated>
+    <content type="html"><![CDATA[<p>layout文件改写<br>findViewById的去除<br>model、事件绑定<br>介绍其原理（图+源码解析）<br>表达式的使用<br>include<br>viewstub<br>Observable<br>高级绑定：动态变量<br>Binding生成<br>transition<br>避免空指针的技巧</p>
+<ol>
+<li>Origin</li>
+<li>初衷</li>
+<li>使用场景</li>
+<li>依赖图例子</li>
+<li>具体应用和心得体会</li>
+<li>总结</li>
+<li>下集预告</li>
+<li>参考文献</li>
+<li>扩展阅读</li>
+</ol>
+]]></content>
     <summary type="html">
-    
+    <![CDATA[<p>layout文件改写<br>findViewById的去除<br>model、事件绑定<br>介绍其原理（图+源码解析）<br>表达式的使用<br>include<br>viewstub<br>Observable<br>高级绑定：动态变量<br>Binding生成<br>]]>
     </summary>
     
       <category term="Data Binding" scheme="http://blog.zhaiyifan.cn/tags/Data-Binding/"/>
