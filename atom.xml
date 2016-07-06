@@ -64,26 +64,33 @@
   </entry>
   
   <entry>
-    <title><![CDATA[从零开始的Android新项目7 - Data Binding篇]]></title>
-    <link href="http://blog.zhaiyifan.cn/2016/06/16/android-data-binding-1/"/>
-    <id>http://blog.zhaiyifan.cn/2016/06/16/android-data-binding-1/</id>
-    <published>2016-06-15T16:19:00.000Z</published>
-    <updated>2016-06-19T07:29:08.000Z</updated>
-    <content type="html"><![CDATA[<p>layout文件改写<br>findViewById的去除<br>model、事件绑定<br>介绍其原理（图+源码解析）<br>表达式的使用<br>include<br>viewstub<br>Observable<br>高级绑定：动态变量<br>Binding生成<br>transition<br>避免空指针的技巧</p>
-<ol>
-<li>Origin</li>
-<li>初衷</li>
-<li>使用场景</li>
-<li>依赖图例子</li>
-<li>具体应用和心得体会</li>
-<li>总结</li>
-<li>下集预告</li>
-<li>参考文献</li>
-<li>扩展阅读</li>
-</ol>
-]]></content>
+    <title><![CDATA[从零开始的Android新项目7 - Data Binding进阶篇]]></title>
+    <link href="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/"/>
+    <id>http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/</id>
+    <published>2016-07-06T02:59:39.000Z</published>
+    <updated>2016-07-06T03:03:54.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性</h1><h2 id="自定义View">自定义View</h2><h2 id="BindingMethods">BindingMethods</h2><h2 id="BindingAdapter">BindingAdapter</h2><h2 id="BindingConversion">BindingConversion</h2><h1 id="双向绑定">双向绑定</h1><h2 id="自定义Listener">自定义Listener</h2><h2 id="InverseBindingListener">InverseBindingListener</h2><h2 id="解决死循环">解决死循环</h2><h1 id="表达式链">表达式链</h1><h2 id="重复的表达式">重复的表达式</h2><h2 id="隐式更新">隐式更新</h2><h1 id="动画">动画</h1><h2 id="transition">transition</h2><h1 id="学习和使用建议">学习和使用建议</h1><h2 id="学习建议">学习建议</h2><h2 id="使用建议">使用建议</h2><h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><h3 id="Level_3_-_Callback">Level 3 - Callback</h3><h3 id="Level_4_-_Observable">Level 4 - Observable</h3><h3 id="Level_5_-_双向绑定">Level 5 - 双向绑定</h3><h1 id="总结">总结</h1>]]></content>
     <summary type="html">
-    <![CDATA[<p>layout文件改写<br>findViewById的去除<br>model、事件绑定<br>介绍其原理（图+源码解析）<br>表达式的使用<br>include<br>viewstub<br>Observable<br>高级绑定：动态变量<br>Binding生成<br>]]>
+    <![CDATA[<h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性]]>
+    </summary>
+    
+      <category term="Data Binding" scheme="http://blog.zhaiyifan.cn/tags/Data-Binding/"/>
+    
+      <category term="New Android Project From 0" scheme="http://blog.zhaiyifan.cn/tags/New-Android-Project-From-0/"/>
+    
+      <category term="Android Project From 0" scheme="http://blog.zhaiyifan.cn/categories/Android-Project-From-0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[从零开始的Android新项目7 - Data Binding入门篇]]></title>
+    <link href="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/"/>
+    <id>http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/</id>
+    <published>2016-06-15T16:19:00.000Z</published>
+    <updated>2016-07-06T03:07:39.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="引">引</h1><h2 id="什么是Data_Binding">什么是Data Binding</h2><h2 id="用途">用途</h2><h2 id="开源方案">开源方案</h2><h3 id="ButterKnife">ButterKnife</h3><h3 id="Android_Annotations">Android Annotations</h3><h3 id="RoboBinding">RoboBinding</h3><h2 id="优势">优势</h2><h2 id="劣势">劣势</h2><h1 id="使用DataBinding">使用DataBinding</h1><h2 id="Gradle">Gradle</h2><h2 id="layout_tag">layout tag</h2><h1 id="基础用法">基础用法</h1><h2 id="去除findViewById">去除findViewById</h2><h2 id="变量绑定">变量绑定</h2><h2 id="事件绑定">事件绑定</h2><h1 id="Data_Binding原理">Data Binding原理</h1><h2 id="狭义原理">狭义原理</h2><h2 id="流程原理">流程原理</h2><h2 id="性能">性能</h2><h1 id="进阶用法">进阶用法</h1><h2 id="表达式">表达式</h2><h2 id="避免空指针">避免空指针</h2><h2 id="include">include</h2><h2 id="viewstub">viewstub</h2><h2 id="Observable">Observable</h2><h2 id="动态变量">动态变量</h2><h2 id="Binding生成">Binding生成</h2>]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="引">引</h1><h2 id="什么是Data_Binding">什么是Data Binding</h2><h2 id="用途">用途</h2><h2 id="开源方案">开源方案</h2><h3 id="ButterKnife">ButterKnife</h3]]>
     </summary>
     
       <category term="Data Binding" scheme="http://blog.zhaiyifan.cn/tags/Data-Binding/"/>
@@ -1437,40 +1444,6 @@
       <category term="Security" scheme="http://blog.zhaiyifan.cn/tags/Security/"/>
     
       <category term="Android Security" scheme="http://blog.zhaiyifan.cn/categories/Android-Security/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Android开发学前端之Vue.js(1) Hello World]]></title>
-    <link href="http://blog.zhaiyifan.cn/2016/02/06/learn-vue-js-1/"/>
-    <id>http://blog.zhaiyifan.cn/2016/02/06/learn-vue-js-1/</id>
-    <published>2016-02-05T16:06:50.000Z</published>
-    <updated>2016-04-22T02:56:21.000Z</updated>
-    <content type="html"><![CDATA[<p>大家好，我是doge。噢不，我是markzhai。</p>
-<p>其实一直对前端很好奇，在学校念书的时候，曾在各种项目里用过诸如PHP/RoR/Spring等Web框架搭过大小网站，但一方面很烦写css，另一方面js也就是写写很简单的东西（比如ajax和jquery刷新刷新东西），更多的还是在写业务逻辑，所以这两年看着推陈出新的前端技术和酷炫的效果，有一种自己从没学过的感觉。</p>
-<p>在React Native出现后，更加让我觉得有必要再系统性学习一下js的新技术。而我的良师益友 - 大头鬼则屡次安利我Vue.js(发音 /vjuː/，类似 view)，同时阿里内部在推的weex也是基于Vue.js做的一套跨平台方案。于是决定，不管以后能不能用上weex，先学习一下Vue.js吧。</p>
-<p>本系列的源码都在：<a href="https://github.com/markzhai/HelloVue" target="_blank" rel="external">HelloVue</a>，虽然其实大部分是官网上的例子，哈哈，不要鄙视我。</p>
-<p>本系列的受众是对移动开发和基本的HTML知识有一定了解的童鞋。</p>
-<h1 id="例子">例子</h1><p>简单来说，html描述页面信息，css是style，而JavaScript则操作页面上的element。当然，因为我们要学的是Vue.js，所以不会接触到css。</p>
-<p>先看<code>hello-world.html</code>的html:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">v-model</span>=<span class="value">"newTodo"</span> <span class="attribute">v-on:keyup.enter</span>=<span class="value">"addTodo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">v-for</span>=<span class="value">"todo in todos"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">span</span>&gt;</span>&#123;&#123; todo.text &#125;&#125;<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">button</span> <span class="attribute">v-on:click</span>=<span class="value">"removeTodo($index)"</span>&gt;</span>X<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>除了熟悉的各个html标签外，我们看到了<code></code>, <code>v-model</code>, <code>v-on:keyup.enter</code>等东西，这些便是Vue.js的了。<br>顾名思义猜测一下，<code>v-model</code>应该是data-binding， <code>v-on:keyup.enter</code>应该是键盘按下回车键时触发的函数，<code>v-for</code>估计是遍历，<code></code>则是注入model的字符串，<code>v-on:click</code>嘛肯定是点击事件的函数啦。</p>
-<p>然后我们来看看JavaScript部分：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="xml"><span class="comment">&lt;!-- 嗯...作用域？就是html里的id --&gt;</span></span><br><span class="line">  el: '#app',</span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- data，包含了一个object和一个list？ --&gt;</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    newTodo: '',</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; text: 'Add some todos' &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 那些触发的函数就在这里啦 --&gt;</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="comment">&lt;!-- addToDo从newToDo拿到trim后的字符串然后加到todo，清空input框 --&gt;</span></span><br><span class="line">    addTodo: function () &#123;</span><br><span class="line">      var text = this.newTodo.trim()</span><br><span class="line">      if (text) &#123;</span><br><span class="line">        this.todos.push(&#123; text: text &#125;)</span><br><span class="line">        this.newTodo = ''</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">&lt;!-- 根据传入的index删除todo列表的对应项，为啥Java的for不能直接拿到当前index呢 --&gt;</span></span><br><span class="line">    removeTodo: function (index) &#123;</span><br><span class="line">      this.todos.splice(index, 1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="水水的结束前">水水的结束前</h1><p>是不是感受到js的简洁了…然后似乎也都能看懂！还有data-binding哦，还是双向的，想想我们输入的内容自动被设置到了newToDo，而更新后的todos则自动刷新了页面上的列表。而Android上如果想做到这个…我们得写多少东西。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>大家好，我是doge。噢不，我是markzhai。</p>
-<p>其实一直对前端很好奇，在学校念书的时候，曾在各种项目里用过诸如PHP/RoR/Spring等Web框架搭过大小网站，但一方面很烦写css，另一方面js也就是写写很简单的东西（比如ajax和jquery刷新刷新]]>
-    </summary>
-    
-      <category term="H5" scheme="http://blog.zhaiyifan.cn/tags/H5/"/>
-    
-      <category term="JavaScript" scheme="http://blog.zhaiyifan.cn/tags/JavaScript/"/>
-    
-      <category term="Vue.js" scheme="http://blog.zhaiyifan.cn/tags/Vue-js/"/>
-    
-      <category term="前端" scheme="http://blog.zhaiyifan.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="Vue.js" scheme="http://blog.zhaiyifan.cn/categories/Vue-js/"/>
     
   </entry>
   

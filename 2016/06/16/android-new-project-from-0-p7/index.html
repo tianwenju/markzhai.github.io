@@ -43,46 +43,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="layout文件改写findViewById的去除model、事件绑定介绍其原理（图+源码解析）表达式的使用includeviewstubObservable高级绑定：动态变量Binding生成transition避免空指针的技巧
-
-Origin
-初衷
-使用场景
-依赖图例子
-具体应用和心得体会
-总结
-下集预告
-参考文献
-扩展阅读">
+<meta name="description" content="引什么是Data Binding用途开源方案ButterKnifeAndroid AnnotationsRoboBinding优势劣势使用DataBindingGradlelayout tag基础用法去除findViewById变量绑定事件绑定Data Binding原理狭义原理流程原理性能进阶用法表达式避免空指针includeviewstubObservable动态变量Binding生成">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从零开始的Android新项目7 - Data Binding篇">
-<meta property="og:url" content="http://blog.zhaiyifan.cn/2016/06/16/android-data-binding-1/index.html">
+<meta property="og:title" content="从零开始的Android新项目7 - Data Binding入门篇">
+<meta property="og:url" content="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/index.html">
 <meta property="og:site_name" content="markzhai's home">
-<meta property="og:description" content="layout文件改写findViewById的去除model、事件绑定介绍其原理（图+源码解析）表达式的使用includeviewstubObservable高级绑定：动态变量Binding生成transition避免空指针的技巧
-
-Origin
-初衷
-使用场景
-依赖图例子
-具体应用和心得体会
-总结
-下集预告
-参考文献
-扩展阅读">
-<meta property="og:updated_time" content="2016-06-19T07:29:08.000Z">
+<meta property="og:description" content="引什么是Data Binding用途开源方案ButterKnifeAndroid AnnotationsRoboBinding优势劣势使用DataBindingGradlelayout tag基础用法去除findViewById变量绑定事件绑定Data Binding原理狭义原理流程原理性能进阶用法表达式避免空指针includeviewstubObservable动态变量Binding生成">
+<meta property="og:updated_time" content="2016-07-06T03:07:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从零开始的Android新项目7 - Data Binding篇">
-<meta name="twitter:description" content="layout文件改写findViewById的去除model、事件绑定介绍其原理（图+源码解析）表达式的使用includeviewstubObservable高级绑定：动态变量Binding生成transition避免空指针的技巧
-
-Origin
-初衷
-使用场景
-依赖图例子
-具体应用和心得体会
-总结
-下集预告
-参考文献
-扩展阅读">
+<meta name="twitter:title" content="从零开始的Android新项目7 - Data Binding入门篇">
+<meta name="twitter:description" content="引什么是Data Binding用途开源方案ButterKnifeAndroid AnnotationsRoboBinding优势劣势使用DataBindingGradlelayout tag基础用法去除findViewById变量绑定事件绑定Data Binding原理狭义原理流程原理性能进阶用法表达式避免空指针includeviewstubObservable动态变量Binding生成">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -92,7 +62,7 @@ Origin
   };
 </script>
 
-  <title> 从零开始的Android新项目7 - Data Binding篇 | markzhai's home </title>
+  <title> 从零开始的Android新项目7 - Data Binding入门篇 | markzhai's home </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -226,7 +196,7 @@ Origin
           
           
             
-              从零开始的Android新项目7 - Data Binding篇
+              从零开始的Android新项目7 - Data Binding入门篇
             
           
         </h1>
@@ -261,8 +231,8 @@ Origin
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/06/16/android-data-binding-1/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/16/android-data-binding-1/" itemprop="commentsCount"></span>
+              <a href="/2016/06/16/android-new-project-from-0-p7/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/16/android-new-project-from-0-p7/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -276,19 +246,7 @@ Origin
       
 
       
-        <span itemprop="articleBody"><p>layout文件改写<br>findViewById的去除<br>model、事件绑定<br>介绍其原理（图+源码解析）<br>表达式的使用<br>include<br>viewstub<br>Observable<br>高级绑定：动态变量<br>Binding生成<br>transition<br>避免空指针的技巧</p>
-<ol>
-<li>Origin</li>
-<li>初衷</li>
-<li>使用场景</li>
-<li>依赖图例子</li>
-<li>具体应用和心得体会</li>
-<li>总结</li>
-<li>下集预告</li>
-<li>参考文献</li>
-<li>扩展阅读</li>
-</ol>
-</span>
+        <span itemprop="articleBody"><h1 id="引">引</h1><h2 id="什么是Data_Binding">什么是Data Binding</h2><h2 id="用途">用途</h2><h2 id="开源方案">开源方案</h2><h3 id="ButterKnife">ButterKnife</h3><h3 id="Android_Annotations">Android Annotations</h3><h3 id="RoboBinding">RoboBinding</h3><h2 id="优势">优势</h2><h2 id="劣势">劣势</h2><h1 id="使用DataBinding">使用DataBinding</h1><h2 id="Gradle">Gradle</h2><h2 id="layout_tag">layout tag</h2><h1 id="基础用法">基础用法</h1><h2 id="去除findViewById">去除findViewById</h2><h2 id="变量绑定">变量绑定</h2><h2 id="事件绑定">事件绑定</h2><h1 id="Data_Binding原理">Data Binding原理</h1><h2 id="狭义原理">狭义原理</h2><h2 id="流程原理">流程原理</h2><h2 id="性能">性能</h2><h1 id="进阶用法">进阶用法</h1><h2 id="表达式">表达式</h2><h2 id="避免空指针">避免空指针</h2><h2 id="include">include</h2><h2 id="viewstub">viewstub</h2><h2 id="Observable">Observable</h2><h2 id="动态变量">动态变量</h2><h2 id="Binding生成">Binding生成</h2></span>
       
     </div>
 
@@ -307,7 +265,7 @@ Origin
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/31/Blog-Plan-2016/" rel="prev">Blog计划2016</a>
+              <a href="/2016/07/06/android-new-project-from-0-p8/" rel="prev">从零开始的Android新项目7 - Data Binding进阶篇</a>
             
           </div>
 
@@ -375,8 +333,8 @@ Origin
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/06/16/android-data-binding-1/"
-                   data-title="从零开始的Android新项目7 - Data Binding篇" data-url="http://blog.zhaiyifan.cn/2016/06/16/android-data-binding-1/">
+              <div class="ds-thread" data-thread-key="2016/06/16/android-new-project-from-0-p7/"
+                   data-title="从零开始的Android新项目7 - Data Binding入门篇" data-url="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/">
               </div>
             
           </div>
@@ -416,7 +374,7 @@ Origin
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -502,7 +460,7 @@ Origin
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引"><span class="nav-number">1.</span> <span class="nav-text">引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Data_Binding"><span class="nav-number">1.1.</span> <span class="nav-text">什么是Data Binding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用途"><span class="nav-number">1.2.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源方案"><span class="nav-number">1.3.</span> <span class="nav-text">开源方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ButterKnife"><span class="nav-number">1.3.1.</span> <span class="nav-text">ButterKnife</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android_Annotations"><span class="nav-number">1.3.2.</span> <span class="nav-text">Android Annotations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RoboBinding"><span class="nav-number">1.3.3.</span> <span class="nav-text">RoboBinding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优势"><span class="nav-number">1.4.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#劣势"><span class="nav-number">1.5.</span> <span class="nav-text">劣势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用DataBinding"><span class="nav-number">2.</span> <span class="nav-text">使用DataBinding</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle"><span class="nav-number">2.1.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout_tag"><span class="nav-number">2.2.</span> <span class="nav-text">layout tag</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础用法"><span class="nav-number">3.</span> <span class="nav-text">基础用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去除findViewById"><span class="nav-number">3.1.</span> <span class="nav-text">去除findViewById</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量绑定"><span class="nav-number">3.2.</span> <span class="nav-text">变量绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件绑定"><span class="nav-number">3.3.</span> <span class="nav-text">事件绑定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data_Binding原理"><span class="nav-number">4.</span> <span class="nav-text">Data Binding原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#狭义原理"><span class="nav-number">4.1.</span> <span class="nav-text">狭义原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程原理"><span class="nav-number">4.2.</span> <span class="nav-text">流程原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能"><span class="nav-number">4.3.</span> <span class="nav-text">性能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶用法"><span class="nav-number">5.</span> <span class="nav-text">进阶用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式"><span class="nav-number">5.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免空指针"><span class="nav-number">5.2.</span> <span class="nav-text">避免空指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include"><span class="nav-number">5.3.</span> <span class="nav-text">include</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewstub"><span class="nav-number">5.4.</span> <span class="nav-text">viewstub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Observable"><span class="nav-number">5.5.</span> <span class="nav-text">Observable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态变量"><span class="nav-number">5.6.</span> <span class="nav-text">动态变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binding生成"><span class="nav-number">5.7.</span> <span class="nav-text">Binding生成</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
