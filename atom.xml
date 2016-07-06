@@ -64,11 +64,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[从零开始的Android新项目7 - Data Binding进阶篇]]></title>
+    <title><![CDATA[从零开始的Android新项目8 - Data Binding高级篇]]></title>
     <link href="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/"/>
     <id>http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/</id>
     <published>2016-07-06T02:59:39.000Z</published>
-    <updated>2016-07-06T03:03:54.000Z</updated>
+    <updated>2016-07-06T03:09:19.000Z</updated>
     <content type="html"><![CDATA[<h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性</h1><h2 id="自定义View">自定义View</h2><h2 id="BindingMethods">BindingMethods</h2><h2 id="BindingAdapter">BindingAdapter</h2><h2 id="BindingConversion">BindingConversion</h2><h1 id="双向绑定">双向绑定</h1><h2 id="自定义Listener">自定义Listener</h2><h2 id="InverseBindingListener">InverseBindingListener</h2><h2 id="解决死循环">解决死循环</h2><h1 id="表达式链">表达式链</h1><h2 id="重复的表达式">重复的表达式</h2><h2 id="隐式更新">隐式更新</h2><h1 id="动画">动画</h1><h2 id="transition">transition</h2><h1 id="学习和使用建议">学习和使用建议</h1><h2 id="学习建议">学习建议</h2><h2 id="使用建议">使用建议</h2><h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><h3 id="Level_3_-_Callback">Level 3 - Callback</h3><h3 id="Level_4_-_Observable">Level 4 - Observable</h3><h3 id="Level_5_-_双向绑定">Level 5 - 双向绑定</h3><h1 id="总结">总结</h1>]]></content>
     <summary type="html">
     <![CDATA[<h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性]]>
@@ -87,8 +87,8 @@
     <link href="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/"/>
     <id>http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/</id>
     <published>2016-06-15T16:19:00.000Z</published>
-    <updated>2016-07-06T03:07:39.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="引">引</h1><h2 id="什么是Data_Binding">什么是Data Binding</h2><h2 id="用途">用途</h2><h2 id="开源方案">开源方案</h2><h3 id="ButterKnife">ButterKnife</h3><h3 id="Android_Annotations">Android Annotations</h3><h3 id="RoboBinding">RoboBinding</h3><h2 id="优势">优势</h2><h2 id="劣势">劣势</h2><h1 id="使用DataBinding">使用DataBinding</h1><h2 id="Gradle">Gradle</h2><h2 id="layout_tag">layout tag</h2><h1 id="基础用法">基础用法</h1><h2 id="去除findViewById">去除findViewById</h2><h2 id="变量绑定">变量绑定</h2><h2 id="事件绑定">事件绑定</h2><h1 id="Data_Binding原理">Data Binding原理</h1><h2 id="狭义原理">狭义原理</h2><h2 id="流程原理">流程原理</h2><h2 id="性能">性能</h2><h1 id="进阶用法">进阶用法</h1><h2 id="表达式">表达式</h2><h2 id="避免空指针">避免空指针</h2><h2 id="include">include</h2><h2 id="viewstub">viewstub</h2><h2 id="Observable">Observable</h2><h2 id="动态变量">动态变量</h2><h2 id="Binding生成">Binding生成</h2>]]></content>
+    <updated>2016-07-06T03:09:38.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="引">引</h1><h2 id="什么是Data_Binding">什么是Data Binding</h2><h2 id="用途">用途</h2><h2 id="开源方案">开源方案</h2><h3 id="ButterKnife">ButterKnife</h3><h3 id="Android_Annotations">Android Annotations</h3><h3 id="RoboBinding">RoboBinding</h3><h2 id="优势">优势</h2><h2 id="劣势">劣势</h2><h1 id="使用">使用</h1><h2 id="Gradle">Gradle</h2><h2 id="layout_tag">layout tag</h2><h1 id="基础用法">基础用法</h1><h2 id="去除findViewById">去除findViewById</h2><h2 id="变量绑定">变量绑定</h2><h2 id="事件绑定">事件绑定</h2><h1 id="Data_Binding原理">Data Binding原理</h1><h2 id="狭义原理">狭义原理</h2><h2 id="流程原理">流程原理</h2><h2 id="性能">性能</h2><h1 id="进阶用法">进阶用法</h1><h2 id="表达式">表达式</h2><h2 id="避免空指针">避免空指针</h2><h2 id="include">include</h2><h2 id="viewstub">viewstub</h2><h2 id="Observable">Observable</h2><h2 id="动态变量">动态变量</h2><h2 id="Binding生成">Binding生成</h2>]]></content>
     <summary type="html">
     <![CDATA[<h1 id="引">引</h1><h2 id="什么是Data_Binding">什么是Data Binding</h2><h2 id="用途">用途</h2><h2 id="开源方案">开源方案</h2><h3 id="ButterKnife">ButterKnife</h3]]>
     </summary>
