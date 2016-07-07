@@ -68,7 +68,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/"/>
     <id>http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/</id>
     <published>2016-07-06T02:59:39.000Z</published>
-    <updated>2016-07-07T11:14:35.000Z</updated>
+    <updated>2016-07-07T11:42:27.000Z</updated>
     <content type="html"><![CDATA[<p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a>。</p>
 <p>承接上篇，本篇继续讲解一些更加进阶的内容。</p>
 <h1 id="列表绑定">列表绑定</h1><p>App中经常用到列表展示，Data Binding在列表中一样可以扮演重要的作用，直接绑定数据和事件到每一个列表的item。</p>
@@ -102,7 +102,16 @@
 <p>这时候我们可以使用BindingAdapter定义一个静态方法:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@BindingAdapter</span>(<span class="string">"android:paddingLeft"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setPaddingLeft</span><span class="params">(View view, <span class="keyword">int</span> padding)</span> </span>&#123;</span><br><span class="line">    view.setPadding(padding,</span><br><span class="line">                    view.getPaddingTop(),</span><br><span class="line">                    view.getPaddingRight(),</span><br><span class="line">                    view.getPaddingBottom());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>事实上这个Adapter已经由Data Binding实现好了，可以在android.databinding.adapters.ViewBindingAdapter看到有很多定义好的适配器，还有BindingMethod。如果需要自己再写点什么，仿照这些来写就好了。</p>
-<h2 id="BindingConversion">BindingConversion</h2><h1 id="双向绑定">双向绑定</h1><h2 id="自定义Listener">自定义Listener</h2><h2 id="InverseBindingListener">InverseBindingListener</h2><h2 id="解决死循环">解决死循环</h2><h1 id="表达式链">表达式链</h1><h2 id="重复的表达式">重复的表达式</h2><h2 id="隐式更新">隐式更新</h2><h1 id="动画">动画</h1><h2 id="transition">transition</h2><h1 id="学习和使用建议">学习和使用建议</h1><h2 id="学习建议">学习建议</h2><h2 id="使用建议">使用建议</h2><h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><h3 id="Level_3_-_Callback">Level 3 - Callback</h3><h3 id="Level_4_-_Observable">Level 4 - Observable</h3><h3 id="Level_5_-_双向绑定">Level 5 - 双向绑定</h3><h1 id="总结">总结</h1>]]></content>
+<p>我们还可以进行多属性绑定，比如<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@BindingAdapter</span>(&#123;<span class="string">"bind:imageUrl"</span>, <span class="string">"bind:error"</span>&#125;)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadImage</span><span class="params">(ImageView view, String url, Drawable error)</span> </span>&#123;</span><br><span class="line">   Picasso.with(view.getContext()).load(url).error(error).into(view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>来使用Picasso读取图片到ImageView。</p>
+<h2 id="BindingConversion">BindingConversion</h2><h3 id="Object_Conversions">Object Conversions</h3><p>如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h1 id="双向绑定">双向绑定</h1><h2 id="自定义Listener">自定义Listener</h2><h2 id="InverseBindingListener">InverseBindingListener</h2><h2 id="解决死循环">解决死循环</h2><h1 id="表达式链">表达式链</h1><h2 id="重复的表达式">重复的表达式</h2><h2 id="隐式更新">隐式更新</h2><h1 id="动画">动画</h1><h2 id="transition">transition</h2><h1 id="学习和使用建议">学习和使用建议</h1><h2 id="学习建议">学习建议</h2><h2 id="使用建议">使用建议</h2><p>对于老的项目，可以使用Data Binding，并逐渐替换老代码。</p>
+<h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><p>逐步替换findViewById，取而代之地，使用binding.name, binding.age直接访问View。</p>
+<h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><p>引入variable，把手动在代码对View进行set替换为xml直接引用variable。</p>
+<h3 id="Level_3_-_Callback">Level 3 - Callback</h3><p>使用Presenter/Handler类来做事件的绑定。</p>
+<h3 id="Level_4_-_Observable">Level 4 - Observable</h3><p>创建ViewModel类来进行即时的属性更新触发UI刷新。</p>
+<h3 id="Level_5_-_双向绑定">Level 5 - 双向绑定</h3><p>运用双向绑定来简化表单的逻辑，将form data变成ObservableField。</p>
+<h1 id="总结">总结</h1>]]></content>
     <summary type="html">
     <![CDATA[<p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a>。</p>
 <p>承接上篇，本篇继续讲解一]]>
