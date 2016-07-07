@@ -68,10 +68,12 @@
     <link href="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/"/>
     <id>http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/</id>
     <published>2016-07-06T02:59:39.000Z</published>
-    <updated>2016-07-06T03:09:19.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性</h1><h2 id="自定义View">自定义View</h2><h2 id="BindingMethods">BindingMethods</h2><h2 id="BindingAdapter">BindingAdapter</h2><h2 id="BindingConversion">BindingConversion</h2><h1 id="双向绑定">双向绑定</h1><h2 id="自定义Listener">自定义Listener</h2><h2 id="InverseBindingListener">InverseBindingListener</h2><h2 id="解决死循环">解决死循环</h2><h1 id="表达式链">表达式链</h1><h2 id="重复的表达式">重复的表达式</h2><h2 id="隐式更新">隐式更新</h2><h1 id="动画">动画</h1><h2 id="transition">transition</h2><h1 id="学习和使用建议">学习和使用建议</h1><h2 id="学习建议">学习建议</h2><h2 id="使用建议">使用建议</h2><h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><h3 id="Level_3_-_Callback">Level 3 - Callback</h3><h3 id="Level_4_-_Observable">Level 4 - Observable</h3><h3 id="Level_5_-_双向绑定">Level 5 - 双向绑定</h3><h1 id="总结">总结</h1>]]></content>
+    <updated>2016-07-07T02:04:22.000Z</updated>
+    <content type="html"><![CDATA[<p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a></p>
+<h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性</h1><h2 id="自定义View">自定义View</h2><h2 id="BindingMethods">BindingMethods</h2><h2 id="BindingAdapter">BindingAdapter</h2><h2 id="BindingConversion">BindingConversion</h2><h1 id="双向绑定">双向绑定</h1><h2 id="自定义Listener">自定义Listener</h2><h2 id="InverseBindingListener">InverseBindingListener</h2><h2 id="解决死循环">解决死循环</h2><h1 id="表达式链">表达式链</h1><h2 id="重复的表达式">重复的表达式</h2><h2 id="隐式更新">隐式更新</h2><h1 id="动画">动画</h1><h2 id="transition">transition</h2><h1 id="学习和使用建议">学习和使用建议</h1><h2 id="学习建议">学习建议</h2><h2 id="使用建议">使用建议</h2><h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><h3 id="Level_3_-_Callback">Level 3 - Callback</h3><h3 id="Level_4_-_Observable">Level 4 - Observable</h3><h3 id="Level_5_-_双向绑定">Level 5 - 双向绑定</h3><h1 id="总结">总结</h1>]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性]]>
+    <![CDATA[<p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a></p>
+<h1 id="列表绑定">列表]]>
     </summary>
     
       <category term="Data Binding" scheme="http://blog.zhaiyifan.cn/tags/Data-Binding/"/>
@@ -87,11 +89,12 @@
     <link href="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/"/>
     <id>http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/</id>
     <published>2016-06-15T16:19:00.000Z</published>
-    <updated>2016-07-06T08:30:44.000Z</updated>
+    <updated>2016-07-07T02:04:14.000Z</updated>
     <content type="html"><![CDATA[<h1 id="引">引</h1><p>Data Binding自从去年的Google I/O发布到至今，也有近一年的时间了。这一年来，从Beta到如今比较完善的版本，从Android Studio 1.3到如今2.1.2的支持，可以说Data Binding已经是一个可用度较高，也能带来实际生产力提升的技术了。</p>
 <p>然而事实上，真正使用到Data Binding的公司、项目仍然是比较少的。可能是出于稳定性考虑，亦或是对Data Binding技术本身不够熟悉，又或许对新技术没什么追求。</p>
 <p>我司在新的产品中就全面使用了Data Binding技术，无论是我，还是新来直接面对Data Binding上手的工程师也好，都对其爱不释手，用惯了后简直停不下来。</p>
 <p>希望在看完本文的介绍后，会有更多的朋友产生兴趣，来使用Data Binding，参与它的讨论。</p>
+<p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a></p>
 <h2 id="什么是Data_Binding">什么是Data Binding</h2><p>Data Binding，顾名思义，数据绑定，是Google对MVVM在Android上的一种实现，可以直接绑定数据到xml中，并实现自动刷新。现在最新的版本还支持双向绑定，尽管使用场景不是那么多。</p>
 <p>Data Binding可以提升开发效率（节省很多以往需要手写的java代码），性能高（甚至超越手写代码），功能强（强大的表达式支持）。</p>
 <h2 id="用途">用途</h2><ul>
@@ -279,7 +282,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/30/android-new-project-from-0-p5/</id>
     <published>2016-04-30T03:14:49.000Z</published>
-    <updated>2016-05-19T02:35:37.000Z</updated>
+    <updated>2016-07-06T09:42:51.000Z</updated>
     <content type="html"><![CDATA[<p>如期而至的Repository篇，内部实现则由Realm、Retrofit，以及内存级LruCache组成。<br>Repository，顾名思义，即仓库，向上层屏蔽了数据来源和内部实现细节，不需要了解货物来源，只需要拿走就行了。</p>
 <p>由于篇幅问题，将分为上下两篇，本篇主要介绍Retrofit的应用和Repository层组装，下篇会讲解本地缓存（包括Realm和内存缓存）以及基于异常的设计。</p>
 <h1 id="Why_Repository">Why Repository</h1><p>首先，为什么我们需要Repository层呢？一言以蔽之，屏蔽细节。</p>
@@ -292,7 +295,7 @@
 </ul>
 <p>如果这些需求，我们都要实现在View或者Presenter中，就会导致充斥大量数据逻辑，目的不单一，难以维护。而Repository层就是来封装这些逻辑的。</p>
 <h1 id="Overview">Overview</h1><p>如图，业务层只能看到repository接口。</p>
-<p><img src="/images/android-new-project-from-0-repository-1.png" alt="Repository Overview"></p>
+<p><img src="http://blog.zhaiyifan.cn/images/android-new-project-from-0-repository-1.png" alt="Repository Overview"></p>
 <h1 id="Retrofit">Retrofit</h1><p><a href="https://github.com/square/retrofit" target="_blank" rel="external">Retrofit</a>是Android界网红公司<a href="https://squareup.com/" target="_blank" rel="external">Square</a>所开发维护的一个HTTP网络库，目前最新版本是2.0.2（截止2016年4月30日）。其内部使用了自家的<a href="https://github.com/square/okhttp" target="_blank" rel="external">OkHttp</a>。</p>
 <p>关于Retrofit的实现机制啊简介的，网上已经很多了，这里我就不啰嗦了，官方文档见<a href="http://square.github.io/retrofit/" target="_blank" rel="external">项目主页</a>。这里主要讲讲实际项目中的应用实践。</p>
 <h2 id="import">import</h2><p>root build.gradle:<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> retrofitVersion = <span class="string">"2.0.2"</span></span><br><span class="line"><span class="keyword">def</span> okHttpVersion = <span class="string">'3.2.0'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>.ext &#123;</span><br><span class="line">    libRetrofit = <span class="string">"com.squareup.retrofit2:retrofit:$&#123;retrofitVersion&#125;"</span></span><br><span class="line">    libRetrofitConverterGson = <span class="string">"com.squareup.retrofit2:converter-gson:$&#123;retrofitVersion&#125;"</span></span><br><span class="line">    libRetrofitAdapterRxJava = <span class="string">"com.squareup.retrofit2:adapter-rxjava:$&#123;retrofitVersion&#125;"</span></span><br><span class="line">    libOkHttpLoggingInterceptor = <span class="string">"com.squareup.okhttp3:logging-interceptor:$&#123;okHttpVersion&#125;"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>

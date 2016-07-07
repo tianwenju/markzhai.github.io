@@ -43,16 +43,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="列表绑定RVGeneric Binding开源方案及其局限性自定义属性自定义ViewBindingMethodsBindingAdapterBindingConversion双向绑定自定义ListenerInverseBindingListener解决死循环表达式链重复的表达式隐式更新动画transition学习和使用建议学习建议使用建议Level 1 - No more findViewById">
+<meta name="description" content="Demo源码库：DataBindingSample
+列表绑定RVGeneric Binding开源方案及其局限性自定义属性自定义ViewBindingMethodsBindingAdapterBindingConversion双向绑定自定义ListenerInverseBindingListener解决死循环表达式链重复的表达式隐式更新动画transition学习和使用建议学习建议使用建议Leve">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始的Android新项目8 - Data Binding高级篇">
 <meta property="og:url" content="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/index.html">
 <meta property="og:site_name" content="markzhai's home">
-<meta property="og:description" content="列表绑定RVGeneric Binding开源方案及其局限性自定义属性自定义ViewBindingMethodsBindingAdapterBindingConversion双向绑定自定义ListenerInverseBindingListener解决死循环表达式链重复的表达式隐式更新动画transition学习和使用建议学习建议使用建议Level 1 - No more findViewById">
-<meta property="og:updated_time" content="2016-07-06T03:09:19.000Z">
+<meta property="og:description" content="Demo源码库：DataBindingSample
+列表绑定RVGeneric Binding开源方案及其局限性自定义属性自定义ViewBindingMethodsBindingAdapterBindingConversion双向绑定自定义ListenerInverseBindingListener解决死循环表达式链重复的表达式隐式更新动画transition学习和使用建议学习建议使用建议Leve">
+<meta property="og:updated_time" content="2016-07-07T02:04:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目8 - Data Binding高级篇">
-<meta name="twitter:description" content="列表绑定RVGeneric Binding开源方案及其局限性自定义属性自定义ViewBindingMethodsBindingAdapterBindingConversion双向绑定自定义ListenerInverseBindingListener解决死循环表达式链重复的表达式隐式更新动画transition学习和使用建议学习建议使用建议Level 1 - No more findViewById">
+<meta name="twitter:description" content="Demo源码库：DataBindingSample
+列表绑定RVGeneric Binding开源方案及其局限性自定义属性自定义ViewBindingMethodsBindingAdapterBindingConversion双向绑定自定义ListenerInverseBindingListener解决死循环表达式链重复的表达式隐式更新动画transition学习和使用建议学习建议使用建议Leve">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -246,7 +249,8 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性</h1><h2 id="自定义View">自定义View</h2><h2 id="BindingMethods">BindingMethods</h2><h2 id="BindingAdapter">BindingAdapter</h2><h2 id="BindingConversion">BindingConversion</h2><h1 id="双向绑定">双向绑定</h1><h2 id="自定义Listener">自定义Listener</h2><h2 id="InverseBindingListener">InverseBindingListener</h2><h2 id="解决死循环">解决死循环</h2><h1 id="表达式链">表达式链</h1><h2 id="重复的表达式">重复的表达式</h2><h2 id="隐式更新">隐式更新</h2><h1 id="动画">动画</h1><h2 id="transition">transition</h2><h1 id="学习和使用建议">学习和使用建议</h1><h2 id="学习建议">学习建议</h2><h2 id="使用建议">使用建议</h2><h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><h3 id="Level_3_-_Callback">Level 3 - Callback</h3><h3 id="Level_4_-_Observable">Level 4 - Observable</h3><h3 id="Level_5_-_双向绑定">Level 5 - 双向绑定</h3><h1 id="总结">总结</h1></span>
+        <span itemprop="articleBody"><p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a></p>
+<h1 id="列表绑定">列表绑定</h1><h2 id="RV">RV</h2><h2 id="Generic_Binding">Generic Binding</h2><h2 id="开源方案及其局限性">开源方案及其局限性</h2><h1 id="自定义属性">自定义属性</h1><h2 id="自定义View">自定义View</h2><h2 id="BindingMethods">BindingMethods</h2><h2 id="BindingAdapter">BindingAdapter</h2><h2 id="BindingConversion">BindingConversion</h2><h1 id="双向绑定">双向绑定</h1><h2 id="自定义Listener">自定义Listener</h2><h2 id="InverseBindingListener">InverseBindingListener</h2><h2 id="解决死循环">解决死循环</h2><h1 id="表达式链">表达式链</h1><h2 id="重复的表达式">重复的表达式</h2><h2 id="隐式更新">隐式更新</h2><h1 id="动画">动画</h1><h2 id="transition">transition</h2><h1 id="学习和使用建议">学习和使用建议</h1><h2 id="学习建议">学习建议</h2><h2 id="使用建议">使用建议</h2><h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><h3 id="Level_3_-_Callback">Level 3 - Callback</h3><h3 id="Level_4_-_Observable">Level 4 - Observable</h3><h3 id="Level_5_-_双向绑定">Level 5 - 双向绑定</h3><h1 id="总结">总结</h1></span>
       
     </div>
 
