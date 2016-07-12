@@ -52,7 +52,7 @@
 <meta property="og:description" content="引Data Binding自从去年的Google I/O发布到至今，也有近一年的时间了。这一年来，从Beta到如今比较完善的版本，从Android Studio 1.3到如今2.1.2的支持，可以说Data Binding已经是一个可用度较高，也能带来实际生产力提升的技术了。
 然而事实上，真正使用到Data Binding的公司、项目仍然是比较少的。可能是出于稳定性考虑，亦或是对Data Bind">
 <meta property="og:image" content="http://blog.zhaiyifan.cn/images/android-new-project-from-0-db-1.png">
-<meta property="og:updated_time" content="2016-07-07T05:44:02.000Z">
+<meta property="og:updated_time" content="2016-07-08T08:04:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目7 - Data Binding入门篇">
 <meta name="twitter:description" content="引Data Binding自从去年的Google I/O发布到至今，也有近一年的时间了。这一年来，从Beta到如今比较完善的版本，从Android Studio 1.3到如今2.1.2的支持，可以说Data Binding已经是一个可用度较高，也能带来实际生产力提升的技术了。
@@ -314,7 +314,7 @@
 <p>可以看到所有view是一次完成的初始化，比起一个个进行findViewById，显然这样一次性会更快。</p>
 <p>除了view的初始化，在<code>executeBindings</code>中，会通过<code>mDirtyFlags</code>去判断各个field是否需要更新，而其置位则通过各个set函数去更新。</p>
 <h2 id="流程原理">流程原理</h2><p><img src="/images/android-new-project-from-0-db-1.png" alt="data binding"></p>
-<p>处理layout文件 -&gt; 变为没有databinding的layout文件<br>解析表达式 -&gt; 确保表达式语法正确<br>解析依赖 -&gt; user.isAdmin, isAdmin是field还是method…<br>Setter -&gt; 如visibility</p>
+<p>处理layout文件 -&gt; 变为没有data binding的layout文件<br>解析表达式 -&gt; 确保表达式语法正确<br>解析依赖 -&gt; user.isAdmin, isAdmin是field还是method…<br>Setter -&gt; 如visibility</p>
 <h2 id="性能">性能</h2><ul>
 <li>0反射</li>
 <li>findViewById需要遍历整个viewgroup，而现在只需要做一次就可以初始化所有需要的view</li>
@@ -410,6 +410,7 @@
 
     <img src="/images/donation.jpg" style="margin-bottom:3px;" width="200px" height="200px" />
     <br/>
+    <p>Android实践开发交流群：568863373，欢迎一起来讨论从零开始的Android系列，一起学习进步</p>
     <p>如果你觉得这篇文章对你有帮助，请点击下面的分享链接，你还可以选择扫描二维码进行打赏!</p>
     <div class="post-spread">
       

@@ -152,7 +152,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/"/>
     <id>http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/</id>
     <published>2016-06-15T16:19:00.000Z</published>
-    <updated>2016-07-07T05:44:02.000Z</updated>
+    <updated>2016-07-08T08:04:59.000Z</updated>
     <content type="html"><![CDATA[<h1 id="引">引</h1><p>Data Binding自从去年的Google I/O发布到至今，也有近一年的时间了。这一年来，从Beta到如今比较完善的版本，从Android Studio 1.3到如今2.1.2的支持，可以说Data Binding已经是一个可用度较高，也能带来实际生产力提升的技术了。</p>
 <p>然而事实上，真正使用到Data Binding的公司、项目仍然是比较少的。可能是出于稳定性考虑，亦或是对Data Binding技术本身不够熟悉，又或许对新技术没什么追求。</p>
 <p>我司在新的产品中就全面使用了Data Binding技术，无论是我，还是新来直接面对Data Binding上手的工程师也好，都对其爱不释手，用惯了后简直停不下来。</p>
@@ -217,7 +217,7 @@
 <p>可以看到所有view是一次完成的初始化，比起一个个进行findViewById，显然这样一次性会更快。</p>
 <p>除了view的初始化，在<code>executeBindings</code>中，会通过<code>mDirtyFlags</code>去判断各个field是否需要更新，而其置位则通过各个set函数去更新。</p>
 <h2 id="流程原理">流程原理</h2><p><img src="/images/android-new-project-from-0-db-1.png" alt="data binding"></p>
-<p>处理layout文件 -&gt; 变为没有databinding的layout文件<br>解析表达式 -&gt; 确保表达式语法正确<br>解析依赖 -&gt; user.isAdmin, isAdmin是field还是method…<br>Setter -&gt; 如visibility</p>
+<p>处理layout文件 -&gt; 变为没有data binding的layout文件<br>解析表达式 -&gt; 确保表达式语法正确<br>解析依赖 -&gt; user.isAdmin, isAdmin是field还是method…<br>Setter -&gt; 如visibility</p>
 <h2 id="性能">性能</h2><ul>
 <li>0反射</li>
 <li>findViewById需要遍历整个viewgroup，而现在只需要做一次就可以初始化所有需要的view</li>
