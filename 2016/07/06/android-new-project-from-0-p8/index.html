@@ -43,25 +43,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Demo源码库：DataBindingSample。
-承接上篇，本篇继续讲解一些更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。
+<meta name="description" content="承接上篇，本篇继续讲解一些Data Binding更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。
+Demo源码库：DataBindingSample。
 列表绑定App中经常用到列表展示，Data Binding在列表中一样可以扮演重要的作用，直接绑定数据和事件到每一个列表的item。
-RecyclerView过去我们往往会使用ListView、">
+RecyclerView过去我们往往">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始的Android新项目8 - Data Binding高级篇">
 <meta property="og:url" content="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/index.html">
 <meta property="og:site_name" content="markzhai's home">
-<meta property="og:description" content="Demo源码库：DataBindingSample。
-承接上篇，本篇继续讲解一些更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。
+<meta property="og:description" content="承接上篇，本篇继续讲解一些Data Binding更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。
+Demo源码库：DataBindingSample。
 列表绑定App中经常用到列表展示，Data Binding在列表中一样可以扮演重要的作用，直接绑定数据和事件到每一个列表的item。
-RecyclerView过去我们往往会使用ListView、">
-<meta property="og:updated_time" content="2016-07-17T14:23:50.000Z">
+RecyclerView过去我们往往">
+<meta property="og:updated_time" content="2016-07-17T14:26:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目8 - Data Binding高级篇">
-<meta name="twitter:description" content="Demo源码库：DataBindingSample。
-承接上篇，本篇继续讲解一些更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。
+<meta name="twitter:description" content="承接上篇，本篇继续讲解一些Data Binding更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。
+Demo源码库：DataBindingSample。
 列表绑定App中经常用到列表展示，Data Binding在列表中一样可以扮演重要的作用，直接绑定数据和事件到每一个列表的item。
-RecyclerView过去我们往往会使用ListView、">
+RecyclerView过去我们往往">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -255,8 +255,8 @@ RecyclerView过去我们往往会使用ListView、">
       
 
       
-        <span itemprop="articleBody"><p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a>。</p>
-<p>承接<a href="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/">上篇</a>，本篇继续讲解一些更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。</p>
+        <span itemprop="articleBody"><p>承接<a href="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/">上篇</a>，本篇继续讲解一些Data Binding更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。</p>
+<p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a>。</p>
 <h1 id="列表绑定">列表绑定</h1><p>App中经常用到列表展示，Data Binding在列表中一样可以扮演重要的作用，直接绑定数据和事件到每一个列表的item。</p>
 <h2 id="RecyclerView">RecyclerView</h2><p>过去我们往往会使用ListView、GridView、或者GitHub上一些自定义的View来做瀑布流。自从RecyclerView出现后，我们有了新选择，只需要使用LayoutManager就可以。RecyclerView内置的垃圾回收，ViewHolder、ItemDecoration装饰器机制都让我们可以毫不犹豫地替换掉原来的ListView和GridView。</p>
 <p>所以本篇仅拿RecyclerView做例子。</p>
