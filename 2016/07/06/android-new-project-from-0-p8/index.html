@@ -55,7 +55,7 @@ RecyclerView过去我们往往会使用ListView、">
 承接上篇，本篇继续讲解一些更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。
 列表绑定App中经常用到列表展示，Data Binding在列表中一样可以扮演重要的作用，直接绑定数据和事件到每一个列表的item。
 RecyclerView过去我们往往会使用ListView、">
-<meta property="og:updated_time" content="2016-07-17T06:54:57.000Z">
+<meta property="og:updated_time" content="2016-07-17T14:23:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目8 - Data Binding高级篇">
 <meta name="twitter:description" content="Demo源码库：DataBindingSample。
@@ -340,6 +340,7 @@ RecyclerView过去我们往往会使用ListView、">
 <li>callback绑定只做事件传递，NO业务逻辑，比如转账</li>
 <li>保持表达式简单（不要做过于复杂的字符串、函数调用操作）</li>
 </ul>
+<p>对于老项目，可以进行以下的逐步替换:</p>
 <h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><p>逐步替换findViewById，取而代之地，使用binding.name, binding.age直接访问View。</p>
 <h3 id="Level_2_-_SetVariable">Level 2 - SetVariable</h3><p>引入variable，把手动在代码对View进行set替换为xml直接引用variable。</p>
 <h3 id="Level_3_-_Callback">Level 3 - Callback</h3><p>使用Presenter/Handler类来做事件的绑定。</p>
