@@ -68,9 +68,9 @@
     <link href="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/"/>
     <id>http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/</id>
     <published>2016-07-06T02:59:39.000Z</published>
-    <updated>2016-07-17T06:40:06.000Z</updated>
+    <updated>2016-07-17T06:54:57.000Z</updated>
     <content type="html"><![CDATA[<p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a>。</p>
-<p>承接上篇，本篇继续讲解一些更加进阶的内容。</p>
+<p>承接<a href="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/">上篇</a>，本篇继续讲解一些更加进阶的内容，包括：列表绑定、自定义属性、双向绑定、表达式链、Lambda表达式、动画、Component注入（测试）等。</p>
 <h1 id="列表绑定">列表绑定</h1><p>App中经常用到列表展示，Data Binding在列表中一样可以扮演重要的作用，直接绑定数据和事件到每一个列表的item。</p>
 <h2 id="RecyclerView">RecyclerView</h2><p>过去我们往往会使用ListView、GridView、或者GitHub上一些自定义的View来做瀑布流。自从RecyclerView出现后，我们有了新选择，只需要使用LayoutManager就可以。RecyclerView内置的垃圾回收，ViewHolder、ItemDecoration装饰器机制都让我们可以毫不犹豫地替换掉原来的ListView和GridView。</p>
 <p>所以本篇仅拿RecyclerView做例子。</p>
@@ -151,7 +151,7 @@
 <h2 id="使用建议">使用建议</h2><ul>
 <li>对新项目，不要犹豫，直接上。</li>
 <li>对于老的项目，可以替换ButterKnife这种库，从findViewById开始改造，逐渐替换老代码。</li>
-<li>Click函数只做事件传递，NO业务逻辑，比如转账</li>
+<li>callback绑定只做事件传递，NO业务逻辑，比如转账</li>
 <li>保持表达式简单（不要做过于复杂的字符串、函数调用操作）</li>
 </ul>
 <h3 id="Level_1_-_No_more_findViewById">Level 1 - No more findViewById</h3><p>逐步替换findViewById，取而代之地，使用binding.name, binding.age直接访问View。</p>
@@ -163,7 +163,7 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>Demo源码库：<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a>。</p>
-<p>承接上篇，本篇继续讲解一]]>
+<p>承接<a href="h]]>
     </summary>
     
       <category term="Data Binding" scheme="http://blog.zhaiyifan.cn/tags/Data-Binding/"/>
