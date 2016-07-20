@@ -44,23 +44,23 @@
 
 
 <meta name="description" content="BlockCanary是我利用个人时间开发的Android平台上的一个轻量的，非侵入式的性能监控组件，应用只需要简单地加几行，提供一些该组件需要的上下文环境就可以在使用应用的时候检测主线程上的各种卡顿问题，并通过组件提供的各种信息分析出原因并进行修复。
-开源代码：moduth/blockcanary
-背景在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在">
+代码可找我(87224330)要。
+背景在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在出现了卡顿的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BlockCanary — 轻松找出Android App界面卡顿元凶">
 <meta property="og:url" content="http://blog.zhaiyifan.cn/2016/01/16/BlockCanaryTransparentPerformanceMonitor/index.html">
 <meta property="og:site_name" content="markzhai's home">
 <meta property="og:description" content="BlockCanary是我利用个人时间开发的Android平台上的一个轻量的，非侵入式的性能监控组件，应用只需要简单地加几行，提供一些该组件需要的上下文环境就可以在使用应用的时候检测主线程上的各种卡顿问题，并通过组件提供的各种信息分析出原因并进行修复。
-开源代码：moduth/blockcanary
-背景在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在">
+代码可找我(87224330)要。
+背景在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在出现了卡顿的">
 <meta property="og:image" content="http://blog.zhaiyifan.cn/images/blockcanary_flow.png">
 <meta property="og:image" content="http://blog.zhaiyifan.cn/images/blockcanary_log_sample1.png">
-<meta property="og:updated_time" content="2016-02-19T16:28:17.000Z">
+<meta property="og:updated_time" content="2016-07-20T02:48:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BlockCanary — 轻松找出Android App界面卡顿元凶">
 <meta name="twitter:description" content="BlockCanary是我利用个人时间开发的Android平台上的一个轻量的，非侵入式的性能监控组件，应用只需要简单地加几行，提供一些该组件需要的上下文环境就可以在使用应用的时候检测主线程上的各种卡顿问题，并通过组件提供的各种信息分析出原因并进行修复。
-开源代码：moduth/blockcanary
-背景在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在">
+代码可找我(87224330)要。
+背景在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在出现了卡顿的">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -255,10 +255,10 @@
 
       
         <span itemprop="articleBody"><p>BlockCanary是我利用个人时间开发的Android平台上的一个轻量的，非侵入式的性能监控组件，应用只需要简单地加几行，提供一些该组件需要的上下文环境就可以在使用应用的时候检测主线程上的各种卡顿问题，并通过组件提供的各种信息分析出原因并进行修复。</p>
-<p>开源代码：<a href="https://github.com/moduth/blockcanary" target="_blank" rel="external">moduth/blockcanary</a></p>
+<p>代码可找我(87224330)要。</p>
 <h2 id="背景">背景</h2><p>在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在出现了卡顿的时候，我们很难定位到底是哪里出现了问题，即便知道是哪一个Activity/Fragment，也仍然需要进去里面一行一行看，动辄数千行的类再加上跳来跳去调来调去的，结果就是不了了之随它去了，实在不行了再优化吧。于是一拖再拖，最后可能压根就改不动了，客户端越来越卡。</p>
 <p>事实上，很多情况下卡顿不是必现的，它们可能与机型、环境、操作等有关，存在偶然性，即使发生了，再去查那如山般的logcat，也不一定能找到卡顿的原因，是我们自己的应用导致的还是其他应用抢占资源导致的？是哪些方法导致的？很难去回朔。有些机型自己修改了api导致的卡顿，还必须拿那台机器才能去调试找原因。</p>
-<p>BlockCanary就是来解决这个问题的。<br>告别打点，告别Debug，哪里卡顿，一目了然。</p>
+<p>BlockCanary就是来解决这个问题的。告别打点和调试，哪里卡顿，一目了然。</p>
 <h2 id="介绍">介绍</h2><p>BlockCanary对主线程操作进行了完全透明的监控，并能输出有效的信息，帮助开发分析、定位到问题所在，迅速优化应用。其特点有：</p>
 <ul>
 <li>非侵入式，简单的两行就打开监控，不需要到处打点，破坏代码优雅性。</li>
@@ -293,7 +293,6 @@
 </ul>
 <p>sample如下图，可以精确定位到代码中哪一个类的哪一行造成了卡慢。<br><img src="http://blog.zhaiyifan.cn/images/blockcanary_log_sample1.png" alt="blockcanary log sample"></p>
 <h2 id="总结">总结</h2><p>BlockCanary作为一个Android组件，目前还有局限性，因为其在一个完整的监控系统中只是一个生产者，还需要对应的消费者去分析日志，比如归类排序，以便看出哪些卡慢更有修复价值，需要优先处理；又比如需要过滤机型，有些奇葩机型的问题造成的卡慢，到底要不要去修复是要斟酌的。扯远一点的话，像是埋点除了统计外，完全还能用来做链路监控，比如一个完整的流程是A -&gt; B -&gt; D -&gt; E, 但是某个时间节点突然A -&gt; B -&gt; D后没有到达E，这时候监控平台就可以发出预警，让开发人员及时定位。很多监控方案都需要C/S两端的配合。</p>
-<p>目前阿里内多个Android项目接入并使用BlockCanary来优化Android应用的性能。</p>
 </span>
       
     </div>
