@@ -95,12 +95,14 @@
     <link href="http://blog.zhaiyifan.cn/2016/07/21/data-binding-component/"/>
     <id>http://blog.zhaiyifan.cn/2016/07/21/data-binding-component/</id>
     <published>2016-07-21T08:40:10.000Z</published>
-    <updated>2016-07-22T09:49:02.000Z</updated>
+    <updated>2016-07-22T10:21:51.000Z</updated>
     <content type="html"><![CDATA[<p>上一篇<a href="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/">从零开始的Android新项目8 - Data Binding高级篇</a>中，我们提到了使用Component来进行注入，以方便进行测试的功能，有一些朋友说写的不够清楚，还有些疑惑，所以本篇就来详细说说Component。</p>
 <p>作为例子，我们的实现目标是使用Data Binding Component，让应用全局的TextView的文本都能随时变成test，还能进行全局换肤。</p>
+<p>代码位于<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a>里面的component包下。</p>
 <h1 id="DataBindingComponent接口">DataBindingComponent接口</h1><p>在<code>build/intermediates/classes</code>下面，可以找到<code>DataBindingComponent</code>类，包名为<code>android.databinding</code>，全局只会有一个该类。</p>
 <p><code>DataBindingComponent</code>接口在编译时生成，包含了所有用到的实例BindingAdapters的getter方法。</p>
 <p>当一个BindingAdapter是一个实例方法（instance method），一个实现该方法的类的实例必须被实例化。这个生成的接口会包含每个申明BindingAdapter的类/接口的get方法。命名冲突会简单地加一个数字前缀到get方法前来解决。</p>
+<p>如果使用Dagger 2，开发者必须继承这个借口，并把继承的接口注解为Component。</p>
 <p>对应的接口有：</p>
 <ul>
 <li><a href="https://developer.android.com/reference/android/databinding/DataBindingUtil.html#setDefaultComponent(android.databinding.DataBindingComponent" target="_blank" rel="external">setDefaultComponent(DataBindingComponent)</a>), 全局起作用</li>
