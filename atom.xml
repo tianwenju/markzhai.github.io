@@ -91,11 +91,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Data Binding Component详解]]></title>
+    <title><![CDATA[Data Binding Component详解 - 换肤什么的只是它的一个小应用！]]></title>
     <link href="http://blog.zhaiyifan.cn/2016/07/21/data-binding-component/"/>
     <id>http://blog.zhaiyifan.cn/2016/07/21/data-binding-component/</id>
     <published>2016-07-21T08:40:10.000Z</published>
-    <updated>2016-07-22T10:21:51.000Z</updated>
+    <updated>2016-07-24T11:07:41.000Z</updated>
     <content type="html"><![CDATA[<p>上一篇<a href="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/">从零开始的Android新项目8 - Data Binding高级篇</a>中，我们提到了使用Component来进行注入，以方便进行测试的功能，有一些朋友说写的不够清楚，还有些疑惑，所以本篇就来详细说说Component。</p>
 <p>作为例子，我们的实现目标是使用Data Binding Component，让应用全局的TextView的文本都能随时变成test，还能进行全局换肤。</p>
 <p>代码位于<a href="https://github.com/markzhai/DataBindingSample" target="_blank" rel="external">DataBindingSample</a>里面的component包下。</p>
@@ -109,6 +109,8 @@
 <li><a href="https://developer.android.com/reference/android/databinding/DataBindingUtil.html#inflate(android.view.LayoutInflater, int, android.view.ViewGroup, boolean, android.databinding.DataBindingComponent" target="_blank" rel="external">inflate(LayoutInflater, int, ViewGroup, boolean, DataBindingComponent)</a>), inflate一个binding layout并返回新创建的binding，component仅对该layout起作用。</li>
 <li><a href="https://developer.android.com/reference/android/databinding/DataBindingUtil.html#bind(android.view.View, android.databinding.DataBindingComponent" target="_blank" rel="external">bind(View, DataBindingComponent)</a>), 根据给定的layout root返回binding（如果没有则创建binding），component仅对该layout起作用。</li>
 </ul>
+<h1 id="创建Component">创建Component</h1><h2 id="申明抽象adapter">申明抽象adapter</h2><p>如果不需要实现多个Component，可以直接跳过这一步。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBindingAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@BindingAdapter</span>(<span class="string">"android:text"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setText</span><span class="params">(TextView view, String value)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@BindingAdapter</span>(<span class="string">"android:textColor"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setTextColor</span><span class="params">(TextView view, String value)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>上一篇<a href="http://blog.zhaiyifan.cn/2016/07/06/android-new-project-from-0-p8/">从零开始的Android新项目8 - Data Binding高级篇</a>中，我们提到了使用Component来]]>
