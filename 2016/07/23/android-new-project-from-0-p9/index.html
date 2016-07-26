@@ -43,32 +43,32 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="引这回来讲讲后台接口的设计。
+<meta name="description" content="这回来讲讲后台接口的设计。
 可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写很多脏代码引坑？甚至，这么开发出来的页面，体验也会很差？
 本文使用前端来指代 Android、iOS 以及 Web。
 本文不是教大家撕逼的（赶紧撇清关系）。
 全局全局指所有接口统一的规范。
-请求头应该使用http header">
+请求头应该使用http header来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始的Android新项目9 - 前端用后台接口设计">
 <meta property="og:url" content="http://blog.zhaiyifan.cn/2016/07/23/android-new-project-from-0-p9/index.html">
 <meta property="og:site_name" content="markzhai's home">
-<meta property="og:description" content="引这回来讲讲后台接口的设计。
+<meta property="og:description" content="这回来讲讲后台接口的设计。
 可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写很多脏代码引坑？甚至，这么开发出来的页面，体验也会很差？
 本文使用前端来指代 Android、iOS 以及 Web。
 本文不是教大家撕逼的（赶紧撇清关系）。
 全局全局指所有接口统一的规范。
-请求头应该使用http header">
+请求头应该使用http header来">
 <meta property="og:image" content="http://7xvy2g.com1.z0.glb.clouddn.com/qrcode_for_gh_2e738d2eb3b5_430.jpg">
-<meta property="og:updated_time" content="2016-07-26T07:33:21.000Z">
+<meta property="og:updated_time" content="2016-07-26T07:36:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目9 - 前端用后台接口设计">
-<meta name="twitter:description" content="引这回来讲讲后台接口的设计。
+<meta name="twitter:description" content="这回来讲讲后台接口的设计。
 可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写很多脏代码引坑？甚至，这么开发出来的页面，体验也会很差？
 本文使用前端来指代 Android、iOS 以及 Web。
 本文不是教大家撕逼的（赶紧撇清关系）。
 全局全局指所有接口统一的规范。
-请求头应该使用http header">
+请求头应该使用http header来">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -262,7 +262,7 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="引">引</h1><p>这回来讲讲后台接口的设计。</p>
+        <span itemprop="articleBody"><p>这回来讲讲后台接口的设计。</p>
 <p>可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写很多脏代码引坑？甚至，这么开发出来的页面，体验也会很差？</p>
 <p>本文使用前端来指代 Android、iOS 以及 Web。</p>
 <p>本文不是教大家撕逼的（赶紧撇清关系）。</p>
@@ -597,7 +597,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引"><span class="nav-number">1.</span> <span class="nav-text">引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全局"><span class="nav-number">2.</span> <span class="nav-text">全局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求头"><span class="nav-number">2.1.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局响应格式"><span class="nav-number">2.2.</span> <span class="nav-text">全局响应格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态码"><span class="nav-number">2.3.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误信息"><span class="nav-number">2.4.</span> <span class="nav-text">错误信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统一data字段"><span class="nav-number">2.5.</span> <span class="nav-text">统一data字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scheme"><span class="nav-number">2.6.</span> <span class="nav-text">Scheme</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回传_or_状态码"><span class="nav-number">3.</span> <span class="nav-text">回传 or 状态码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块vs页面"><span class="nav-number">4.</span> <span class="nav-text">模块vs页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分页信息"><span class="nav-number">5.</span> <span class="nav-text">分页信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要分页信息"><span class="nav-number">5.1.</span> <span class="nav-text">为什么需要分页信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#折中办法"><span class="nav-number">5.2.</span> <span class="nav-text">折中办法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">6.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教训"><span class="nav-number">7.</span> <span class="nav-text">教训</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#全局"><span class="nav-number">1.</span> <span class="nav-text">全局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求头"><span class="nav-number">1.1.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局响应格式"><span class="nav-number">1.2.</span> <span class="nav-text">全局响应格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态码"><span class="nav-number">1.3.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误信息"><span class="nav-number">1.4.</span> <span class="nav-text">错误信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统一data字段"><span class="nav-number">1.5.</span> <span class="nav-text">统一data字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scheme"><span class="nav-number">1.6.</span> <span class="nav-text">Scheme</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回传_or_状态码"><span class="nav-number">2.</span> <span class="nav-text">回传 or 状态码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块vs页面"><span class="nav-number">3.</span> <span class="nav-text">模块vs页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分页信息"><span class="nav-number">4.</span> <span class="nav-text">分页信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要分页信息"><span class="nav-number">4.1.</span> <span class="nav-text">为什么需要分页信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#折中办法"><span class="nav-number">4.2.</span> <span class="nav-text">折中办法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">5.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教训"><span class="nav-number">6.</span> <span class="nav-text">教训</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

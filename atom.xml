@@ -74,8 +74,8 @@
     <link href="http://blog.zhaiyifan.cn/2016/07/23/android-new-project-from-0-p9/"/>
     <id>http://blog.zhaiyifan.cn/2016/07/23/android-new-project-from-0-p9/</id>
     <published>2016-07-23T08:39:19.000Z</published>
-    <updated>2016-07-26T07:33:21.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="引">引</h1><p>这回来讲讲后台接口的设计。</p>
+    <updated>2016-07-26T07:36:43.000Z</updated>
+    <content type="html"><![CDATA[<p>这回来讲讲后台接口的设计。</p>
 <p>可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写很多脏代码引坑？甚至，这么开发出来的页面，体验也会很差？</p>
 <p>本文使用前端来指代 Android、iOS 以及 Web。</p>
 <p>本文不是教大家撕逼的（赶紧撇清关系）。</p>
@@ -186,8 +186,9 @@
 <p><img src="http://7xvy2g.com1.z0.glb.clouddn.com/qrcode_for_gh_2e738d2eb3b5_430.jpg" alt="公众号"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="引">引</h1><p>这回来讲讲后台接口的设计。</p>
-<p>可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写很多脏代码引坑？甚至，这么开发出来的页面，体验也会很差]]>
+    <![CDATA[<p>这回来讲讲后台接口的设计。</p>
+<p>可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写很多脏代码引坑？甚至，这么开发出来的页面，体验也会很差？</p>
+<p>本文使用前端来指]]>
     </summary>
     
       <category term="New Android Project From 0" scheme="http://blog.zhaiyifan.cn/tags/New-Android-Project-From-0/"/>
