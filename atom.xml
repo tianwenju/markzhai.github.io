@@ -74,13 +74,81 @@
     <link href="http://blog.zhaiyifan.cn/2016/07/23/android-new-project-from-0-p9/"/>
     <id>http://blog.zhaiyifan.cn/2016/07/23/android-new-project-from-0-p9/</id>
     <published>2016-07-23T08:39:19.000Z</published>
-    <updated>2016-07-24T11:51:54.000Z</updated>
-    <content type="html"><![CDATA[<p>未完。</p>
-<h1 id="引">引</h1><h1 id="全局">全局</h1><h2 id="状态码">状态码</h2><h2 id="错误信息">错误信息</h2><h2 id="统一data字段">统一data字段</h2><h2 id="Scheme">Scheme</h2><h1 id="回传_or_状态码">回传 or 状态码</h1><h1 id="模块_or_页面">模块 or 页面</h1><h2 id="页面">页面</h2><h2 id="模块">模块</h2><h1 id="分页信息">分页信息</h1><p>当前页码，总页数，页面大小</p>
+    <updated>2016-07-26T03:58:55.000Z</updated>
+    <content type="html"><![CDATA[<p><strong>未完</strong></p>
+<h1 id="引">引</h1><p>这回来讲讲后台接口的设计。</p>
+<p>可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写很多脏代码引坑？甚至，这么开发出来的页面，体验也会很差？</p>
+<p>本文使用前端来指代 Android、iOS 以及 Web。</p>
+<p>本文不是教大家撕逼的（赶紧撇清关系）。</p>
+<h1 id="全局">全局</h1><p>全局指所有接口统一的规范。</p>
+<h2 id="请求头">请求头</h2><p>应该使用http header来放置通用性的参数，比如：</p>
+<ul>
+<li>APPID（Android/iOS/H5）</li>
+<li>APPVER（版本号）</li>
+<li>APP-BUILD-NUM（内部小版本号）</li>
+<li>TOKEN</li>
+<li>NETWORK（网络环境）</li>
+<li>LANGUAGE（语言）</li>
+<li>等等</li>
+</ul>
+<p>前端使用 <code>POST</code> 键值对方式提交给后端，可以使用 <code>RawJSON</code> 格式。<br><code>Content-Type</code> 设为 <code>application/x-www-form-urlencoded</code> 或者 <code>application/json</code>。</p>
+<h2 id="全局响应格式">全局响应格式</h2><p>响应格式应该统一，方便前端做统一的处理，尤其是数据字段，应该统一放在一个map里面。</p>
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>类型</th>
+<th>详细描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status_no</td>
+<td>INT</td>
+<td>状态码</td>
+</tr>
+<tr>
+<td>status_msg</td>
+<td>STRING</td>
+<td>状态信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>MAP</td>
+<td>响应内容</td>
+</tr>
+<tr>
+<td>time</td>
+<td>INT</td>
+<td>响应时间戳</td>
+</tr>
+</tbody>
+</table>
+<h2 id="状态码">状态码</h2><p>全局应该定义统一的状态码（status_code），而不应该每个接口单独去定义。</p>
+<p>具体规则可以自行定义，比如0为正确，负数为错误。</p>
+<p>常见的错误状态码有</p>
+<ul>
+<li>普通异常</li>
+<li>token不合法，需要重新登录</li>
+<li>重复登录</li>
+<li>需要完善个人信息</li>
+<li>第三方账号登陆，需要绑定官方账号</li>
+<li>请求头不合法（版本号，APPID等）</li>
+<li>数据解密错误</li>
+</ul>
+<p>可以根据错误类型划分使用的区域段，如登陆系列使用 -1000 到 -1999 区域。</p>
+<p>如此定义后，前端可以进行全局的统一处理，如重复登陆则踢出用户。</p>
+<h2 id="错误信息">错误信息</h2><h2 id="统一data字段">统一data字段</h2><h2 id="Scheme">Scheme</h2><h1 id="回传_or_状态码">回传 or 状态码</h1><h1 id="模块_or_页面">模块 or 页面</h1><h2 id="页面">页面</h2><h2 id="模块">模块</h2><h1 id="分页信息">分页信息</h1><p>当前页码，总页数，页面大小</p>
+<h1 id="配置">配置</h1><p>一些后台喜欢让让前端写限制逻辑</p>
+<h1 id="教训">教训</h1><ul>
+<li>不要相信什么以后重构，接口现在这么说，以后他会告诉你，没法兼容老版本所以只能这样。</li>
+<li>不是说后端就是老大。大家的目标都是为了项目能做好，而现在通常前端的压力比后端更大，所以在不会很大影响性能的前提下，应该满足前端的合理需求。体验为先。</li>
+</ul>
 <h1 id="总结">总结</h1>]]></content>
     <summary type="html">
-    <![CDATA[<p>未完。</p>
-<h1 id="引">引</h1><h1 id="全局">全局</h1><h2 id="状态码">状态码</h2><h2 id="错误信息">错误信息</h2><h2 id="统一data字段">统一data字段</h2><h2 id="Scheme">Sc]]>
+    <![CDATA[<p><strong>未完</strong></p>
+<h1 id="引">引</h1><p>这回来讲讲后台接口的设计。</p>
+<p>可能有同学会觉得后台的接口和我们大前端开发有什么关系？试想一下，在碰到一些不合理的接口设计的时候，你们开发是否觉得很别扭——需要为了坑爹的接口写]]>
     </summary>
     
       <category term="New Android Project From 0" scheme="http://blog.zhaiyifan.cn/tags/New-Android-Project-From-0/"/>
