@@ -55,7 +55,7 @@
 本篇来讲讲 React Native 和 Redux，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 React Native 是什么，Redux 和常见的 MVC、MVP等有什么区别，怎么去组织一个 Redux 架构的 React Native 项目。
 为避免大家还没入门就放弃，预计下一篇才会从我们项目中的实践出发，讲讲更复杂的应用场景。
 什么是R">
-<meta property="og:updated_time" content="2016-08-03T16:01:17.000Z">
+<meta property="og:updated_time" content="2016-08-03T16:04:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目10 - React Native & Redux">
 <meta name="twitter:description" content="占坑
@@ -262,13 +262,17 @@
 <p>项目由 Facebook 开源驱动，在过去的近一年中更新很活跃。</p>
 <p>支持系统：Android 4.1 (API 16) 以及 &gt;= iOS 7.0.</p>
 <p>关于 <code>React</code>，可以参见之前为掘金翻译计划翻译的<a href="http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/">React.js 新手村教程</a>，简单来说 <code>React</code> 将应用分为一个个动态可复用的组件（和 <code>Vue</code> 类似），View的渲染（JSX）、数据如何绑定到显示、状态的变更（State）、属性（Props）都包含在组件内部 —— 整个应用由一个个组件搭积木而成，而每个组件则由状态驱动而变更。</p>
-<p><code>React Native</code> 正像它的名字，将 <code>React</code> 带到了原生世界，和 H5 不同的是，我们不再使用 CSS 和 HTML，而只有 js 为伴。我们也不再有那些 <code>div</code>, <code>input</code> 这些标签，而是由 <code>View</code>, <code>TextInput</code> 等等取代，更符合原生开发者们的习惯。布局上，幸而有强大的 <code>Flexbox</code> 支持，如果开发者们之前有使用或者看到过 Google 在 GitHub 发布的 Android 版 <code>FlexboxLayout</code>，相信对它会很熟悉。</p>
+<p><code>React Native</code> 正像它的名字，将 <code>React</code> 带到了原生世界，和 H5 不同的是，我们不再使用 CSS 和 HTML，而只有 js 为伴。我们也不再有那些 <code>div</code>, <code>input</code> 这些标签，而是由 <code>View</code>, <code>TextInput</code> 等等取代，更符合原生开发者们的习惯。布局上，幸而有强大的 <code>Flexbox</code> 支持，如果开发者们之前有使用或者看到过 Google 在 GitHub 发布的 Android 版 <code>FlexboxLayout</code>，相信对它会很熟悉。原生开发中的页面栈，也由 <code>Navigator</code> 进行了实现。</p>
 <p>与 WebView 不同，React Native 运行的界面，最终会被解释映射为原生的 View，可以直接使用布局边界或者 Hierarchy Viewer 看出层级。</p>
 <p>好处有很多 —— 体验 web 开发的便捷，不再需要编译，重新加载一下 js 就行了，可以直接使用 Chrome 或者 Nuclide 调试，Android / iOS 两端可以共享很大一部分代码（正在进行 Windows 和 Node-webkit 的支持）。</p>
 <p>坏处嘛 —— 前端开发不会原生肯定做不了 React Native（除非你能真只用自带的那些东西），而原生开发也需要一定成本的学习实践才能掌握 React Native。而 React Native 目前仍然处于快速迭代开发的阶段，你永远也不知道下个版本自己升级需要修改多少原来的代码。</p>
 <h1 id="什么是Redux">什么是Redux</h1><h1 id="从例子看项目">从例子看项目</h1><p>为了避免说一大堆概念，大家一头雾水，似懂非懂，这里拿一个例子来讲讲 <code>React Native</code> 和 <code>Redux</code> 结合后的效果，尽量避免代码的出现，而以图和文字代替。</p>
 <p>Counter！没错，就是 Counter，不是 TODO，项目源码位于：<a href="https://github.com/alinz/example-react-native-redux。包含了" target="_blank" rel="external">https://github.com/alinz/example-react-native-redux。包含了</a> <code>Counter</code> 和 <code>Counters</code> 两个子项目。前者是单个的计数器，后者则在前者的基础上增加了可以加减计数器个数的功能，相对更复杂一些。</p>
-<h2 id="运行效果">运行效果</h2><h2 id="物理结构">物理结构</h2><h2 id="动作流">动作流</h2><h1 id="更多阅读">更多阅读</h1><p><em>Redux</em></p>
+<h2 id="运行效果">运行效果</h2><h2 id="物理结构">物理结构</h2><h2 id="动作流">动作流</h2><h1 id="更多阅读">更多阅读</h1><p><em>使用的第三方RN库</em></p>
+<ul>
+<li>整理中</li>
+</ul>
+<p><em>Redux</em></p>
 <ul>
 <li><a href="http://redux.js.org/" target="_blank" rel="external">http://redux.js.org/</a></li>
 <li><a href="https://egghead.io/courses/getting-started-with-redux" target="_blank" rel="external">https://egghead.io/courses/getting-started-with-redux</a></li>
