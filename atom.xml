@@ -74,10 +74,39 @@
     <link href="http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/</id>
     <published>2016-08-04T14:03:13.000Z</published>
-    <updated>2016-07-31T15:44:49.000Z</updated>
+    <updated>2016-08-03T15:03:25.000Z</updated>
     <content type="html"><![CDATA[<p><em>占坑</em></p>
 <p>本篇来讲讲 <code>React Native</code> 和 <code>Redux</code>，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 <code>React Native</code> 是什么，<code>Redux</code> 和常见的 <code>MVC</code>、<code>MVP</code>等有什么区别，怎么去组织一个 <code>Redux</code> 架构的 <code>React Native</code> 项目。</p>
 <p>预计下一篇才会从我们项目中的实践出发，讲讲更复杂的应用场景，避免大家还没入门就放弃。</p>
+<h1 id="什么是React_Native">什么是React Native</h1><h1 id="什么是Redux">什么是Redux</h1><h1 id="从例子看项目">从例子看项目</h1><p>为了避免说一大堆概念，大家一头雾水，似懂非懂，这里拿一个例子来讲讲 <code>React Native</code> 和 <code>Redux</code> 结合后的效果，尽量避免代码的出现，而以图和文字代替。</p>
+<h2 id="运行效果">运行效果</h2><h2 id="物理结构">物理结构</h2><h2 id="动作流">动作流</h2><h1 id="更多阅读">更多阅读</h1><p><em>Redux</em></p>
+<ul>
+<li><a href="http://redux.js.org/" target="_blank" rel="external">http://redux.js.org/</a></li>
+<li><a href="https://egghead.io/courses/getting-started-with-redux" target="_blank" rel="external">https://egghead.io/courses/getting-started-with-redux</a></li>
+</ul>
+<p><em>文档</em></p>
+<ul>
+<li><a href="https://facebook.github.io/react-native/docs/" target="_blank" rel="external">https://facebook.github.io/react-native/docs/</a></li>
+<li><a href="http://reactnative.cn/" target="_blank" rel="external">http://reactnative.cn/</a></li>
+</ul>
+<p><em>项目</em></p>
+<ul>
+<li><a href="https://github.com/fbsamples/f8app" target="_blank" rel="external">https://github.com/fbsamples/f8app</a></li>
+<li><a href="http://f8-app.liaohuqiu.net/" target="_blank" rel="external">http://f8-app.liaohuqiu.net/</a></li>
+<li><a href="https://github.com/bartonhammond/snowflake" target="_blank" rel="external">https://github.com/bartonhammond/snowflake</a></li>
+<li><a href="https://github.com/jondot/awesome-react-native" target="_blank" rel="external">https://github.com/jondot/awesome-react-native</a></li>
+<li><a href="https://rnplay.org/apps/picks" target="_blank" rel="external">https://rnplay.org/apps/picks</a></li>
+</ul>
+<p><em>工具</em></p>
+<ul>
+<li><a href="https://nuclide.io/" target="_blank" rel="external">https://nuclide.io/</a></li>
+<li><a href="https://github.com/infinitered/ignite" target="_blank" rel="external">https://github.com/infinitered/ignite</a></li>
+</ul>
+<p><em>八卦</em></p>
+<ul>
+<li><a href="https://www.zhihu.com/question/37636296" target="_blank" rel="external">如何看待阿里无线前端发布的Weex?</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21677103" target="_blank" rel="external">weex&amp;ReactNative对比</a>，大头鬼对两者的对比，下面还有阿里P8的评论，评论很精彩，记得一页页看过去哦，哈哈。</li>
+</ul>
 ]]></content>
     <summary type="html">
     <![CDATA[<p><em>占坑</em></p>
