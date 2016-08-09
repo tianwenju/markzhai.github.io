@@ -74,7 +74,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/</id>
     <published>2016-08-04T14:03:13.000Z</published>
-    <updated>2016-08-03T16:18:00.000Z</updated>
+    <updated>2016-08-09T02:36:19.000Z</updated>
     <content type="html"><![CDATA[<p><em>占坑</em></p>
 <p>本篇来讲讲 React Native 和 Redux，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 React Native 是什么，Redux 和常见的 MVC、MVP 等有什么区别，怎么去组织一个 Redux 架构的 React Native 项目。</p>
 <p>为避免大家还没入门就放弃，预计下一篇才会从我们项目中的实践出发，讲讲更复杂的应用场景。</p>
@@ -89,14 +89,26 @@
 <h1 id="什么是Redux">什么是Redux</h1><h1 id="从例子看项目">从例子看项目</h1><p>为了避免说一大堆概念，大家一头雾水，似懂非懂，这里拿一个例子来讲讲 React Native 和 Redux 结合后的效果，尽量避免代码的出现，而以图和文字代替。</p>
 <p>Counter！没错，就是 Counter，不是 TODO。</p>
 <p>项目源码位于：<a href="https://github.com/alinz/example-react-native-redux。包含了" target="_blank" rel="external">https://github.com/alinz/example-react-native-redux。包含了</a> <code>Counter</code> 和 <code>Counters</code> 两个子项目。前者是单个的计数器，后者则在前者的基础上增加了可以加减计数器个数的功能，相对更复杂一些。</p>
-<h2 id="运行效果">运行效果</h2><h2 id="物理结构">物理结构</h2><h2 id="动作流">动作流</h2><h1 id="更多阅读">更多阅读</h1><p><em>使用的第三方RN库</em></p>
+<h2 id="运行效果">运行效果</h2><h2 id="物理结构">物理结构</h2><h2 id="动作流">动作流</h2><h1 id="技术栈">技术栈</h1><p>我们目前实践的React Nataive技术栈：</p>
 <ul>
-<li>整理中</li>
+<li>immutable.js</li>
+<li>react</li>
+<li>redux</li>
+<li>react-redux</li>
+<li>redux-thunk</li>
+<li>redux-logger</li>
+<li>redux-mock-store</li>
+<li>react-native-router-flux</li>
+<li>react-native-simple-store</li>
+<li>regenerator</li>
+<li>undefined</li>
+<li>jest</li>
 </ul>
-<p><em>Redux</em></p>
+<h1 id="更多阅读">更多阅读</h1><p><em>Redux</em></p>
 <ul>
 <li><a href="http://redux.js.org/" target="_blank" rel="external">http://redux.js.org/</a></li>
 <li><a href="https://egghead.io/courses/getting-started-with-redux" target="_blank" rel="external">https://egghead.io/courses/getting-started-with-redux</a></li>
+<li><a href="http://div.io/topic/1309" target="_blank" rel="external">http://div.io/topic/1309</a></li>
 </ul>
 <p><em>文档</em></p>
 <ul>
