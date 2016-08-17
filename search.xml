@@ -127,33 +127,36 @@
 <li>jest</li>
 </ul>
 <h1 id="更多阅读">更多阅读</h1><ul>
-<li><p>React</p>
-<ul>
+<li>React<ul>
 <li><a href="https://daveceddia.com/react-es5-createclass-vs-es6-classes/" target="_blank" rel="external">React: ES5 (createClass) or ES6 (class)?</a></li>
 </ul>
 </li>
-<li><p>Redux</p>
+</ul>
 <ul>
+<li>Redux<ul>
 <li><a href="http://redux.js.org/" target="_blank" rel="external">Redux.js</a></li>
 <li><a href="https://egghead.io/courses/getting-started-with-redux" target="_blank" rel="external">Get Started with Redux</a></li>
 <li><a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a></li>
 <li><a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="external">redux-thunk (Redux的thunk中间件)</a></li>
 </ul>
 </li>
-<li><p>React Native</p>
+</ul>
 <ul>
+<li>React Native<ul>
 <li><a href="https://facebook.github.io/react-native/docs/" target="_blank" rel="external">Facebook React Native Docs</a></li>
 <li><a href="https://reactnatve.wordpress.com/2016/05/20/mapping-uicomponent-ios-android-react-native/" target="_blank" rel="external">Mapping UIComponent (iOS, Android, React Native)</a></li>
 </ul>
 </li>
-<li><p>JavaScript</p>
+</ul>
 <ul>
+<li>JavaScript<ul>
 <li><a href="http://redux.js.org/docs/advanced/Middleware.html" target="_blank" rel="external">中间件Middleware</a></li>
 <li><a href="https://babeljs.io/docs/learn-es2015/" target="_blank" rel="external">ES6</a></li>
 </ul>
 </li>
-<li><p>项目</p>
+</ul>
 <ul>
+<li>项目<ul>
 <li><a href="https://github.com/fbsamples/f8app" target="_blank" rel="external">https://github.com/fbsamples/f8app</a></li>
 <li><a href="http://f8-app.liaohuqiu.net/" target="_blank" rel="external">http://f8-app.liaohuqiu.net/</a></li>
 <li><a href="https://github.com/bartonhammond/snowflake" target="_blank" rel="external">https://github.com/bartonhammond/snowflake</a></li>
