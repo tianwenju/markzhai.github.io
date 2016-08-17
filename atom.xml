@@ -74,10 +74,11 @@
     <link href="http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/</id>
     <published>2016-08-04T14:03:13.000Z</published>
-    <updated>2016-08-17T06:56:42.000Z</updated>
+    <updated>2016-08-17T07:09:57.000Z</updated>
     <content type="html"><![CDATA[<p>本篇来讲讲 React Native 和 Redux，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 React Native 是什么，Redux 和常见的 MVC、MVP 等有什么区别，怎么去组织一个 Redux 架构的 React Native 项目。</p>
 <p>为避免大家还没入门就放弃，预计下一篇才会从我们项目中的实践出发，讲讲更复杂的应用场景。</p>
-<h1 id="什么是React_Native">什么是React Native</h1><p>React Native 使你能够基于 JavaScript 和 React 在原生平台上构建应用，提倡的是 “learn once, write anywhere”，复用代码，提高开发效率。</p>
+<h1 id="什么是React_Native">什么是React Native</h1><p><img src="http://blog.zhaiyifan.cn/images/react-native-1-reactnative.png" alt="React Native"></p>
+<p>React Native 使你能够基于 JavaScript 和 React 在原生平台上构建应用，提倡的是 “learn once, write anywhere”，复用代码，提高开发效率。</p>
 <p>项目由 Facebook 开源驱动，在过去的近一年中更新很活跃。文档建议直接看官网的 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">React Native</a>，中文站有点坑。</p>
 <p>支持系统：Android 4.1 (API 16) 以及 &gt;= iOS 7.0。</p>
 <p>关于 React，可以参见之前为掘金翻译计划翻译的 <a href="http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/">React.js 新手村教程</a>，简单来说 React 将应用分为一个个动态可复用的组件 —— View的渲染（JSX）、数据如何绑定到显示、状态的变更（State）、属性（Props）都包含在组件内部。</p>
@@ -99,7 +100,8 @@
 <li>React Native 目前仍然处于快速迭代开发的阶段，你永远也不知道下个版本自己升级需要修改多少原来的代码。</li>
 <li>React Native 的资料较少，尤其是国内的，更尤其是 hybrid 开发的（GitHub 上的开源项目大多是纯 RN 的）。</li>
 </ul>
-<h1 id="什么是Redux">什么是Redux</h1><p><a href="http://redux.js.org/" target="_blank" rel="external">Redux</a> 本身和 React 并没有特别紧密的联系，而是 Facebook 提出的 Flux 架构的一种优秀实现，可以搭配其他任何框架一起使用。在 React 上使用，需要搭配 react-redux（如此一来 Redux 可以不局限于 React，而让社区发展出更多的 redux-* 中间件）。</p>
+<h1 id="什么是Redux">什么是Redux</h1><p><img src="https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67" alt="Redux.js"></p>
+<p><a href="http://redux.js.org/" target="_blank" rel="external">Redux</a> 本身和 React 并没有特别紧密的联系，而是 Facebook 提出的 Flux 架构的一种优秀实现，可以搭配其他任何框架一起使用。在 React 上使用，需要搭配 react-redux（如此一来 Redux 可以不局限于 React，而让社区发展出更多的 redux-* 中间件）。</p>
 <p>Redux 在 React 的基础上（state 和 props），增加了 <a href="http://cn.redux.js.org//docs/basics/Store.html" target="_blank" rel="external">store</a>、<a href="http://cn.redux.js.org//docs/basics/Actions.html" target="_blank" rel="external">action</a>、<a href="http://cn.redux.js.org//docs/basics/Reducers.html" target="_blank" rel="external">reducer</a> 的概念，规范了全局一个 state，从而只需要根据这个 state 就能回朔出整个应用的状态。组件通过 dispatch 将 action 传到 store，reducer 根据原来的 state 以及 action，返回新的 state，组件根据新的 state 渲染界面。</p>
 <p>Redux 是一个可预测的状态容器，即只需要有状态树，就能还原出“事发现场”。</p>
 <h1 id="从例子看项目">从例子看项目</h1><p>为了避免说一大堆概念，大家一头雾水，似懂非懂，这里拿一个例子来讲讲 React Native 和 Redux 结合后的效果，尽量避免代码的出现，而以图和文字代替。</p>

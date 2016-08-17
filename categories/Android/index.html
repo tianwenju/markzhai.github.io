@@ -1,18 +1,25 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
+
   <meta name="google-site-verification" content="ieCGPLaYJPLAp6By_5652iPczS2GIfAPy9XGEkD6-e0" />
+
 
 
 
@@ -22,17 +29,52 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
 
-  <meta name="keywords" content="Hexo,next,markzhai,zhaiyifan,魔都三帅,翟一帆" />
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="markzhai, zhaiyifan, 魔都三帅, 翟一帆, Android, React, React Native, Javascript" />
+
+
 
 
 
@@ -40,7 +82,12 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
 
 
 <meta name="description">
@@ -54,10 +101,18 @@
 <meta name="twitter:description">
 
 
+
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'post'
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 13060344,
+      author: 'MarkZhai'
+    }
   };
 </script>
 
@@ -66,16 +121,9 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -98,20 +146,32 @@
 
 
 
-  <div class="container one-column ">
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">markzhai's home</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -125,12 +185,14 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
             首页
           </a>
         </li>
@@ -138,7 +200,9 @@
         
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
             分类
           </a>
         </li>
@@ -146,7 +210,9 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
             关于
           </a>
         </li>
@@ -154,7 +220,9 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
             归档
           </a>
         </li>
@@ -162,13 +230,14 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
             标签
           </a>
         </li>
       
 
-      
       
     </ul>
   
@@ -181,7 +250,9 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <section id="posts" class="posts-collapse">
     <div class="collection-title">
@@ -194,19 +265,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2016/07/21/data-binding-component/" itemprop="url">
-              <span itemprop="name">Data Binding Component详解 - 换肤什么的只是它的一个小应用！</span>
+              
+                <span itemprop="name">Data Binding Component详解 - 换肤什么的只是它的一个小应用！</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2016-07-21T08:40:10.000Z" itemprop="dateCreated" content="2016-07-21"> 07-21 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-07-21T16:40:10+08:00"
+              content="2016-07-21" >
+          07-21
+        </time>
       </div>
 
     </header>
@@ -216,19 +293,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2016/01/29/android-app-architecture-2015/" itemprop="url">
-              <span itemprop="name">Android应用架构 (Android Dev Summit 2015)</span>
+              
+                <span itemprop="name">Android应用架构 (Android Dev Summit 2015)</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2016-01-29T13:00:41.000Z" itemprop="dateCreated" content="2016-01-29"> 01-29 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-01-29T21:00:41+08:00"
+              content="2016-01-29" >
+          01-29
+        </time>
       </div>
 
     </header>
@@ -238,19 +321,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2015/12/07/AopBasedMonitor/" itemprop="url">
-              <span itemprop="name">基于AOP的方法级自动埋点</span>
+              
+                <span itemprop="name">基于AOP的方法级自动埋点</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-12-07T05:53:52.000Z" itemprop="dateCreated" content="2015-12-07"> 12-07 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-12-07T13:53:52+08:00"
+              content="2015-12-07" >
+          12-07
+        </time>
       </div>
 
     </header>
@@ -260,19 +349,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2015/11/20/HotPatchCompare/" itemprop="url">
-              <span itemprop="name">各大热补丁方案分析和比较</span>
+              
+                <span itemprop="name">各大热补丁方案分析和比较</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-11-20T13:46:13.000Z" itemprop="dateCreated" content="2015-11-20"> 11-20 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-11-20T21:46:13+08:00"
+              content="2015-11-20" >
+          11-20
+        </time>
       </div>
 
     </header>
@@ -282,19 +377,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2015/11/20/new-skin-toggle-way/" itemprop="url">
-              <span itemprop="name">新的换肤思路</span>
+              
+                <span itemprop="name">新的换肤思路</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-11-20T03:22:05.000Z" itemprop="dateCreated" content="2015-11-20"> 11-20 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-11-20T11:22:05+08:00"
+              content="2015-11-20" >
+          11-20
+        </time>
       </div>
 
     </header>
@@ -304,19 +405,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2015/09/16/Try-React-Native-for-Android/" itemprop="url">
-              <span itemprop="name">Try React Native for Android</span>
+              
+                <span itemprop="name">Try React Native for Android</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-09-16T04:28:33.000Z" itemprop="dateCreated" content="2015-09-16"> 09-16 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-09-16T12:28:33+08:00"
+              content="2015-09-16" >
+          09-16
+        </time>
       </div>
 
     </header>
@@ -326,19 +433,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2015/09/10/Android换肤技术总结/" itemprop="url">
-              <span itemprop="name">Android换肤技术总结</span>
+              
+                <span itemprop="name">Android换肤技术总结</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-09-10T15:51:48.000Z" itemprop="dateCreated" content="2015-09-10"> 09-10 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-09-10T23:51:48+08:00"
+              content="2015-09-10" >
+          09-10
+        </time>
       </div>
 
     </header>
@@ -348,19 +461,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2015/08/28/intellij老是警告的SparseArray是什么-HashMap的替代者/" itemprop="url">
-              <span itemprop="name">intellij老是警告的SparseArray是什么 - HashMap的替代者</span>
+              
+                <span itemprop="name">intellij老是警告的SparseArray是什么 - HashMap的替代者</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-08-28T12:41:25.000Z" itemprop="dateCreated" content="2015-08-28"> 08-28 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-08-28T20:41:25+08:00"
+              content="2015-08-28" >
+          08-28
+        </time>
       </div>
 
     </header>
@@ -370,19 +489,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2015/08/28/Java和Android中，代码块、static静态代码块的执行顺序/" itemprop="url">
-              <span itemprop="name">Java和Android中，代码块、static静态代码块的执行顺序</span>
+              
+                <span itemprop="name">Java和Android中，代码块、static静态代码块的执行顺序</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-08-28T11:42:21.000Z" itemprop="dateCreated" content="2015-08-28"> 08-28 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-08-28T19:42:21+08:00"
+              content="2015-08-28" >
+          08-28
+        </time>
       </div>
 
     </header>
@@ -392,19 +517,25 @@
     
       
 
-  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h1 class="post-title">
         
             <a class="post-title-link" href="/2015/08/25/关于android客户端的导航栏/" itemprop="url">
-              <span itemprop="name">Android客户端的导航栏</span>
+              
+                <span itemprop="name">Android客户端的导航栏</span>
+              
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" datetime="2015-08-25T08:34:40.000Z" itemprop="dateCreated" content="2015-08-25"> 08-25 </time>
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-08-25T16:34:40+08:00"
+              content="2015-08-25" >
+          08-25
+        </time>
       </div>
 
     </header>
@@ -416,25 +547,21 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/Android/page/2/">2</a><a class="extend next" rel="next" href="/categories/Android/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/categories/Android/page/2/">2</a><a class="extend next" rel="next" href="/categories/Android/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
- </div>
-<!--
-        <p><img src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="" title="" type="image/png"><br>
-        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享许可协议</a>：本站作品由<a href="http://hukai.me" target="_blank">HuKai</a>创作，采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a>进行许可。
-        <br>，你还可以选择扫描二维码进行打赏-->
 
-<!--
-        <img src="/images/pay2me.jpg" alt=""/>-->
 
+          </div>
+          
+
+
+          
+
+        </div>
         
-
-        
-      </div>
-
-      
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -449,12 +576,16 @@
 
       
 
-      <section class="site-overview">
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/avatar.jpg" alt="Mark Zhai (翟一帆)" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Mark Zhai (翟一帆)" />
           <p class="site-author-name" itemprop="name">Mark Zhai (翟一帆)</p>
+          <p class="site-description motion-element" itemprop="description">白驹过隙 忽然而已</p>
         </div>
-        <p class="site-description motion-element" itemprop="description">白驹过隙 忽然而已</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -463,26 +594,30 @@
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">17</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">59</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
               </a>
-          </div>
+            </div>
+          
 
         </nav>
 
         
           <div class="feed-link motion-element">
             <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
+              <i class="fa fa-rss"></i>
               RSS
             </a>
           </div>
@@ -490,51 +625,39 @@
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/markzhai" target="_blank">GitHub</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/zhayaofen" target="_blank">Weibo</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.zhihu.com/people/markzhai" target="_blank">Zhihu</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="mailto:zhaiyifan56@gmail.com" target="_blank">Email</a>
-              </span>
-            
-          
         </div>
 
         
         
 
-        <div class="links-of-author motion-element">
-          
-            <p class="site-author-name">友情链接</p>
-            
-              <span class="links-of-author-item">
-              <a href="http://abner-nimengbo.cn" target="_blank">Abner泥阿布(三帅)</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://itangqi.me" target="_blank">Qi Tang</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://yifeiyuan.me" target="_blank">程序亦非猿</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://blog.isming.me/" target="_blank">码农明明桑</a>
-              </span>
-            
-          
-        </div>
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abner-nimengbo.cn" title="Abner泥阿布" target="_blank">Abner泥阿布</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://itangqi.me" title="Qi Tang" target="_blank">Qi Tang</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yifeiyuan.me" title="程序亦非猿" target="_blank">程序亦非猿</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.isming.me/" title="码农明明桑" target="_blank">码农明明桑</a>
+                </li>
+              
+            </ul>
+          </div>
+        
 
       </section>
 
@@ -544,24 +667,18 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-Count from 2015/9/13
-<span id="busuanzi_container_site_pv">
-PV: <span id="busuanzi_value_site_pv"></span>
-<span id="busuanzi_container_site_uv">
-  UV: <span id="busuanzi_value_site_uv"></span>
-</span>
-</span>
-
-<div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  &copy; &nbsp;  2015 - 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Mark Zhai</span>
 </div>
@@ -577,25 +694,94 @@ PV: <span id="busuanzi_value_site_pv"></span>
   </a>
 </div>
 
+        
 
- </div>
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
   
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
   
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
   
 
   
-    
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
 
   
     
@@ -606,63 +792,29 @@ PV: <span id="busuanzi_value_site_pv"></span>
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+
+  
     
-     
-
-    
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
   
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
 
 
 
-
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
-    });
-  </script>
-
-  
-
   
   
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
-      });
-    });
-  </script>
+
+  
+
 </body>
 </html>
