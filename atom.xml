@@ -74,7 +74,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/</id>
     <published>2016-08-04T14:03:13.000Z</published>
-    <updated>2016-08-16T15:18:37.000Z</updated>
+    <updated>2016-08-17T05:47:40.000Z</updated>
     <content type="html"><![CDATA[<p>本篇来讲讲 React Native 和 Redux，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 React Native 是什么，Redux 和常见的 MVC、MVP 等有什么区别，怎么去组织一个 Redux 架构的 React Native 项目。</p>
 <p>为避免大家还没入门就放弃，预计下一篇才会从我们项目中的实践出发，讲讲更复杂的应用场景。</p>
 <h1 id="什么是React_Native">什么是React Native</h1><p>React Native 使你能够基于 JavaScript 和 React 在原生平台上构建应用，提倡的是 “learn once, write anywhere”，复用代码，提高开发效率。</p>
@@ -108,7 +108,12 @@
 <h2 id="运行效果">运行效果</h2><p>先看看最后的效果，方便对应后面的解说。<br>第一个 Counter 项目很简单，就是一个文本框加上两个按钮，一个加1，一个减1。<br>第二个 Counters 项目在前者的基础上（使用了 Counter 组件），如下图：</p>
 <p><img src="/images/react-native-1-counters.png" alt="Counters"></p>
 <p>可以增加任意个计数器，还添加了带延迟的加1功能，来模拟耗时操作。</p>
-<h2 id="物理结构">物理结构</h2><h2 id="动作流">动作流</h2><h1 id="技术栈">技术栈</h1><p>我们目前实践的React Nataive技术栈：</p>
+<h2 id="Counter">Counter</h2><p>先看看Counter，我们从物理架构和动作流两个角度来进行观察。</p>
+<p>目录下，有以下文件：</p>
+<p>README.md        index.android.js node_modules<br>android          index.ios.js     npm-debug.log<br>app              ios              package.json</p>
+<p>index.android.js 和 index.ios.js 分别是 android 和 iOS 的 rn 入口，通常内容是相同的。<br>android 为 Android 的工程目录，下面有我们熟悉的 build.gralde。<br>ios 为 iOS 的工程目录，包含了 xcode 的项目。<br>app 就是 rn 的目录，包含了 Android 和 iOS 项目共享的 js 源码。<br>node_modules 是 node 通过解析 package.json 下载的依赖。</p>
+<h2 id="物理结构">物理结构</h2><p><img src="/images/react-native-1-counter-structure.png" alt="Counter物理结构"></p>
+<h2 id="动作流">动作流</h2><h1 id="技术栈">技术栈</h1><p>我们目前实践的React Nataive技术栈：</p>
 <ul>
 <li>immutable.js</li>
 <li>react</li>
@@ -123,16 +128,19 @@
 <li>undefined</li>
 <li>jest</li>
 </ul>
-<h1 id="更多阅读">更多阅读</h1><p><em>Redux</em></p>
+<h1 id="更多阅读">更多阅读</h1><p><em>React</em></p>
 <ul>
-<li><a href="http://redux.js.org/" target="_blank" rel="external">http://redux.js.org/</a></li>
-<li><a href="https://egghead.io/courses/getting-started-with-redux" target="_blank" rel="external">https://egghead.io/courses/getting-started-with-redux</a></li>
+<li><a href="https://daveceddia.com/react-es5-createclass-vs-es6-classes/" target="_blank" rel="external">React: ES5 (createClass) or ES6 (class)?</a></li>
+</ul>
+<p><em>Redux</em></p>
+<ul>
+<li><a href="http://redux.js.org/" target="_blank" rel="external">Redux.js</a></li>
+<li><a href="https://egghead.io/courses/getting-started-with-redux" target="_blank" rel="external">Get Started with Redux</a></li>
 <li><a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a></li>
 </ul>
-<p><em>文档</em></p>
+<p><em>React Native</em></p>
 <ul>
-<li><a href="https://facebook.github.io/react-native/docs/" target="_blank" rel="external">https://facebook.github.io/react-native/docs/</a></li>
-<li><a href="http://reactnative.cn/" target="_blank" rel="external">http://reactnative.cn/</a></li>
+<li><a href="https://facebook.github.io/react-native/docs/" target="_blank" rel="external">Facebook React Native Docs</a></li>
 </ul>
 <p><em>项目</em></p>
 <ul>
