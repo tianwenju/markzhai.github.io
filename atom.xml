@@ -74,14 +74,14 @@
     <link href="http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/</id>
     <published>2016-08-04T14:03:13.000Z</published>
-    <updated>2016-08-17T05:52:00.000Z</updated>
+    <updated>2016-08-17T06:32:28.000Z</updated>
     <content type="html"><![CDATA[<p>本篇来讲讲 React Native 和 Redux，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 React Native 是什么，Redux 和常见的 MVC、MVP 等有什么区别，怎么去组织一个 Redux 架构的 React Native 项目。</p>
 <p>为避免大家还没入门就放弃，预计下一篇才会从我们项目中的实践出发，讲讲更复杂的应用场景。</p>
 <h1 id="什么是React_Native">什么是React Native</h1><p>React Native 使你能够基于 JavaScript 和 React 在原生平台上构建应用，提倡的是 “learn once, write anywhere”，复用代码，提高开发效率。</p>
 <p>项目由 Facebook 开源驱动，在过去的近一年中更新很活跃。文档建议直接看官网的 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">React Native</a>，中文站有点坑。</p>
 <p>支持系统：Android 4.1 (API 16) 以及 &gt;= iOS 7.0。</p>
 <p>关于 React，可以参见之前为掘金翻译计划翻译的 <a href="http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/">React.js 新手村教程</a>，简单来说 React 将应用分为一个个动态可复用的组件 —— View的渲染（JSX）、数据如何绑定到显示、状态的变更（State）、属性（Props）都包含在组件内部。</p>
-<p><img src="/images/react-native-1-reactjs.png" alt="React.js"></p>
+<p><img src="http://blog.zhaiyifan.cn/images/react-native-1-reactjs.png" alt="React.js"></p>
 <p>整个应用由一个个组件搭积木而成（组件式开发），而每个组件则由状态驱动而变更。</p>
 <p>React Native 正像它的名字，将 React 带到了原生世界，和 H5 不同的是，我们不再使用 CSS 和 HTML，而只有 js 为伴。我们也不再有那些 <code>div</code>, <code>input</code> 这些标签，而是由 <code>View</code>, <code>TextInput</code> 等等取代，更符合原生开发者们的习惯。布局上，幸而有强大的 <code>Flexbox</code> 支持，如果开发者们之前有使用或者看到过 Google 在 GitHub 发布的 Android 版 <code>FlexboxLayout</code>，相信对它会很熟悉。原生开发中的页面栈，也由 <code>Navigator</code> 进行了实现（在 Android 上还有 <code>BackAndroid</code> 的返回键支持）。</p>
 <p>与 WebView 不同，React Native 运行的界面，最终会被解释映射为原生的 View，可以直接使用布局边界或者 Hierarchy Viewer 看出层级（js 文件会打包为一个bundle，位于assets下面，RN引擎会加载并进行解释映射）。</p>
@@ -106,13 +106,17 @@
 <p>Counter！没错，就是 Counter，不是 TODO，TODO已经被黑的不成样了。</p>
 <p>项目源码位于：<a href="https://github.com/alinz/example-react-native-redux。包含了" target="_blank" rel="external">https://github.com/alinz/example-react-native-redux。包含了</a> <code>Counter</code> 和 <code>Counters</code> 两个子项目。前者是单个的计数器，后者则在前者的基础上增加了可以加减计数器个数的功能，相对更复杂一些，不过引入了一些不错的实践可以参考。</p>
 <h2 id="运行效果">运行效果</h2><p>先看看最后的效果，方便对应后面的解说。<br>第一个 Counter 项目很简单，就是一个文本框加上两个按钮，一个加1，一个减1。<br>第二个 Counters 项目在前者的基础上（使用了 Counter 组件），可以增加任意个计数器，还添加了带延迟的加1功能，来模拟耗时操作，如下图：</p>
-<p><img src="/images/react-native-1-counters.png" alt="Counters"></p>
+<p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counters.png" alt="Counters"></p>
 <h2 id="Counter">Counter</h2><p>先看看Counter，我们从物理架构和动作流两个角度来进行观察。</p>
 <p>目录下，有以下文件：</p>
-<p><img src="/images/react-native-1-counter-files.png" alt="Counter List Files"></p>
+<p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counter-files.png" alt="Counter List Files"></p>
 <p>index.android.js 和 index.ios.js 分别是 android 和 iOS 的 rn 入口，通常内容是相同的。<br>android 为 Android 的工程目录，下面有我们熟悉的 build.gralde。<br>ios 为 iOS 的工程目录，包含了 xcode 的项目。<br>app 就是 rn 的目录，包含了 Android 和 iOS 项目共享的 js 源码。<br>node_modules 是 node 通过解析 package.json 下载的依赖。</p>
-<h2 id="物理结构">物理结构</h2><p><img src="/images/react-native-1-counter-structure.png" alt="Counter物理结构"></p>
-<h2 id="动作流">动作流</h2><h1 id="技术栈">技术栈</h1><p>我们目前实践的React Nataive技术栈：</p>
+<h3 id="物理结构">物理结构</h3><p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counter-structure.png" alt="Counter物理结构"></p>
+<p>CounterApp.js 则是整个应用的实际入口。</p>
+<h3 id="动作流">动作流</h3><p>且不谈那些具体的 bind 和 createStore 操作，我们来看看当发生交互的时候，整个动作的分发，拿点击加号为例：</p>
+<p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counter-flow.png" alt="Counter活动图"></p>
+<p>onPress 事件触发了后续的一系列活动，而 Counter Component 的 action function 则由外部通过 props 传入。</p>
+<h2 id="Counters">Counters</h2><h1 id="技术栈">技术栈</h1><p>我们目前实践的React Nataive技术栈：</p>
 <ul>
 <li>immutable.js</li>
 <li>react</li>
