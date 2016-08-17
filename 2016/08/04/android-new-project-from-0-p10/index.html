@@ -109,8 +109,11 @@
 <meta property="og:image" content="http://blog.zhaiyifan.cn/images/react-native-1-counter-flow.png">
 <meta property="og:image" content="http://blog.zhaiyifan.cn/images/react-native-1-counter-counterapp.png">
 <meta property="og:image" content="http://blog.zhaiyifan.cn/images/react-native-1-counter-app.png">
+<meta property="og:image" content="http://blog.zhaiyifan.cn/images/react-native-1-counter-action-bind.png">
 <meta property="og:image" content="http://blog.zhaiyifan.cn/images/react-native-1-counters-demo.gif">
-<meta property="og:updated_time" content="2016-08-17T08:41:03.000Z">
+<meta property="og:image" content="http://blog.zhaiyifan.cn/images/react-native-1-counters-structure.png">
+<meta property="og:image" content="http://blog.zhaiyifan.cn/images/react-native-1-counters-app-render.png">
+<meta property="og:updated_time" content="2016-08-17T14:02:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始的Android新项目10 - React Native & Redux">
 <meta name="twitter:description" content="本篇来讲讲 React Native 和 Redux，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 React Native 是什么，Redux 和常见的 MVC、MVP 等有什么区别，怎么去组织一个 Redux 架构的 React Native 项目。
@@ -432,8 +435,22 @@
 <p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counter-counterapp.png" alt="counterApp.js"></p>
 <p>再看看 store 的创建，在 App.js 入口：</p>
 <p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counter-app.png" alt="app.js"></p>
+<p>而 Component 也不是直接调用 action 的，而是通过 store 进行调用，store 在初始化的时候会通过 bindActionCreators 绑定所有action。绑定如下：</p>
+<p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counter-action-bind.png" alt="action bind"></p>
 <h2 id="Counters">Counters</h2><p>接着我们来看看更为复杂的 Counters 项目，顶层目录结构类似，不再赘述。</p>
 <p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counters-demo.gif" alt="demo"></p>
+<p>看完上面的 demo 动图后，相信大家对下面的解说会更容易理解。</p>
+<h3 id="物理结构-1">物理结构</h3><p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counters-structure.png" alt="Counters物理结构"></p>
+<p>我们来详细讲一下 modules 下的 app 目录中的文件组织。</p>
+<p>actions.js 和刚才一样，定义了一个个的 action，略有不同的是由于这次有异步的操作，所以涉及到了 dispatch 函数，关于 dispatch 可以查看<a href="http://cn.redux.js.org/docs/api/Store.html#dispatch" target="_blank" rel="external">官方文档</a>。</p>
+<p>constants.js 定义了所有 action 的 type，以及 App 的名字。</p>
+<p>reducers.js 一样根据 action（payload 和 type）以及原来的 state 返回新的 state，另外，这里还进行了 initial state 即初始状态的定义（我们也可以把它放到单独的文件中）。</p>
+<p>App.js 定义了页面的布局（渲染和 action），导出了 connect 生成的 container。我们简单看一下 render 部分是怎么做的。</p>
+<p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counters-app-render.png" alt="Counters render"></p>
+<p>怎么样，JSX 是不是挺容易理解的？</p>
+<h3 id="动作流-1">动作流</h3><p>Counter 本身的动作流上面我们已经举例过了，本工程中增减计数类似，唯一的区别是 action 不只有 type，还带了 payload（id）来标示不同的计数器。</p>
+<p>所以这里我们拿增加计数器的点击事件来做例子。</p>
+<h2 id="总结">总结</h2><p>上面我们通过物理结构和活动图大致了解了 React Native 上的 Redux 架构 app 是如何工作的。具体的细节，建议大家还是去查看 GitHub 上的源代码，通过上面的讲解后，应该不难理解。</p>
 <h1 id="技术栈">技术栈</h1><p>我们目前实践的React Nataive技术栈：</p>
 <ul>
 <li>immutable.js</li>
@@ -450,27 +467,33 @@
 <li>jest</li>
 </ul>
 <h1 id="更多阅读">更多阅读</h1><ul>
-<li>React<ul>
+<li><p>React</p>
+<ul>
 <li><a href="https://daveceddia.com/react-es5-createclass-vs-es6-classes/" target="_blank" rel="external">React: ES5 (createClass) or ES6 (class)?</a></li>
 </ul>
 </li>
-</ul>
+<li><p>Redux</p>
 <ul>
-<li>Redux<ul>
 <li><a href="http://redux.js.org/" target="_blank" rel="external">Redux.js</a></li>
 <li><a href="https://egghead.io/courses/getting-started-with-redux" target="_blank" rel="external">Get Started with Redux</a></li>
 <li><a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a></li>
+<li><a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="external">redux-thunk (Redux的thunk中间件)</a></li>
 </ul>
 </li>
-</ul>
+<li><p>React Native</p>
 <ul>
-<li>React Native<ul>
 <li><a href="https://facebook.github.io/react-native/docs/" target="_blank" rel="external">Facebook React Native Docs</a></li>
+<li><a href="https://reactnatve.wordpress.com/2016/05/20/mapping-uicomponent-ios-android-react-native/" target="_blank" rel="external">Mapping UIComponent (iOS, Android, React Native)</a></li>
 </ul>
 </li>
-</ul>
+<li><p>JavaScript</p>
 <ul>
-<li>项目<ul>
+<li><a href="http://redux.js.org/docs/advanced/Middleware.html" target="_blank" rel="external">中间件Middleware</a></li>
+<li><a href="https://babeljs.io/docs/learn-es2015/" target="_blank" rel="external">ES6</a></li>
+</ul>
+</li>
+<li><p>项目</p>
+<ul>
 <li><a href="https://github.com/fbsamples/f8app" target="_blank" rel="external">https://github.com/fbsamples/f8app</a></li>
 <li><a href="http://f8-app.liaohuqiu.net/" target="_blank" rel="external">http://f8-app.liaohuqiu.net/</a></li>
 <li><a href="https://github.com/bartonhammond/snowflake" target="_blank" rel="external">https://github.com/bartonhammond/snowflake</a></li>
@@ -706,6 +729,44 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/markzhai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhayaofen" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/markzhai" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhaiyifan.cn/" target="_blank" title="个人主页">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  个人主页
+                </a>
+              </span>
+            
+          
         </div>
 
         
@@ -749,7 +810,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是React_Native"><span class="nav-number">1.</span> <span class="nav-text">什么是React Native</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Redux"><span class="nav-number">2.</span> <span class="nav-text">什么是Redux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从例子看项目"><span class="nav-number">3.</span> <span class="nav-text">从例子看项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行效果"><span class="nav-number">3.1.</span> <span class="nav-text">运行效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counter"><span class="nav-number">3.2.</span> <span class="nav-text">Counter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#物理结构"><span class="nav-number">3.2.1.</span> <span class="nav-text">物理结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动作流"><span class="nav-number">3.2.2.</span> <span class="nav-text">动作流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counters"><span class="nav-number">3.3.</span> <span class="nav-text">Counters</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#技术栈"><span class="nav-number">4.</span> <span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多阅读"><span class="nav-number">5.</span> <span class="nav-text">更多阅读</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是React_Native"><span class="nav-number">1.</span> <span class="nav-text">什么是React Native</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Redux"><span class="nav-number">2.</span> <span class="nav-text">什么是Redux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从例子看项目"><span class="nav-number">3.</span> <span class="nav-text">从例子看项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行效果"><span class="nav-number">3.1.</span> <span class="nav-text">运行效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counter"><span class="nav-number">3.2.</span> <span class="nav-text">Counter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#物理结构"><span class="nav-number">3.2.1.</span> <span class="nav-text">物理结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动作流"><span class="nav-number">3.2.2.</span> <span class="nav-text">动作流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counters"><span class="nav-number">3.3.</span> <span class="nav-text">Counters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#物理结构-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">物理结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动作流-1"><span class="nav-number">3.3.2.</span> <span class="nav-text">动作流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#技术栈"><span class="nav-number">4.</span> <span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多阅读"><span class="nav-number">5.</span> <span class="nav-text">更多阅读</span></a></li></ol></div>
             
           </div>
         </section>
