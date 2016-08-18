@@ -74,7 +74,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/</id>
     <published>2016-08-04T14:03:13.000Z</published>
-    <updated>2016-08-17T14:31:52.000Z</updated>
+    <updated>2016-08-18T02:59:54.000Z</updated>
     <content type="html"><![CDATA[<p>本篇来讲讲 React Native 和 Redux，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 React Native 是什么，Redux 和常见的 MVC、MVP 等有什么区别，怎么去组织一个 Redux 架构的 React Native 项目。</p>
 <p>为避免大家还没入门就放弃，预计下一篇才会从我们项目中的实践出发，讲讲更复杂的应用场景。</p>
 <h1 id="什么是React_Native">什么是React Native</h1><p><img src="http://blog.zhaiyifan.cn/images/react-native-1-reactnative.png" alt="React Native"></p>
@@ -107,8 +107,7 @@
 <h1 id="从例子看项目">从例子看项目</h1><p>为了避免说一大堆概念，大家一头雾水，似懂非懂，这里拿一个例子来讲讲 React Native 和 Redux 结合后的效果，尽量避免代码的出现，而以图和文字代替。</p>
 <p>Counter！没错，就是 Counter，不是 TODO，TODO已经被黑的不成样了。</p>
 <p>项目源码位于：<a href="https://github.com/alinz/example-react-native-redux。包含了" target="_blank" rel="external">https://github.com/alinz/example-react-native-redux。包含了</a> <code>Counter</code> 和 <code>Counters</code> 两个子项目。前者是单个的计数器，后者则在前者的基础上增加了可以加减计数器个数的功能，相对更复杂一些，不过引入了一些不错的实践可以参考。</p>
-<h2 id="运行效果">运行效果</h2><p>先看看最后的效果，方便对应后面的解说。<br>第一个 Counter 项目很简单，就是一个文本框加上两个按钮，一个加1，一个减1。<br>第二个 Counters 项目在前者的基础上（使用了 Counter 组件），可以增加任意个计数器，还添加了带延迟的加1功能，来模拟耗时操作，如下图：</p>
-<p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counters.png" alt="Counters"></p>
+<h2 id="运行效果">运行效果</h2><p>先看看最后的效果，方便对应后面的解说。<br>第一个 Counter 项目很简单，就是一个文本框加上两个按钮，一个加1，一个减1。<br>第二个 Counters 项目在前者的基础上（使用了 Counter 组件），可以增加任意个计数器，还添加了带延迟的加1功能，来模拟耗时操作。</p>
 <h2 id="Counter">Counter</h2><p>先看看Counter，我们从物理架构和动作流两个角度来进行观察。</p>
 <p>目录下，有以下文件：</p>
 <p><img src="http://blog.zhaiyifan.cn/images/react-native-1-counter-files.png" alt="Counter List Files"></p>
