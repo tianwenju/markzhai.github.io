@@ -74,12 +74,19 @@
     <link href="http://blog.zhaiyifan.cn/2016/08/20/react-native-0-31-preload-optimization/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/20/react-native-0-31-preload-optimization/</id>
     <published>2016-08-20T04:41:12.000Z</published>
-    <updated>2016-08-20T04:46:23.000Z</updated>
-    <content type="html"><![CDATA[<p>正在写。</p>
+    <updated>2016-08-20T05:12:25.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li>未完 -</li>
+</ul>
+<p>使用 React Native 开发混合应用的过程中，我们在打完 bundle 进 release 包后，会发现第一次进入页面（React 的 Activity）会有一个短暂的白屏过程（1秒左右），而且在完全退出后再进入，仍然会有这个白屏。</p>
+<p>仔细查看加载过程（其实猜猜都能知道）后可以发现，这个过程就是在加载我们的 js bundle，通常即便是一个小的 RN 应用（混合应用中的子业务），也会动辄到 1MB 的大小，除非是完整的 RN 应用，可以把这个当做是 启动速度，否则这样的加载速度都是对用户体验的很大伤害。</p>
+<p>于是我们决定进行 Bundle 预加载的优化。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>正在写。</p>
-]]>
+    <![CDATA[<ul>
+<li>未完 -</li>
+</ul>
+<p>使用 React Native 开发混合应用的过程中，我们在打完 bundle 进 release 包后，会发现第一次进入页面（React 的 Activity）会有一个短暂的白屏过程（1秒左右），而且在完全退出后再进入，仍]]>
     </summary>
     
       <category term="Android" scheme="http://blog.zhaiyifan.cn/tags/Android/"/>
