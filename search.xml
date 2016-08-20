@@ -47,6 +47,13 @@
     </entry>
     
     <entry>
+      <title><![CDATA[React Native 0.31 Bundle 预加载优化]]></title>
+      <url>http://blog.zhaiyifan.cn/2016/08/20/react-native-0-31-preload-optimization/</url>
+      <content type="html"><![CDATA[<p>正在写。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[从零开始的Android新项目10 - React Native & Redux]]></title>
       <url>http://blog.zhaiyifan.cn/2016/08/04/android-new-project-from-0-p10/</url>
       <content type="html"><![CDATA[<p>本篇来讲讲 React Native 和 Redux，和其他一上来就啪啪啪丢上来一堆翻译的东西不同，本文会从简单的例子入手，让大家能快速地明白 React Native 是什么，Redux 和常见的 MVC、MVP 等有什么区别，怎么去组织一个 Redux 架构的 React Native 项目。</p>
