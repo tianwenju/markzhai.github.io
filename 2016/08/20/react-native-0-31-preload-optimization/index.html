@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="markzhai's home">
 <meta property="og:description" content="使用 React Native 开发混合应用的过程中，我们在打完 bundle 进 release 包后，会发现第一次进入页面（React 的 Activity）会有一个短暂的白屏过程（在真机上近 1秒，在模拟器上比较快，在 200毫秒 左右），而且在完全退出后再进入，仍然会有这个白屏。
 仔细查看加载过程（其实猜猜都能知道）后可以发现，这个过程就是在加载我们的 js bundle，通常即便是一个小">
-<meta property="og:updated_time" content="2016-08-22T04:10:00.000Z">
+<meta property="og:updated_time" content="2016-08-22T04:34:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Native 0.31 Bundle 预加载优化">
 <meta name="twitter:description" content="使用 React Native 开发混合应用的过程中，我们在打完 bundle 进 release 包后，会发现第一次进入页面（React 的 Activity）会有一个短暂的白屏过程（在真机上近 1秒，在模拟器上比较快，在 200毫秒 左右），而且在完全退出后再进入，仍然会有这个白屏。
@@ -396,7 +396,7 @@
 <p>优化后可以达到瞬间加载。</p>
 <h1 id="已知的坑">已知的坑</h1><p>由于进行了预加载，目前已知的问题是 <code>Modal</code> 无法显示 —— 因为 <code>Modal</code> 在 Android 的实现使用了 <code>Dialog</code>，而该 View 将创建 <code>ReactRootView</code> 的 context 作为参数传给了 <code>Dialog</code>，而不是实际运行时所在的 <code>Activity</code> context。查看源码可以验证（com.facebook.react.views.modal）。</p>
 <p><code>TimePickerAndroid</code> 这类 picker 则没有问题。见 <a href="https://github.com/facebook/react-native/issues/9496" target="_blank" rel="external">issue 9496</a></p>
-<p>作为规避方案，目前使用 <code>MutableContextWrapper</code> 进行 context 替换。见 GitHub 上的具体实现。</p>
+<p>作为规避方案，目前使用 <code>MutableContextWrapper</code> 进行 context 替换。见 GitHub 上的具体实现（感谢评论里的 Lovecraft 提供的方案）。</p>
 
       
     </div>
