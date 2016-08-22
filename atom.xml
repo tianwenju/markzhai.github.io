@@ -74,7 +74,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/08/20/react-native-0-31-preload-optimization/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/20/react-native-0-31-preload-optimization/</id>
     <published>2016-08-20T04:41:12.000Z</published>
-    <updated>2016-08-22T03:07:28.000Z</updated>
+    <updated>2016-08-22T04:10:00.000Z</updated>
     <content type="html"><![CDATA[<p>使用 React Native 开发混合应用的过程中，我们在打完 bundle 进 release 包后，会发现第一次进入页面（React 的 Activity）会有一个短暂的白屏过程（在真机上近 <strong>1秒</strong>，在模拟器上比较快，在 <strong>200毫秒</strong> 左右），而且在完全退出后再进入，仍然会有这个白屏。</p>
 <p>仔细查看加载过程（其实猜猜都能知道）后可以发现，这个过程就是在加载我们的 js bundle，通常即便是一个小的 RN 应用（混合应用中的子业务），也会动辄到 1MB 的大小，除非是完整的 RN 应用，可以把这个当做是启动速度，否则这样的加载速度都是对用户体验的很大伤害。</p>
 <p>于是我们决定进行 Bundle 预加载的优化。</p>
@@ -97,8 +97,8 @@
 <p>ReactCardActivity 继承我们自己的 ReactActivity：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReactCardActivity</span> <span class="keyword">extends</span> <span class="title">MrReactActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> ReactInfo reactInfo = <span class="keyword">new</span> ReactInfo(<span class="string">"card"</span>, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getMainComponentName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reactInfo.getMainComponentName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ReactInfo <span class="title">getReactInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reactInfo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>优化后可以达到瞬间加载。</p>
 <h1 id="已知的坑">已知的坑</h1><p>由于进行了预加载，目前已知的问题是 <code>Modal</code> 无法显示 —— 因为 <code>Modal</code> 在 Android 的实现使用了 <code>Dialog</code>，而该 View 将创建 <code>ReactRootView</code> 的 context 作为参数传给了 <code>Dialog</code>，而不是实际运行时所在的 <code>Activity</code> context。查看源码可以验证（com.facebook.react.views.modal）。</p>
-<p><code>TimePickerAndroid</code> 这类 picker 则没有问题。</p>
-<p>见 <a href="https://github.com/facebook/react-native/issues/9496" target="_blank" rel="external">issue 9496</a></p>
+<p><code>TimePickerAndroid</code> 这类 picker 则没有问题。见 <a href="https://github.com/facebook/react-native/issues/9496" target="_blank" rel="external">issue 9496</a></p>
+<p>作为规避方案，目前使用 <code>MutableContextWrapper</code> 进行 context 替换。见 GitHub 上的具体实现。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>使用 React Native 开发混合应用的过程中，我们在打完 bundle 进 release 包后，会发现第一次进入页面（React 的 Activity）会有一个短暂的白屏过程（在真机上近 <strong>1秒</strong>，在模拟器上比较快，在 <strong]]>
