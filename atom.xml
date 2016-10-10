@@ -70,6 +70,25 @@
   </entry>
   
   <entry>
+    <title><![CDATA[记一次 Data Binding 在 library module 中遇到的大坑]]></title>
+    <link href="http://blog.zhaiyifan.cn/2016/10/11/data-binding-in-library-module/"/>
+    <id>http://blog.zhaiyifan.cn/2016/10/11/data-binding-in-library-module/</id>
+    <published>2016-10-11T08:40:10.000Z</published>
+    <updated>2016-10-10T09:29:16.000Z</updated>
+    <content type="html"><![CDATA[<p>使用 Data Binding 也有半年多了，从最初的 setVariable，替换 findViewById，到比较高级的双向绑定，自定义 Adapter、Component，查看源码了解编译、运行流程，也算是小有成果，且没有碰到 Data Binding 本身实现上的问题。</p>
+<p>然而，最近在一次重构组件化（见 MDCC 上冯森林的《回归初心，从容器化到组件化》）的过程中，碰到了一个比较严重的 BUG。已经提交 issue（<a href="https://code.google.com/p/android/issues/detail?id=224028&amp;thanks=224028&amp;ts=1475156801" target="_blank" rel="external">#224048</a>）到了 AOSP，虽然改起来是不麻烦，但是因为是 gradle plugin，所以 - -，还是让 Google 自己来吧。希望能早日修复。</p>
+<h1 id="Library_module_生成_class">Library module 生成 class</h1>]]></content>
+    <summary type="html">
+    <![CDATA[<p>使用 Data Binding 也有半年多了，从最初的 setVariable，替换 findViewById，到比较高级的双向绑定，自定义 Adapter、Component，查看源码了解编译、运行流程，也算是小有成果，且没有碰到 Data Binding 本身实现上的问]]>
+    </summary>
+    
+      <category term="Data Binding" scheme="http://blog.zhaiyifan.cn/tags/Data-Binding/"/>
+    
+      <category term="Android" scheme="http://blog.zhaiyifan.cn/categories/Android/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[React Native 0.31 Bundle 预加载优化]]></title>
     <link href="http://blog.zhaiyifan.cn/2016/08/20/react-native-0-31-preload-optimization/"/>
     <id>http://blog.zhaiyifan.cn/2016/08/20/react-native-0-31-preload-optimization/</id>
@@ -1590,82 +1609,6 @@
     <summary type="html">
     <![CDATA[<ul>
 <li>原文链接 : <a href="http://blog.karumi.com/world-class-testing-development-pipeline-for-android-part-2/" target="_blank" rel="external"]]>
-    </summary>
-    
-      <category term="Android" scheme="http://blog.zhaiyifan.cn/tags/Android/"/>
-    
-      <category term="Test" scheme="http://blog.zhaiyifan.cn/tags/Test/"/>
-    
-      <category term="Android Test" scheme="http://blog.zhaiyifan.cn/categories/Android-Test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[世界级的Android测试开发流程（一）]]></title>
-    <link href="http://blog.zhaiyifan.cn/2016/02/23/world-class-testing-development-pipeline-for-android-part-1/"/>
-    <id>http://blog.zhaiyifan.cn/2016/02/23/world-class-testing-development-pipeline-for-android-part-1/</id>
-    <published>2016-02-23T03:25:24.000Z</published>
-    <updated>2016-02-24T10:32:52.000Z</updated>
-    <content type="html"><![CDATA[<ul>
-<li>原文链接 : <a href="http://blog.karumi.com/world-class-testing-development-pipeline-for-android/" target="_blank" rel="external">World-Class Testing Development Pipeline for Android - Part 1.</a></li>
-<li>原文作者 : <a href="hello@karumi.com">Karumi</a></li>
-<li>译文出自 : <a href="https://github.com/xitu/gold-miner" target="_blank" rel="external">掘金翻译计划</a></li>
-<li>译者 : <a href="https://github.com/markzhai" target="_blank" rel="external">markzhai</a></li>
-<li>校对者: <a href="https://github.com/lfkdsk" target="_blank" rel="external">JustWe</a>, <a href="https://github.com/xcc3641" target="_blank" rel="external">Hugo Xie</a></li>
-</ul>
-<h1 id="世界级的_Android_测试开发流程（一）">世界级的 Android 测试开发流程（一）</h1><p>在开发完移动应用并和手动QA团队合作了数年后，我们决定开始写测试。作为工程师，我们知道，<strong>自动化测试是成功的移动开发之关键。</strong> 在这篇博客里，我将会分享我们的故事——Karumi启动于几年前的测试故事。这是系列博客的第一篇，我们将会囊括世界级的 Android测试流程的所有方面。</p>
-<p>几年前，我们开始为移动应用写测试。我们对测试了解有限，所以我们致力于接受测试并使用最常用的框架来做单元测试，一个简单的test runner和mocking库。过了一段时间我们遇到了问题：</p>
-<ul>
-<li>我们不知道测试什么和如何去测试它。</li>
-<li>我们的代码还没准备好被测试。</li>
-<li>我们沉迷于Mike Cohn的测试金字塔，却没有考虑到我们在写的软件类型。</li>
-<li>即使我们的测试通过了，也不意味着代码没有问题。</li>
-</ul>
-<p>是不是很可怕? 我们花了很多时间去克服这些挑战，在某个时刻我们意识到是方法错了。即便测试覆盖率很高，我们的软件仍然在出错。最坏的是，从我们的测试中，无法得到任何反馈。<strong>解决我们的问题的关键是识别出我们一直碰到的问题所在：</strong></p>
-<ul>
-<li>我们的接受测试太难写了，因为我们需要提供配置API来模拟接受测试的初始状态。</li>
-<li>大部分时候，我们的测试会随机失败，而我们不知道为什么。只能用重复编译来通过测试。</li>
-<li>我们有大量的单元测试和高覆盖率，但我们的单元测试从未失败。即便应用出问题了，我们的测试仍然能通过。</li>
-<li>我们用很多时间去验证mock的调用。</li>
-<li>我们不得不使用一些“魔法”测试工具来测试代码，一个私有方法或者模拟静态方法的调用结果。</li>
-</ul>
-<p>这是我们决定停下，并开始思考为什么我们对自己的测试感觉不爽。我们快速需要找到问题的解决方案。我们的项目告诉说我们做错了，我们需要解决方案，<strong>我们需要一个测试开发流程</strong>。话虽如此，为了改善程序质量，测试开发流程不总是第一件要完善的事。</p>
-<p><strong>一个测试开发流程定义了测什么、怎么测</strong>。用什么工具，为什么用？测试的范围是什么？<strong>即便有良好的测试开发流程，可测试的代码对有自信去写测试仍然是必须的</strong>，因为大部分的测试是不可能的，或者至少，很难去写。如果你的代码没有准备好，与代码以及单元或集成范围最贴近的测试并不是那么容易去写的。因此，我们决定带着这些目标，首先识别出应用中的问题，然后去解决它们。那么问题来了，如果我们的代码能够是完美的，我们对它有何期望呢？期望是：</p>
-<ul>
-<li>应用必须是可测试的。</li>
-<li>代码必须是可读的。</li>
-<li>职责必须是清晰而有结构的。</li>
-<li>低耦合高内聚。</li>
-<li>代码必须是诚实的。</li>
-</ul>
-<p>在重构之前代码一团糟。软件职责丢失在代码的行与行之间。实现细节是完全暴露的，activities和fragments负责处理软件的状态，到处都是软件状态。另外，我们的业务逻辑和框架是耦合的。带着这些问题，我们决定把应用架构改成其他更有结构的东西。<strong>我们使用的架构是 <a href="https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank" rel="external">“Clean Architecture”</a>。除了架构的核心内容，我们还应用了一些和GUI应用相关模式像是MVP和MMVM，以及数据处理相关的模式像是Repository模式</strong>。架构详情和这篇博客没有关系（我们会在未来的博文中讨论到它），“Clean Architecture”的<strong>核心元素</strong>与<strong>最重要的SOLID原则之一，<a href="http://martinfowler.com/articles/dipInTheWild.html" target="_blank" rel="external">依赖倒置原则</a></strong>相关。</p>
-<p><strong>依赖倒置原则提出你的代码必须依赖于抽象而不是具体实现</strong>。这个原则，仅仅是这个原则就是通向成功的钥匙。它是<strong>改变我们的代码并适配测试策略以有效克服我们手上问题的关键</strong>。依赖于抽象既无关于依赖注入框架，也无关于使用Java接口来定义类的API。然而，它与隐藏细节有关。根据不同角色，软件职责改变的点，引入<a href="http://www.martinfowler.com/bliki/TestDouble.html" target="_blank" rel="external">测试替身(TestDouble)</a>的点去创建层，大大限制了测试的范围。</p>
-<p><strong>通过依赖倒置原则，我们能够去选择正确数量的代码去测试</strong>。一旦这些点清晰了，我们就停下为所有的mocks去写测试。我们能够使用准确数字的mocks去覆盖一个测试用例，并确保我们在测试软件状态而不仅仅是组件之间的交互。</p>
-<p>一旦应用架构清晰了，我们开始 <strong>定义我们的测试开发流程。我们的目标是回答2个问题：我们想要测试什么？我们如何去测试它？</strong> 在尝试找出如何分割测试，并用简单又可读的方式去写以后，我们注意到层次分离是最完美的出发点。结果，解决方案变得清晰：</p>
-<p>我们想要测试什么?</p>
-<ul>
-<li>独立于任何框架或者库去测试我们的业务逻辑。</li>
-<li>测试我们的API集成。</li>
-<li>持久化框架的集成。</li>
-<li>一些通用UI组件。</li>
-<li>测试黑盒场景下，从用户视角写的的接收准则。</li>
-</ul>
-<p>我们想要怎么去测试?</p>
-<ul>
-<li>这是我们在下一博客文章要说的东西，敬请期待！;)</li>
-</ul>
-<p>参考:</p>
-<ul>
-<li>世界级的Android测试开发流程幻灯片 by Pedro Vicente Gómez Sánchez. <a href="http://www.slideshare.net/PedroVicenteGmezSnch/worldclass-testing-development-pipeline-for-android" target="_blank" rel="external">http://www.slideshare.net/PedroVicenteGmezSnch/worldclass-testing-development-pipeline-for-android</a></li>
-<li>Mike Cohn的测试金字塔 by Martin Fowler. <a href="http://martinfowler.com/bliki/TestPyramid.html" target="_blank" rel="external">http://martinfowler.com/bliki/TestPyramid.html</a></li>
-<li>Clean架构 by Uncle Bob. <a href="https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank" rel="external">https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
-<li>在野外的DIP by Martin Fowler.<a href="http://martinfowler.com/articles/dipInTheWild.html" target="_blank" rel="external">http://martinfowler.com/articles/dipInTheWild.html</a></li>
-<li>测试替身 by Martin Fowler. <a href="http://www.martinfowler.com/bliki/TestDouble.html" target="_blank" rel="external">http://www.martinfowler.com/bliki/TestDouble.html</a></li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<ul>
-<li>原文链接 : <a href="http://blog.karumi.com/world-class-testing-development-pipeline-for-android/" target="_blank" rel="external">World-]]>
     </summary>
     
       <category term="Android" scheme="http://blog.zhaiyifan.cn/tags/Android/"/>

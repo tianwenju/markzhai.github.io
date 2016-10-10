@@ -47,6 +47,14 @@
     </entry>
     
     <entry>
+      <title><![CDATA[记一次 Data Binding 在 library module 中遇到的大坑]]></title>
+      <url>http://blog.zhaiyifan.cn/2016/10/11/data-binding-in-library-module/</url>
+      <content type="html"><![CDATA[<p>使用 Data Binding 也有半年多了，从最初的 setVariable，替换 findViewById，到比较高级的双向绑定，自定义 Adapter、Component，查看源码了解编译、运行流程，也算是小有成果，且没有碰到 Data Binding 本身实现上的问题。</p>
+<p>然而，最近在一次重构组件化（见 MDCC 上冯森林的《回归初心，从容器化到组件化》）的过程中，碰到了一个比较严重的 BUG。已经提交 issue（<a href="https://code.google.com/p/android/issues/detail?id=224028&amp;thanks=224028&amp;ts=1475156801" target="_blank" rel="external">#224048</a>）到了 AOSP，虽然改起来是不麻烦，但是因为是 gradle plugin，所以 - -，还是让 Google 自己来吧。希望能早日修复。</p>
+<h1 id="Library_module_生成_class">Library module 生成 class</h1>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[React Native 0.31 Bundle 预加载优化]]></title>
       <url>http://blog.zhaiyifan.cn/2016/08/20/react-native-0-31-preload-optimization/</url>
       <content type="html"><![CDATA[<p>使用 React Native 开发混合应用的过程中，我们在打完 bundle 进 release 包后，会发现第一次进入页面（React 的 Activity）会有一个短暂的白屏过程（在真机上近 <strong>1秒</strong>，在模拟器上比较快，在 <strong>200毫秒</strong> 左右），而且在完全退出后再进入，仍然会有这个白屏。</p>
