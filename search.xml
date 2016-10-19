@@ -328,13 +328,13 @@
 <h1 id="Vue_1-x_TO_2-0">Vue 1.x TO 2.0</h1><p>通过使用 <a href="https://github.com/vuejs/vue-migration-helper" target="_blank" rel="external">vue-migration-helper</a> 可以快速扫出需要替换的代码。</p>
 <p>主要有以下几类：</p>
 <ul>
-<li>官方依赖，比如 vue-resource、vue-router、vue-loader、vue-hot-reload-api 等。</li>
-<li>第三方库，比如 vue-invalidate。</li>
+<li>官方依赖，比如 vue-resource、vue-router（这个升级完接口也改了不少，<a href="http://vuejs.org/guide/migration-vue-router.html#deactivate-deprecated" target="_blank" rel="external">迁移向导</a>）、vue-loader、vue-hot-reload-api、vue-invalidate（还在升级中）等。</li>
+<li>第三方库。</li>
 <li>UI组件库，比如 vux（目前计划是11月发布适配 2.0 的版本）、饿了么前端提供的那些（并没有给出更新计划）。</li>
 <li>组件间通讯，不能再使用 dispatch，而需要使用全局 eventbus 或者 vuex。</li>
-<li>方法废弃见 <a href="https://github.com/vuejs/vue/issues/2873" target="_blank" rel="external">issue 2873</a></li>
-<li>各种 API 废弃。</li>
+<li>各种 API 废弃，见 <a href="https://github.com/vuejs/vue/issues/2873" target="_blank" rel="external">issue 2873</a>，像是 attached、activated 这些生命周期 API 都被干掉了。</li>
 </ul>
+<p>具体一点的话，像是 $index 现在必须使用 index 了（在 v-for 中显示声明），Filters 也不能像以前那样到处用了，等等等等，要升级还是挺痛苦的。</p>
 <h1 id="尾声">尾声</h1><p>差不多也就是这样了。如果你是一个有一定经验并懂得基本 HTML 和 CSS 的高级工程师，我相信几天你就能看完并上手它了，毕竟对比 React 那一整套东西，还是相对简单的。</p>
 ]]></content>
     </entry>
