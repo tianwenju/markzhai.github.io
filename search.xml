@@ -47,6 +47,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[从零开始的Android新项目11 - 组件化实践]]></title>
+      <url>http://blog.zhaiyifan.cn/2016/10/20/android-new-project-from-0-p11/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Vue.js 2.0 快速上手 - 基础篇]]></title>
       <url>http://blog.zhaiyifan.cn/2016/10/17/vue-2-quick-start/</url>
       <content type="html"><![CDATA[<p>Vue 2.0 出来也有一段时间了，作为一个有志向的全面发展好青年，在征服 Vue 1.x，React，React Native 后，为了之后能更快迁移公司的项目到 Vue 2.x，于是决定先看看 Vue 2.0。</p>
@@ -334,7 +340,12 @@
 <li>组件间通讯，不能再使用 dispatch，而需要使用全局 eventbus 或者 vuex。</li>
 <li>各种 API 废弃，见 <a href="https://github.com/vuejs/vue/issues/2873" target="_blank" rel="external">issue 2873</a>，像是 attached、activated 这些生命周期 API 都被干掉了。</li>
 </ul>
-<p>具体一点的话，像是 $index 现在必须使用 index 了（在 v-for 中显示声明），Filters 也不能像以前那样到处用了，等等等等，要升级还是挺痛苦的。</p>
+<p>具体一点的话，像是</p>
+<h2 id="index">index</h2><p>$index 现在必须使用 index 了（在 v-for 中显示声明）</p>
+<h2 id="filters">filters</h2><p>不能像以前那样到处用了，只在{{}}中生效，转而用计算属性或者方法吧。</p>
+<h2 id="transition">transition</h2><p>transition 属性被废弃了。可以看看新的 <a href="https://vuejs.org/guide/transitions.html" target="_blank" rel="external">Transitions 文档</a>。</p>
+<h2 id="vue_router">vue router</h2><p>加了全局和离开当前页面的钩子，router-link，router data，等等。</p>
+<p>等等等等，要升级还是挺痛苦的。啊，对了 vuex 也升级到 2.0 了。更像 redux 了。心情很复杂</p>
 <h1 id="尾声">尾声</h1><p>差不多也就是这样了。如果你是一个有一定经验并懂得基本 HTML 和 CSS 的高级工程师，我相信几天你就能看完并上手它了，毕竟对比 React 那一整套东西，还是相对简单的。</p>
 ]]></content>
     </entry>
