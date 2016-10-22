@@ -74,7 +74,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/10/20/android-new-project-from-0-p11/"/>
     <id>http://blog.zhaiyifan.cn/2016/10/20/android-new-project-from-0-p11/</id>
     <published>2016-10-20T14:03:13.000Z</published>
-    <updated>2016-10-22T05:18:15.000Z</updated>
+    <updated>2016-10-22T05:24:57.000Z</updated>
     <content type="html"><![CDATA[<p>最近更新不太频繁，一方面工作上比较忙，除了 Android 也在负责前端，另外周末和深夜也在帮人做 Go 后台、设计技术方案、管进度的事情（因为报酬不错没忍心拒绝，而且确实对个人成长还有帮助），所以实在对不住。</p>
 <p>另外，文章最底下有捐款啊，最近真是都没钱吃饭了。。。</p>
 <h1 id="前言">前言</h1><p>这里的组件化，指的是 MDCC 2016 上冯森林提出的《回归初心，从容器化到组件化》。</p>
@@ -112,7 +112,7 @@
 <p>一个简单的做法是：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sourceSets &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        <span class="keyword">if</span> (isDebug.toBoolean()) &#123;</span><br><span class="line">            manifest.srcFile <span class="string">'src/debug/AndroidManifest.xml'</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            manifest.srcFile <span class="string">'src/release/AndroidManifest.xml'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样在编译时使用两个 manifest，但是这样一来，两者就有很多重复的内容，会有维护、比较的成本。</p>
 <p>我们可以利用自带 flavor manifest merge，分别对应 debug/AndroidManifest.xml, main/AndroidManifest.xml, 以及 release/AndroidManifest.xml。</p>
-<p>main 下的 manifest 写通用的东西，另外 2 个分别写各自独立的，通常 release 的 manifest 只是一个空的 application 标签，而 debug 的会有 application 和调试用的 activity 及权限。</p>
+<p>main 下的 manifest 写通用的东西，另外 2 个分别写各自独立的，通常 release 的 manifest 只是一个空的 application 标签，而 debug 的会有 application 和调试用的 activity（你总得要有个启动 activity 吧）及权限。</p>
 <h2 id="Wrapper">Wrapper</h2><h2 id="Application">Application</h2><h2 id="坑">坑</h2><p>可以先阅读阿布的总结文章：<a href="http://abner-nimengbo.cn/2016/10/10/componetization/" target="_blank" rel="external">项目组件化之遇到的坑</a>，也感谢小梁抛砖引玉的 <a href="https://github.com/liangzhitao/ComponentizationApp" target="_blank" rel="external">Demo</a>。</p>
 <p>我这边简单也讲一讲。</p>
 <h3 id="Data_Binding">Data Binding</h3><p>见我上一篇写到的<a href="http://blog.zhaiyifan.cn/2016/10/11/data-binding-in-library-module/">记一次 Data Binding 在 library module 中遇到的大坑</a>，简单说起来就是 data binding 在 library module 的支持有一个 bug，就是不支持 get ViewModel 的方法，只能 set 进去，从而导致做好模块化的 module 在作为 application 可以独立运行后，作为 library module 无法通过编译。</p>
