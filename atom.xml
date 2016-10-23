@@ -74,7 +74,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/10/20/android-new-project-from-0-p11/"/>
     <id>http://blog.zhaiyifan.cn/2016/10/20/android-new-project-from-0-p11/</id>
     <published>2016-10-20T14:03:13.000Z</published>
-    <updated>2016-10-23T04:29:56.000Z</updated>
+    <updated>2016-10-23T04:36:33.000Z</updated>
     <content type="html"><![CDATA[<p>最近更新不太频繁，一方面工作上比较忙，除了 Android 也在负责前端，另外周末和深夜也在帮人做 Go 后台、设计技术方案、管进度的事情（因为报酬不错没忍心拒绝，而且确实对个人成长还有帮助），所以实在对不住。</p>
 <p>另外，文章最底下有捐款啊，最近真是都没钱吃饭了。。。</p>
 <h1 id="前言">前言</h1><p>这里的组件化，指的是 MDCC 2016 上冯森林提出的《回归初心，从容器化到组件化》。</p>
@@ -133,7 +133,8 @@
 <h3 id="最佳实践">最佳实践</h3><p>每个 module 包名都应该使用 “$packageName.module.$business” 形式，资源使用业务名开头，比如 “feed_ic_like.png”。</p>
 <p>另外，在组件化实践过程中可能碰到的就是依赖的问题了，然而因为我们项目本身就设计得还算不错，所以并没有在这方面需要做任何修改，整个项目的架构图如下：</p>
 <p><img src="/images/android-new-project-from-0-11-dependency.png" alt="Conversation"></p>
-<p>简化了不少，有些省略了，因为实在懒得画。</p>
+<p>简化了不少，有些省略了，因为实在懒得画。对模块来说，通用的东西放在底层 library（utils、widget），而只有自己用的则放在自己 module 就行了。</p>
+<p>作为一个善意提醒，如果一个模块分拆为三个模块，那 clean build 的速度肯定会变慢，要有心理准备。</p>
 <h2 id="模块隔离">模块隔离</h2><p>可参考上图，关键的点就是高内聚，低耦合。</p>
 <p>通用的东西按照其功能性划分在不同 library 模块中。见上图（已经省略了不少了，实际 module 更多一些）。</p>
 <p>改进点在于，从组件化角度来讲，data 和 domain 并不是一个 public 的 scope，也应该放在各个业务模块中，但因为目前的实现，进行重构代价太大，只能放在以后新模块进行实践。</p>
