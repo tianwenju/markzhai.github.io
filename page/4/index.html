@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,8 +18,12 @@
 
 
 
+  <meta name="google-site-verification" content="ieCGPLaYJPLAp6By_5652iPczS2GIfAPy9XGEkD6-e0" />
 
 
+
+
+  <meta name="baidu-site-verification" content="780t5iFaTK" />
 
 
 
@@ -29,46 +33,20 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="markzhai, zhaiyifan, 魔都三帅, 翟一帆, Android, React, React Native, Javascript" />
 
 
 
@@ -79,7 +57,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
 
 
 
@@ -102,27 +80,25 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '0',
-      author: '博主'
+      userId: '13060344',
+      author: 'MarkZhai'
     },
     algolia: {
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      hits: "",
+      labels: ""
     }
   };
 </script>
 
 
-
-  <link rel="canonical" href="http://blog.zhaiyifan.cn/page/4/"/>
 
 
 
@@ -136,6 +112,25 @@
   
 
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67533211-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?74dc0d49be7a61e341f6c897ee4d733a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -189,6 +184,26 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -267,9 +282,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2016/02/03/AndroidDevelopmentPatternsS2EP1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -341,6 +356,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/03/AndroidDevelopmentPatternsS2EP1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/AndroidDevelopmentPatternsS2EP1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -365,33 +387,16 @@
       
         
           
-            <p>视频见：<a href="https://www.youtube.com/watch?v=puhfMX8jb9c" target="_blank" rel="external">https://www.youtube.com/watch?v=puhfMX8jb9c</a><br>视频很短，但是这个主题还是很有价值的，能帮助我们开发者理解应用设计的一些模式规范。</p>
-<p>在我看来，作为一个前端开发者，我们不仅仅是去执行产品设计下发下来的东西，更多的是要去思考什么样的设计/交互是好的，什么样的需求是合理的，成为一个有独立思考的开发者。</p>
-<p>本篇是该系列第二季的第一集，介绍了Snackbar的使用场景（相信现在大部分的开发者使用的还只是Toast和Alert吧）。</p>
-<h2 id="正文">正文</h2><p>在你的应用中，交互信息的一个细节在于使用屏幕上的提示。但是，当那个信息很重要或者需要用户做决定的时候，你可能想要使用对话框(Alert)。</p>
-<p>在过去，你有2种方式：</p>
-<ol>
-<li>对话框。可以展示信息给用户，并让他们对其进行操作。<br>但是对话框是中断性的（强制用户停下正在做的，来处理你的对话框）。想想，你享受被打断的滋味吗？你喜欢那种去确认你想做的操作的感觉吗？还是喜欢弹出对话框？<br><img src="/images/android-development-patterns-s2-ep1-1.png" alt="android-development-patterns-s2-ep1-1"></li>
-</ol>
-<p>这种交互很让人烦躁，不是么？<br>所以，对话框需要尽可能保守地去使用，这就让我们来到了第二种方式。</p>
-<ol>
-<li>Toast<br>Toast可以确认用户做的事情确实发生了。</li>
-</ol>
-<p>但如果这个操作是破坏性的呢，比如删除？<br>你的用户可能不想去那么做，而现在他们惊慌地在找怎么撤销，并对你在他删除那张美女图片前不进行再次确认而感到无语。卧槽，这是要干啥。</p>
-<p>Snackbar就是为此而生的。</p>
-<p>Snackbar和Toast类似，但它更强大，因为它是可交互的（比如提供你的用户正在找的撤销操作）。<br><img src="/images/android-development-patterns-s2-ep1-2.png" alt="android-development-patterns-s2-ep1-2"></p>
-<p>Snackbar从屏幕底部浮起，用户可以将它划走，或者无视它（过一会自动消失，就像Toast那样）。Snackbar包含了一条短的信息，并能提供一个单一操作，比如撤销。</p>
-<p>所以你现在有3种组件来帮助你使用最完美的方式来打断用户。</p>
-<ul>
-<li>对话框：当用户的反应对你的app流程来说很重要，在这种时候你需要破坏性的干扰。</li>
-<li>Toast：给用户一个不会改变任何东西的小提示。</li>
-<li>Snackbar：前两者之间的区间内，Snackbar是你最好的朋友。</li>
-</ul>
-<h2 id="小结">小结</h2><p>对话框（Alerts）对于和用户交互来说是<strong>很重</strong>的一个操作，但它确实帮助你了解什么是恰当的，从而你的用户不会讨厌你。幸运的是，现在有了一个简单的回答：使用<a href="http://developer.android.com/reference/android/support/design/widget/Snackbar.html" target="_blank" rel="external">Snackbar!</a>。</p>
-<p>有一些微妙的场景，我们不知道如何在Toast和Snackbar之间抉择，那么<a href="http://www.google.com/design/spec/components/snackbars-toasts.html#" target="_blank" rel="external">Google的设计文档</a>包括了你可能需要的所有的详尽细节。如果你仍然希望做错，<a href="http://www.google.com/design/spec/components/dialogs.html#dialogs-behavior" target="_blank" rel="external">Dialog</a>当然也可以使用。但我们相信你能做得更好。所以成为一个更好的开发者，使用更好的选择：Snackbar。</p>
-<p>最后牢骚一句，国内一些app退出的时候还要弹个Dialog问你是不是要退出的交互，真是够了/(ㄒoㄒ)/~~</p>
-
-          
+          视频见：https://www.youtube.com/watch?v=puhfMX8jb9c视频很短，但是这个主题还是很有价值的，能帮助我们开发者理解应用设计的一些模式规范。
+在我看来，作为一个前端开发者，我们不仅仅是去执行产品设计下发下来的东西，更多的是要去思考什么样的设计/交互是好的，什么样的
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/03/AndroidDevelopmentPatternsS2EP1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -431,9 +436,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2016/02/01/realer-than-you-think/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -505,6 +510,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/realer-than-you-think/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/realer-than-you-think/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -529,20 +541,17 @@
       
         
           
-            <p>不是技术文章，只是一些闲言闲语罢了。</p>
-<h1 id="起">起</h1><p>难得的，我又失眠了。虽然说道又，但究竟上一次是什么时候，却已经记不清了，大抵是15年上半年的时候吧。</p>
-<p>不知道为什么，这几天情不自禁地想起些人和事，兴许是见的人多了，兴许是写的代码少了，兴许是周期性的孤独病又犯了。谁知道呢。只是有些难过，有些缅怀，又带着点悲伤。</p>
-<h1 id="承">承</h1><p>不知道你在想些什么。</p>
-<p>但我其实远比看起来简单得多。我说的，大约都是心中所想的。而我所做的，大抵也都是确实的真实反应。无论是对人、对事，即便那样对自己或许不是最好，我也一直都想做一个真实的人。明明抱着这样的想法，仍然被以为在掩饰什么，也只能是我不善表达的错了吧。</p>
-<h1 id="转">转</h1><p>面对认同的人，却又害怕掩饰后的我所不认识的脸。即便那是和别人的说说也好。但于我却好似尖刀。又只能装作什么都不知道，因为不知如何面对。</p>
-<p>愿我心如磐石。从此相逢路人。</p>
-<p>曾经想做一只猫，现在想来猫也有猫的想法。热带鱼倒是个不错的替代物，7秒后你我不认识彼此，一切又都变成新的。永远不会感到无聊。如此一来，我的逃避病是不是就能治好了。后来我终于发现，逃避是逃避不了的，只是把原来的痛苦埋起来，更浓更醇更痛罢了。索性大家们能幸福，我倒也有一种从环中解脱的感觉。</p>
-<h1 id="合">合</h1><p>最后来一段诗经里的话吧</p>
-<pre><code>我姑酌彼兕觥，维以不永伤。
-</code></pre><p>且行且珍惜。掩起眼泪继续往前行。<br>且看这世界能带给我多痛苦，我也自嘲着继续走下去。</p>
-<p>晚安。</p>
-
-          
+          不是技术文章，只是一些闲言闲语罢了。
+起难得的，我又失眠了。虽然说道又，但究竟上一次是什么时候，却已经记不清了，大抵是15年上半年的时候吧。
+不知道为什么，这几天情不自禁地想起些人和事，兴许是见的人多了，兴许是写的代码少了，兴许是周期性的孤独病又犯了。谁知道呢。只是有些难过，有些缅怀，又带着点悲伤。
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/01/realer-than-you-think/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -582,9 +591,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2016/01/29/android-app-architecture-2015/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -656,6 +665,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/29/android-app-architecture-2015/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/29/android-app-architecture-2015/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -680,120 +696,21 @@
       
         
           
-            <p>视频见：<a href="https://www.youtube.com/watch?v=BlkJzgjzL0c&amp;feature=em-subs_digest" target="_blank" rel="external">https://www.youtube.com/watch?v=BlkJzgjzL0c&amp;feature=em-subs_digest</a><br>印度哥们的发音每次都能让我一阵沉醉。</p>
-<h1 id="尽快行动">尽快行动</h1><ul>
-<li>早期的设计抉择对app的影响很大</li>
-<li>基本架构会让你思考需要解决的问题变得更容易或困难。</li>
-</ul>
-<h1 id="哪种模式？">哪种模式？</h1><ul>
-<li>MVC</li>
-<li>MVP</li>
-<li>Reactive</li>
-<li>Cairngorm</li>
-<li>Flux</li>
-<li>fdsafdsa</li>
-<li>MVVM</li>
-<li>CLEAN</li>
-</ul>
-<h1 id="这不是一个库的调查">这不是一个库的调查</h1><ul>
-<li>很多很棒的libraries展示了思考app的不同方式</li>
-<li>趋势迅速改变，但一些挑战是永恒的</li>
-<li>久而久之<a href="https://en.wikipedia.org/wiki/Lava_flow_(programming" target="_blank" rel="external">“熔岩流”</a>发生了</li>
-</ul>
-<p>Lava Flow 熔岩流：解释一下，大致就是说一些因为种种状况写得不太好的代码，恩，比如产品/PM/某些开发老大等呵呵呵催进度的时候，被加入到实际生产环境，而其实际仍处于开发中的阶段，导致后期需要维护原先未完成状态的设计的兼容性，比如各种API/命名等。而在这种team里面，随着熔岩流的不断发生，人员的进进出出变动，系统内部各种设计的目的丢失，导致之后的工程师不仅不敢清理这些代码，反而只能继续增加它们的复杂性，把系统弄得越来越混乱。</p>
-<p>如果你有一定工作经验，相信对这种状况一定不会陌生。:-D</p>
-<h1 id="为了用户体验（UX）的架构">为了用户体验（UX）的架构</h1><p>用户不会关心你系统的架构，他们只在意用户体验。</p>
-<p>接着我们看到了一个IM app的例子，用户发送了一个消息，然后就看到菊花转啊转，用户并不知道发生了什么。<br><img src="http://blog.zhaiyifan.cn/images/android-app-architecture-2015-demo-1.png" alt="android-app-architecture-2015-demo-1"></p>
-<h2 id="非持久化的提示">非持久化的提示</h2><p>见下图，view发送命令给view controller，然后controller请求网络，并等待网络response再更新view。<br><img src="http://blog.zhaiyifan.cn/images/android-app-architecture-2015-1.png" alt="android-app-architecture-2015-1"></p>
-<p>这样就会让用户觉得体验很差劲，如果我们试着再增加一个Model层（存储），如下图，当用户点击后，view controller并不会直接发送请求，而是先更改Model层状态，Model会先把更新后的状态回调给View Controller，更新View的UI，然后才去发送网络请求，并等待response，然后再次更新UI（其实这里的Model就是Repository层了，对上面屏蔽了数据来源，UGC/FEED流的app中这种体验很重要）。</p>
-<p><img src="http://blog.zhaiyifan.cn/images/android-app-architecture-2015-2.png" alt="android-app-architecture-2015-2"></p>
-<p>这种设计下，我们就很容易可以造一种假feed（比如真实的是黑色，假的是灰色），等到网络response回来了，再变成真feed（黑色）。</p>
-<p>这就是<em>非持久化的提示</em>。</p>
-<h2 id="缓存">缓存</h2><p>第二个例子，当我们从详情页退出回到列表页，然后再次点击列表项进入刚才的详情页，数据竟然不见了。2秒前我还在这里，为什么当我再次回来的时候数据就没了呢。</p>
-<p>因为数据不是持久化的！它只是一个短暂的存储，数据来源是网络。</p>
-<p><img src="http://blog.zhaiyifan.cn/images/android-app-architecture-2015-3.png" alt="android-app-architecture-2015-3"></p>
-<p>于是我们就得到了上图这样的设计，这样一来我们一进页面就能看到数据，因为数据来自本地，Application Logic会在收到View Controller请求的时候同时请求Persistent Model和Network。</p>
-<h2 id="非持久化提示队列">非持久化提示队列</h2><p>再来个神奇的场景，见下图，当用户输入一条信息后，UI展示了假数据，但当他继续输入后，却没有更新新的假数据到界面，这其中发生了什么呢？<br><img src="http://blog.zhaiyifan.cn/images/android-app-architecture-2015-demo-2.png" alt="android-app-architecture-2015-demo-2"></p>
-<p>因为我们的架构是基于命令的！见下面的后台处理示意图：<br><img src="http://blog.zhaiyifan.cn/images/android-app-architecture-2015-4.png" alt="android-app-architecture-2015-4"></p>
-<p>当我们处理请求的时候，我们同时只能做2件事（想象一个一个max为2的线程池），当我们在一个线程抓取bitmap，另一个线程发送数据到服务器的时候，我们无法处理第三个命令（比如从磁盘读取评论）。这是一种很糟糕的情况，调度的优先级有问题，但设计者很难料到这种情况的发生，因为并不知道每一个命令要花多久，你并不能总是估算出来。</p>
-<p>但我们可以分开这些东西。<br><img src="http://blog.zhaiyifan.cn/images/android-app-architecture-2015-5.png" alt="android-app-architecture-2015-5"><br>见上图，我们把队列分为网络和本地队列，这样就不会出现刚才的情形了。就算网络出了问题，用户还是能看到本地的假反馈。</p>
-<h2 id="Activity状态机">Activity状态机</h2><p><img src="http://blog.zhaiyifan.cn/images/android-app-architecture-2015-6.png" alt="android-app-architecture-2015-6"></p>
-<h2 id="小结">小结</h2><ol>
-<li>为了离线设计（为了更好的UX不能责怪网络）</li>
-</ol>
-<ul>
-<li>UI是基于model的</li>
-<li>App Logic负责同步model和服务器</li>
-<li>这两者不互相依赖（在必要的时候使用events和callbacks通知状态改变）</li>
-</ul>
-<h2 id="Application_Logic_-_应用逻辑">Application Logic - 应用逻辑</h2><ol>
-<li>解耦</li>
-</ol>
-<ul>
-<li>如果有用的话，使用依赖注入（use it if it helps)</li>
-<li>了解副作用（这不是那么容易的事，尤其是当你在只在自己桌上测试的时候，当你坐在那儿的时候一切都是在最佳状态）</li>
-<li>为了更好的性能，避免反射（笔者看过一些项目在命令中心大肆使用反射，这真的很让我无语）</li>
-</ul>
-<p>很多依赖注入框架有一个很重的运行期组件或者编译期组件。</p>
-<p>比如Dagger2在编译期做这些事，从而达到更好的性能。所以要仔细看看这些库，权衡它们的优劣。</p>
-<h2 id="网络">网络</h2><ol>
-<li>API设计</li>
-</ol>
-<ul>
-<li>为了你的用户设计后台（想到了一些后台API为了自己内部的解耦让app一个页面请求十几个接口）</li>
-<li>在服务器尽量处理更多</li>
-<li>传递metadata给客户端</li>
-</ul>
-<p>比如有一张很大很大的图片：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">user</span>":<span class="value">&#123;</span><br><span class="line">    "<span class="attribute">name</span>": <span class="value"><span class="string">"MarkZhai"</span></span>,</span><br><span class="line">    "<span class="attribute">photoUrl</span>": <span class="value"><span class="string">"https://blog.zhaiyifan.cn/..."</span></span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果只是传这些数据给客户端，那就意味着客户端需要自己处理很多逻辑，比如图片宽/高，processor等等：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">user</span>":<span class="value">&#123;</span><br><span class="line">    "<span class="attribute">name</span>": <span class="value"><span class="string">"MarkZhai"</span></span>,</span><br><span class="line">    "<span class="attribute">photoUrl</span>": <span class="value">&#123;</span><br><span class="line">      "<span class="attribute">width</span>" : <span class="value"><span class="number">300</span></span>,</span><br><span class="line">      "<span class="attribute">height</span>" : <span class="value"><span class="number">500</span></span>,</span><br><span class="line">      "<span class="attribute">url</span>" : <span class="value"><span class="string">"https://blog.zhaiyifan.cn/..."</span></span>,</span><br><span class="line">      "<span class="attribute">palette</span>" : <span class="value">&#123;&#125;</span><br><span class="line">    </span>&#125;</span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样就灵活很多。</p>
-<ol>
-<li>电池和数据</li>
-</ol>
-<ul>
-<li>尽量做批量请求</li>
-<li>如果有用的话，使用JobScheduler</li>
-</ul>
-<p>批量请求会更省电。不想让你的app臭名昭著吧。</p>
-<h2 id="Act_locally,_sync_globally!">Act locally, sync globally!</h2><p>为了更好的用户体验。全局只做同步，更多的用户回馈性操作在本地进行。</p>
-<h2 id="Activities_和_Fragments">Activities 和 Fragments</h2><p>（又想到了知乎3.0是怎么回事）</p>
-<ul>
-<li>Q: 我应该使用哪一个？</li>
-<li>A: Fragments是activity的封装部件</li>
-</ul>
-<p>So…Fragment的英译是碎片，所以更多的不要为了Fragment而Fragment，当Activity太大，承载太多不同UI的时候，再去尝试拆分为独立的一个个Fragment。笔者在这里想到了<em>单一职责原则</em>。</p>
-<h2 id="Fragments_和_Views">Fragments 和 Views</h2><p>Q: 我应该使用哪一个？</p>
-<ul>
-<li>Views只是螺母和螺钉，即最基本的组成部分</li>
-<li>而Activities和Fragments是有生命周期的结构</li>
-<li>使用两者，保持职责清晰</li>
-</ul>
-<h2 id="内存">内存</h2><ul>
-<li>避免在代码热路径上分配对象（如：可以在外面申明的对象去放到循环里重复申明）</li>
-<li>对象池 和 复用</li>
-</ul>
-<p>一切都是为了减少GC。</p>
-<p>来看一个例子</p>
-<p><code>Rect getBounds()</code> vs. <code>void getBounds(Rect in)</code></p>
-<p>显然第一个设计更干净更符合语言习惯，但它会额外创建一个<code>Rect</code>；而第二个方法则会从外面带Rect进来，从而不会做额外的内存分配。</p>
-<p>难道我们都得用第二个么？不。我们只需要在一些很热的路径上去考虑这些问题，比如那些会运行很多很多次的布局，比如每秒需要进行60次的绘制。而像是你的那些事件处理，像是点击等，你真的不需要去为此而那样在内部扭曲系统。</p>
-<h2 id="性能">性能</h2><ul>
-<li>如果丑陋的代码可以帮助你的用户，没问题<br>用户不会去看你的代码，只会看你的UI，如果你的UI很难看，那才是真正影响他们体验的。<br>而且编译后的代码不管怎么都会很难看（笑</li>
-<li>大部分的代码都不是性能关键</li>
-</ul>
-<h1 id="Demo">Demo</h1><p><a href="https://github.com/yigit/dev-summit-architecture-demo" target="_blank" rel="external">Talk is cheap, show me the code</a>.</p>
-<h1 id="Q_and_A">Q and A</h1><ol>
-<li><p>36min: 自定义view的使用<br>笔者在这想到了facebook发过的那篇feed view优化的文章，QQ空间Android版也有类似的实践。<br>许多人在应该使用Custom View的时候使用了Fragment，应该更多从<em>内聚UI块</em>来看待这个问题。比如有一些事件需要这块UI的某一个部分来响应，那它就更像viewgroup。而如果其中的一部分需要响应应用的其他元素，像是生命周期，做了一些事像是注册事件，那它可能更适合作为一个fragment。但人们在考虑特定子段的时候总会更偏重于fragment。</p>
-</li>
-<li><p>37:33min：怎么在app死掉的时候处理任务到磁盘的串行化和停止<br>在Demo里直接使用了演讲者自己写的Job Queue，开发者可以对它做简单的串行化，比如使用<code>Tape</code>。</p>
-</li>
-<li><p>在这个应用里，你会使用sync adapter还是异步REST请求来和服务器沟通？<br>在这个demo里，我们分开了本地和网络任务。对本地任务，我们总是使用同步请求。而对网络任务，我们使用Job Queue。</p>
-</li>
-<li><p>39min的时候有一个问题，提到了服务器数据问题，这里也有一个很重要的原则：不信任服务器，保持本地model的一致性。<br>在Model保存前，总是去检查是否正确（Null Pattern也是一个很好的实践哦）。</p>
-</li>
-</ol>
+          视频见：https://www.youtube.com/watch?v=BlkJzgjzL0c&amp;feature=em-subs_digest印度哥们的发音每次都能让我一阵沉醉。
+尽快行动
+早期的设计抉择对app的影响很大
+基本架构会让你思考需要解决的问题变得更容易或困难。
 
-          
+哪种模式？
+MV
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/29/android-app-architecture-2015/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -833,9 +750,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2016/01/16/BlockCanaryTransparentPerformanceMonitor/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -907,6 +824,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/16/BlockCanaryTransparentPerformanceMonitor/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/16/BlockCanaryTransparentPerformanceMonitor/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -931,47 +855,17 @@
       
         
           
-            <p>BlockCanary是我利用个人时间开发的Android平台上的一个轻量的，非侵入式的性能监控组件，应用只需要简单地加几行，提供一些该组件需要的上下文环境就可以在使用应用的时候检测主线程上的各种卡顿问题，并通过组件提供的各种信息分析出原因并进行修复。</p>
-<p>代码可找我(87224330)要。</p>
-<h2 id="背景">背景</h2><p>在复杂的项目环境中，由于历史代码庞大，业务复杂，包含各种第三方库，偶尔再来个jni调用，所以在出现了卡顿的时候，我们很难定位到底是哪里出现了问题，即便知道是哪一个Activity/Fragment，也仍然需要进去里面一行一行看，动辄数千行的类再加上跳来跳去调来调去的，结果就是不了了之随它去了，实在不行了再优化吧。于是一拖再拖，最后可能压根就改不动了，客户端越来越卡。</p>
-<p>事实上，很多情况下卡顿不是必现的，它们可能与机型、环境、操作等有关，存在偶然性，即使发生了，再去查那如山般的logcat，也不一定能找到卡顿的原因，是我们自己的应用导致的还是其他应用抢占资源导致的？是哪些方法导致的？很难去回朔。有些机型自己修改了api导致的卡顿，还必须拿那台机器才能去调试找原因。</p>
-<p>BlockCanary就是来解决这个问题的。告别打点和调试，哪里卡顿，一目了然。</p>
-<h2 id="介绍">介绍</h2><p>BlockCanary对主线程操作进行了完全透明的监控，并能输出有效的信息，帮助开发分析、定位到问题所在，迅速优化应用。其特点有：</p>
-<ul>
-<li>非侵入式，简单的两行就打开监控，不需要到处打点，破坏代码优雅性。</li>
-<li>精准，输出的信息可以帮助定位到问题所在（精确到行），不需要像Logcat一样，慢慢去找。</li>
-</ul>
-<p>目前包括了核心监控输出文件，以及UI显示卡顿信息功能。仅支持Android端。</p>
-<h2 id="原理">原理</h2><p>熟悉Message/Looper/Handler系列的同学们一定知道<code>Looper.java</code>中这么一段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Looper sMainLooper;  <span class="comment">// guarded by Looper.class</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Initialize the current thread as a looper, marking it as an</span><br><span class="line"> * application's main looper. The main looper for your application</span><br><span class="line"> * is created by the Android environment, so you should never need</span><br><span class="line"> * to call this function yourself.  See also: &#123;<span class="doctag">@link</span> #prepare()&#125;</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepareMainLooper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    prepare(<span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">synchronized</span> (Looper.class) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sMainLooper != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"The main Looper has already been prepared."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        sMainLooper = myLooper();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Returns the application's main looper, which lives in the main thread of the application.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Looper <span class="title">getMainLooper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (Looper.class) &#123;</span><br><span class="line">        <span class="keyword">return</span> sMainLooper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>即整个应用的主线程，只有这一个looper，不管有多少handler，最后都会回到这里。</p>
-<p>如果再细心一点会发现在Looper的loop方法中有这么一段<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        <span class="comment">// This must be in a local variable, in case a UI event sets the logger</span></span><br><span class="line">        Printer logging = me.mLogging;</span><br><span class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logging.println(<span class="string">"&gt;&gt;&gt;&gt;&gt; Dispatching to "</span> + msg.target + <span class="string">" "</span> +</span><br><span class="line">                    msg.callback + <span class="string">": "</span> + msg.what);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        msg.target.dispatchMessage(msg);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logging.println(<span class="string">"&lt;&lt;&lt;&lt;&lt; Finished to "</span> + msg.target + <span class="string">" "</span> + msg.callback);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>是的，就是这个Printer - mLogging，它在每个message处理的前后被调用，而如果主线程卡住了，不就是在dispatchMessage里卡住了吗？</p>
-<p>核心流程图：<br><img src="http://blog.zhaiyifan.cn/images/blockcanary_flow.png" alt="flow"></p>
-<p>该组件利用了主线程的消息队列处理机制，通过</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Looper.getMainLooper().setMessageLogging(mainLooperPrinter);</span><br></pre></td></tr></table></figure>
-<p>并在<code>mainLooperPrinter</code>中判断start和end，来获取主线程dispatch该message的开始和结束时间，并判定该时间超过阈值(如2000毫秒)为主线程卡慢发生，并dump出各种信息，提供开发者分析性能瓶颈。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">println</span><span class="params">(String x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!mStartedPrinting) &#123;</span><br><span class="line">        mStartTimeMillis = System.currentTimeMillis();</span><br><span class="line">        mStartThreadTimeMillis = SystemClock.currentThreadTimeMillis();</span><br><span class="line">        mStartedPrinting = <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        mStartedPrinting = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (isBlock(endTime)) &#123;</span><br><span class="line">            notifyBlockEvent(endTime);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isBlock</span><span class="params">(<span class="keyword">long</span> endTime)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> endTime - mStartTimeMillis &gt; mBlockThresholdMillis;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p><strong>说到此处，想到是不是可以用mainLooperPrinter来做更多事情呢？既然主线程都在这里，那只要parse出app包名的第一行，每次打印出来，是不是就不需要打点也能记录出用户操作路径？ 再者，比如想做onClick到页面创建后的耗时统计，是不是也能用这个原理呢？ 之后可以试试看这个思路（目前存在问题是获取线程堆栈是定时3秒取一次的，很可能一些比较快的方法操作一下子完成了没法在stacktrace里面反映出来）。</strong></p>
-<h2 id="功能">功能</h2><p>BlockCanary会在发生卡顿（通过MonitorEnv的getConfigBlockThreshold设置）的时候记录各种信息，输出到配置目录下的文件，并弹出消息栏通知（可关闭）。</p>
-<p>简单的使用如在开发、测试、Monkey的时候，Debug包启用</p>
-<ul>
-<li>开发可以通过图形展示界面直接看信息，然后进行修复</li>
-<li>测试可以把log丢给开发，也可以通过卡慢详情页右上角的更多按钮，分享到各种聊天软件（不要怀疑，就是抄的LeakCanary）</li>
-<li>Monkey生成一堆的log，找个专人慢慢过滤记录下重要的卡慢吧</li>
-</ul>
-<p>还可以通过Release包用户端定时开启监控并上报log，后台匹配堆栈过滤同类原因，提供给开发更大的样本环境来优化应用。</p>
-<p>本项目提供了一个友好的展示界面，供开发测试直接查看卡慢信息（基于LeakCanary的界面修改）。</p>
-<p>dump的信息包括：</p>
-<ul>
-<li>基本信息：安装包标示、机型、api等级、uid、CPU内核数、进程名、内存、版本号等</li>
-<li>耗时信息：实际耗时、主线程时钟耗时、卡顿开始时间和结束时间</li>
-<li>CPU信息：时间段内CPU是否忙，时间段内的系统CPU/应用CPU占比，I/O占CPU使用率</li>
-<li>堆栈信息：发生卡慢前的最近堆栈，可以用来帮助定位卡慢发生的地方和重现路径</li>
-</ul>
-<p>sample如下图，可以精确定位到代码中哪一个类的哪一行造成了卡慢。<br><img src="http://blog.zhaiyifan.cn/images/blockcanary_log_sample1.png" alt="blockcanary log sample"></p>
-<h2 id="总结">总结</h2><p>BlockCanary作为一个Android组件，目前还有局限性，因为其在一个完整的监控系统中只是一个生产者，还需要对应的消费者去分析日志，比如归类排序，以便看出哪些卡慢更有修复价值，需要优先处理；又比如需要过滤机型，有些奇葩机型的问题造成的卡慢，到底要不要去修复是要斟酌的。扯远一点的话，像是埋点除了统计外，完全还能用来做链路监控，比如一个完整的流程是A -&gt; B -&gt; D -&gt; E, 但是某个时间节点突然A -&gt; B -&gt; D后没有到达E，这时候监控平台就可以发出预警，让开发人员及时定位。很多监控方案都需要C/S两端的配合。</p>
-
-          
+          BlockCanary是我利用个人时间开发的Android平台上的一个轻量的，非侵入式的性能监控组件，应用只需要简单地加几行，提供一些该组件需要的上下文环境就可以在使用应用的时候检测主线程上的各种卡顿问题，并通过组件提供的各种信息分析出原因并进行修复。
+代码可找我(87224330)要。
+背景在复杂
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/16/BlockCanaryTransparentPerformanceMonitor/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1011,9 +905,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2015/12/07/AopBasedMonitor/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1085,6 +979,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/07/AopBasedMonitor/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/07/AopBasedMonitor/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1109,15 +1010,16 @@
       
         
           
-            <h1 id="什么是埋点">什么是埋点</h1><p>埋点（打点）其实就是操作的记录，又细分为本地和在线两种，前者记录在log里供开发分析问题用，后者则直接上传到服务器，会被用到像是BI、PD分析业务趋势上。最常见的像是在activity的部分生命周期记录，或者点击操作的时候上报一下。</p>
-<p>虽然其本身只是一两行代码的事，却会对客户端代码的整洁性产生影响，而且本身也不够灵活，需要在各个地方或者基类写代码，很难做一些特例。</p>
-<h1 id="AOP">AOP</h1><p>AOP，面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。</p>
-<p>看起来很牛逼的样子，其实简单来说，就是插代码（编译期或者运行期）。</p>
-<h1 id="AspectJ">AspectJ</h1><p>也是个有十几年历史的库了。定义了各种连接点集合来实现AOP的概念，网上现在很多资料，这里就不赘述了。</p>
-<h1 id="Android_Usage">Android Usage</h1><p>在Gradle中使用：<a href="https://github.com/uPhyca/gradle-android-aspectj-plugin" target="_blank" rel="external">https://github.com/uPhyca/gradle-android-aspectj-plugin</a></p>
-<h1 id="生命周期切面定义">生命周期切面定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有继承自android.app.Activity的类的以on开头的方法</span></span><br><span class="line"><span class="annotation">@Pointcut</span>(<span class="string">"execution(* android.app.Activity+.on*(..)) &amp;&amp; this(activity) "</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logForActivity</span><span class="params">(android.app.Activity activity)</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有继承android.support.v4.app.Fragment的类的以on开头的方法</span></span><br><span class="line"><span class="annotation">@Pointcut</span>(<span class="string">"execution(* android.support.v4.app.Fragment+.on*(..)) &amp;&amp; this(fragment) "</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logForFragment</span><span class="params">(android.support.v4.app.Fragment fragment)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          什么是埋点埋点（打点）其实就是操作的记录，又细分为本地和在线两种，前者记录在log里供开发分析问题用，后者则直接上传到服务器，会被用到像是BI、PD分析业务趋势上。最常见的像是在activity的部分生命周期记录，或者点击操作的时候上报一下。
+虽然其本身只是一两行代码的事，却会对客户端代码的整洁性产
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/07/AopBasedMonitor/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1157,9 +1059,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2015/11/24/BuildAndroid6OnMacElCapitan/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1231,6 +1133,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/24/BuildAndroid6OnMacElCapitan/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/24/BuildAndroid6OnMacElCapitan/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1255,18 +1164,15 @@
       
         
           
-            <h1 id="背景">背景</h1><p>因为只有一台可怜的256G MBPR，并没有足够的空间去装一个Ubuntu，所以之前在10.10的时候尝试编译5.0未果后（各种版本问题），就无奈放弃了。<br>前几天在看最新的aosp<a href="https://source.android.com/source/initializing.html#branch-60x" target="_blank" rel="external">官网介绍</a>的时候，发现master和6.0.x的编译都使用了or later来描述对Mac OS的版本要求，就抱着试一试的心情开始了新的编译之旅。从下载到最后动车轰轰声中编译结束，也断断续续花了3天时间。</p>
-<h1 id="配置">配置</h1><p>OS X EL Capital 10.11.1<br>Java 1.7.0_79<br>Xcode 7.1.1 with command line tool<br>Zsh</p>
-<h1 id="过程">过程</h1><p>因为是给我的Nexus6编译image，所以分支上，我选择了6.0.0_r2进行编译，分支选择可以参照<a href="https://source.android.com/source/build-numbers.html#source-code-tags-and-builds" target="_blank" rel="external">Source code tags and builds</a>.</p>
-<p>对于aosp被墙，尽管我们也能用vpn连接去下，但是其实国内是有aosp镜像的：<a href="https://lug.ustc.edu.cn/wiki/mirrors/help/aosp" target="_blank" rel="external">科大镜像</a>。<br>速度挺快，同步过程也比较稳定。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实测build完后，需要60多个G，所以其实分配70G也绰绰有余了</span></span><br><span class="line">hdiutil create -type SPARSE -fs <span class="string">'Case-sensitive Journaled HFS+'</span> -size <span class="number">70</span>g ~/android.dmg</span><br><span class="line">hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /Volumes/android</span><br><span class="line">mkdir <span class="number">6.0</span>.<span class="number">0</span>_r2</span><br><span class="line"><span class="built_in">cd</span> <span class="number">6.0</span>.<span class="number">0</span>_r2</span><br><span class="line"></span><br><span class="line">repo init -u git://mirrors.ustc.edu.cn/aosp/platform/manifest -b android-<span class="number">6.0</span>.<span class="number">0</span>_r2</span><br><span class="line">repo sync</span><br></pre></td></tr></table></figure>
-<p>然后是漫长的等待，内容会先下载到.repo里面，再解压出来，最后大致是37G左右。接着就可以开始我们的编译之旅了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> build/envsetup.sh</span><br><span class="line">lunch</span><br><span class="line"><span class="comment"># 选择要build的target, 可参考 https://source.android.com/source/running.html#picking-and-building-the-configuration-that-matches-a-device, N6是shamu，即19</span></span><br><span class="line"><span class="number">19</span> (aosp_shamu-userdebug)</span><br><span class="line"><span class="comment"># 我是16G的i5 mbpr, 所以选了4，这里可以看机器性能指定不同的线程数</span></span><br><span class="line">make -j4</span><br></pre></td></tr></table></figure>
-<p>你会发现报错了！！没错。。就是报错了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Install: out/target/product/hammerhead/root/res/images/charger/battery_scale.png</span><br><span class="line">Install: out/target/product/hammerhead/fake_packages/charger_res_images-timestamp</span><br><span class="line">make: *** No rule to make target `device/lge/hammerhead_fp-kernel/zImage-dtb<span class="string">', needed by `out/target/product/hammerhead/kernel'</span>.  Stop.</span><br></pre></td></tr></table></figure></p>
-<p>分析了一下。。发现是kernel的问题，但是官网压根没提到这个。好吧，我们来到<a href="https://developers.google.com/android/nexus/drivers" target="_blank" rel="external">Binaries for Nexus Devices</a>, 选择自己机器和分支对应的driver, 我这里对应的是Nexus 6 (Mobile) binaries for Android 6.0.0 (MRA58N)，3个都下载解压到目录后，分别运行三个extract开头的sh脚本，再次make，就顺利地build成功了。</p>
-<p>最后，刷刷刷<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot -w flashall</span><br></pre></td></tr></table></figure></p>
-
-          
+          背景因为只有一台可怜的256G MBPR，并没有足够的空间去装一个Ubuntu，所以之前在10.10的时候尝试编译5.0未果后（各种版本问题），就无奈放弃了。前几天在看最新的aosp官网介绍的时候，发现master和6.0.x的编译都使用了or later来描述对Mac OS的版本要求，就抱着试一试
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/24/BuildAndroid6OnMacElCapitan/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1306,9 +1212,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2015/11/20/HotPatchCompare/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1380,6 +1286,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/20/HotPatchCompare/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/HotPatchCompare/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1404,34 +1317,16 @@
       
         
           
-            <p>最近开源界涌现了很多热补丁项目，但从方案上来说，主要包括<a href="https://github.com/alibaba/dexposed" target="_blank" rel="external">Dexposed</a>、<a href="https://github.com/alibaba/AndFix" target="_blank" rel="external">AndFix</a>、<a href="http://bugly.qq.com/blog/?p=781" target="_blank" rel="external">ClassLoader</a>（来源是原QZone，现淘宝的工程师陈钟，在15年年初就已经开始实现）三种。前两个都是阿里巴巴内部的不同团队做的（淘宝和支付宝），后者则来自腾讯的QQ空间团队。</p>
-<p>开源界往往一个方案会有好几种实现（比如ClassLoader方案已经有不下三种实现了），但这三种方案的原理却徊然不同，那么让我们来看看它们三者的原理和各自的优缺点吧。</p>
-<h1 id="Dexposed">Dexposed</h1><p>基于<a href="https://github.com/rovo89/Xposed" target="_blank" rel="external">Xposed</a>的AOP框架，方法级粒度，可以进行AOP编程、插桩、热补丁、SDK hook等功能。</p>
-<p>Xposed需要Root权限，是因为它要修改其他应用、系统的行为，而对单个应用来说，其实不需要root。 Xposed通过修改Android Dalvik运行时的Zygote进程，并使用Xposed Bridge来hook方法并注入自己的代码，实现非侵入式的runtime修改。比如蜻蜓fm和喜马拉雅做的事情，其实就很适合这种场景，别人反编译市场下载的代码是看不到patch的行为的。<a href="https://github.com/rovo89/Xposed/blob/master/libxposed_dalvik.cpp" target="_blank" rel="external">小米</a>(onVmCreated里面还未小米做了资源的处理)也重用了dexposed，去做了很多自定义主题的功能，还有沉浸式状态栏等。</p>
-<p>我们知道，应用启动的时候，都会fork zygote进程，装载class和invoke各种初始化方法，Xposed就是在这个过程中，替换了app_process，hook了各种入口级方法（比如handleBindApplication、ServerThread、ActivityThread、ApplicationPackageManager的getResourcesForApplication等），加载XposedBridge.jar提供动态hook基础。</p>
-<p>具体到方法，可参见<a href="https://github.com/rovo89/XposedBridge" target="_blank" rel="external">XposedBridge</a>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Intercept every call to the specified method and call a handler function instead.</span><br><span class="line"> * <span class="doctag">@param</span> method The method to intercept</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hookMethodNative</span><span class="params">(Member method, Class&lt;?&gt; declaringClass, <span class="keyword">int</span> slot, Object additionalInfo)</span></span>;</span><br></pre></td></tr></table></figure></p>
-<p>其具体native实现则在<a href="https://github.com/rovo89/Xposed/blob/master/libxposed_common.cpp" target="_blank" rel="external">Xposed的libxposed_common.cpp</a>里面有注册，根据系统版本分发到libxposed_dalvik和libxposed_art里面，以dalvik为例大致来说就是记录下原来的方法信息，并把方法指针指向我们的hookedMethodCallback，从而实现拦截的目的。</p>
-<p>方法级的替换是指，可以在方法前、方法后插入代码，或者直接替换方法。只能针对java方法做拦截，不支持C的方法。</p>
-<p>来说说硬伤吧，不支持art，不支持art，不支持art。<br>重要的事情要说三遍。尽管在6月，项目网站的roadmap就写了7、8月会支持art，但事实是现在还无法解决art的兼容。</p>
-<p>另外，如果线上release版本进行了混淆，那写patch也是一件很痛苦的事情，反射+内部类，可能还有包名和内部类的名字冲突，总而言之就是写得很痛苦。</p>
-<h1 id="AndFix">AndFix</h1><p>同样是方法的hook，AndFix不像Dexposed从Method入手，而是以Field为切入点。</p>
-<p>先看Java入口，<code>AndFixManager.fix</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * fix</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@param</span> file        patch file</span><br><span class="line"> * <span class="doctag">@param</span> classLoader classloader of class that will be fixed</span><br><span class="line"> * <span class="doctag">@param</span> classes     classes will be fixed</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">fix</span><span class="params">(File file, ClassLoader classLoader, List&lt;String&gt; classes)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 省略...判断是否支持，安全检查，读取补丁的dex文件</span></span><br><span class="line"></span><br><span class="line">		ClassLoader patchClassLoader = <span class="keyword">new</span> ClassLoader(classLoader) &#123;</span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="keyword">protected</span> Class&lt;?&gt; findClass(String className) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">				Class&lt;?&gt; clazz = dexFile.loadClass(className, <span class="keyword">this</span>);</span><br><span class="line">				<span class="keyword">if</span> (clazz == <span class="keyword">null</span> &amp;&amp; className.startsWith(<span class="string">"com.alipay.euler.andfix"</span>)) &#123;</span><br><span class="line">					<span class="keyword">return</span> Class.forName(className);<span class="comment">// annotation’s class not found</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (clazz == <span class="keyword">null</span>) &#123;</span><br><span class="line">					<span class="keyword">throw</span> <span class="keyword">new</span> ClassNotFoundException(className);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> clazz;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		Enumeration&lt;String&gt; entrys = dexFile.entries();</span><br><span class="line">		Class&lt;?&gt; clazz = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">while</span> (entrys.hasMoreElements()) &#123;</span><br><span class="line">			String entry = entrys.nextElement();</span><br><span class="line">			<span class="keyword">if</span> (classes != <span class="keyword">null</span> &amp;&amp; !classes.contains(entry)) &#123;</span><br><span class="line">				<span class="keyword">continue</span>;<span class="comment">// skip, not need fix</span></span><br><span class="line">			&#125;</span><br><span class="line">      <span class="comment">// 找到了，加载补丁class</span></span><br><span class="line">			clazz = dexFile.loadClass(entry, patchClassLoader);</span><br><span class="line">			<span class="keyword">if</span> (clazz != <span class="keyword">null</span>) &#123;</span><br><span class="line">				fixClass(clazz, classLoader);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		Log.e(TAG, <span class="string">"pacth"</span>, e);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>看来最终fix是在<code>fixClass方法</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fixClass</span><span class="params">(Class&lt;?&gt; clazz, ClassLoader classLoader)</span> </span>&#123;</span><br><span class="line">  Method[] methods = clazz.getDeclaredMethods();</span><br><span class="line">  MethodReplace methodReplace;</span><br><span class="line">  String clz;</span><br><span class="line">  String meth;</span><br><span class="line">  <span class="comment">// 遍历补丁class里的方法，进行一一替换，annotation则是补丁包工具自动加上的</span></span><br><span class="line">  <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">    methodReplace = method.getAnnotation(MethodReplace.class);</span><br><span class="line">    <span class="keyword">if</span> (methodReplace == <span class="keyword">null</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    clz = methodReplace.clazz();</span><br><span class="line">    meth = methodReplace.method();</span><br><span class="line">    <span class="keyword">if</span> (!isEmpty(clz) &amp;&amp; !isEmpty(meth)) &#123;</span><br><span class="line">      replaceMethod(classLoader, clz, meth, method);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">replaceMethod</span><span class="params">(ClassLoader classLoader, String clz, String meth, Method method)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    String key = clz + <span class="string">"@"</span> + classLoader.toString();</span><br><span class="line">    Class&lt;?&gt; clazz = mFixedClass.get(key);</span><br><span class="line">    <span class="keyword">if</span> (clazz == <span class="keyword">null</span>) &#123;<span class="comment">// class not load</span></span><br><span class="line">      <span class="comment">// 要被替换的class</span></span><br><span class="line">      Class&lt;?&gt; clzz = classLoader.loadClass(clz);</span><br><span class="line">      <span class="comment">// 这里也很黑科技，通过C层，改写accessFlags，把需要替换的类的所有方法（Field）改成了public，具体可以看Method结构体</span></span><br><span class="line">      clazz = AndFix.initTargetClass(clzz);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (clazz != <span class="keyword">null</span>) &#123;<span class="comment">// initialize class OK</span></span><br><span class="line">      mFixedClass.put(key, clazz);</span><br><span class="line">      <span class="comment">// 需要被替换的函数</span></span><br><span class="line">      Method src = clazz.getDeclaredMethod(meth, method.getParameterTypes());</span><br><span class="line">      <span class="comment">// 这里是调用了jni，art和dalvik分别执行不同的替换逻辑，在cpp进行实现</span></span><br><span class="line">      AndFix.addReplaceMethod(src, method);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    Log.e(TAG, <span class="string">"replaceMethod"</span>, e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在dalvik和art上，系统的调用不同，但是原理类似，这里我们尝个鲜，以6.0为例<code>art_method_replace_6_0</code>：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 进行方法的替换</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">replace_6_0</span><span class="params">(JNIEnv* env, jobject src, jobject dest)</span> </span>&#123;</span><br><span class="line">	art::mirror::ArtMethod* smeth = (art::mirror::ArtMethod*) env-&gt;FromReflectedMethod(src);</span><br><span class="line">	art::mirror::ArtMethod* dmeth = (art::mirror::ArtMethod*) env-&gt;FromReflectedMethod(dest);</span><br><span class="line"></span><br><span class="line">	dmeth-&gt;declaring_class_-&gt;class_loader_ =</span><br><span class="line">			smeth-&gt;declaring_class_-&gt;class_loader_; <span class="comment">//for plugin classloader</span></span><br><span class="line">	dmeth-&gt;declaring_class_-&gt;clinit_thread_id_ =</span><br><span class="line">			smeth-&gt;declaring_class_-&gt;clinit_thread_id_;</span><br><span class="line">	dmeth-&gt;declaring_class_-&gt;status_ = smeth-&gt;declaring_class_-&gt;status_-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 把原方法的各种属性都改成补丁方法的</span></span><br><span class="line">	smeth-&gt;declaring_class_ = dmeth-&gt;declaring_class_;</span><br><span class="line">	smeth-&gt;dex_cache_resolved_types_ = dmeth-&gt;dex_cache_resolved_types_;</span><br><span class="line">	smeth-&gt;access_flags_ = dmeth-&gt;access_flags_;</span><br><span class="line">	smeth-&gt;dex_cache_resolved_methods_ = dmeth-&gt;dex_cache_resolved_methods_;</span><br><span class="line">	smeth-&gt;dex_code_item_offset_ = dmeth-&gt;dex_code_item_offset_;</span><br><span class="line">	smeth-&gt;method_index_ = dmeth-&gt;method_index_;</span><br><span class="line">	smeth-&gt;dex_method_index_ = dmeth-&gt;dex_method_index_;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 实现的指针也替换为新的</span></span><br><span class="line">	smeth-&gt;ptr_sized_fields_.entry_point_from_interpreter_ =</span><br><span class="line">			dmeth-&gt;ptr_sized_fields_.entry_point_from_interpreter_;</span><br><span class="line">	smeth-&gt;ptr_sized_fields_.entry_point_from_jni_ =</span><br><span class="line">			dmeth-&gt;ptr_sized_fields_.entry_point_from_jni_;</span><br><span class="line">	smeth-&gt;ptr_sized_fields_.entry_point_from_quick_compiled_code_ =</span><br><span class="line">			dmeth-&gt;ptr_sized_fields_.entry_point_from_quick_compiled_code_;</span><br><span class="line"></span><br><span class="line">	LOGD(<span class="string">"replace_6_0: %d , %d"</span>,</span><br><span class="line">			smeth-&gt;ptr_sized_fields_.entry_point_from_quick_compiled_code_,</span><br><span class="line">			dmeth-&gt;ptr_sized_fields_.entry_point_from_quick_compiled_code_);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这就是上面提到的，把方法都改成public的，所以说了解一下jni还是很有必要的，java世界在c世界是有映射关系的</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setFieldFlag_6_0</span><span class="params">(JNIEnv* env, jobject field)</span> </span>&#123;</span><br><span class="line">	art::mirror::ArtField* artField =</span><br><span class="line">			(art::mirror::ArtField*) env-&gt;FromReflectedField(field);</span><br><span class="line">	artField-&gt;access_flags_ = artField-&gt;access_flags_ &amp; (~<span class="number">0x0002</span>) | <span class="number">0x0001</span>;</span><br><span class="line">	LOGD(<span class="string">"setFieldFlag_6_0: %d "</span>, artField-&gt;access_flags_);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在dalvik上的实现略有不同，是通过jni bridge来指向补丁的方法。</p>
-<p>使用上，直接写一个新的类，会由补丁工具会生成注解，描述其与要打补丁的类和方法的对应关系。</p>
-<h1 id="ClassLoader">ClassLoader</h1><p>原腾讯空间Android工程师，也是我的启蒙老师的陈钟发明的热补丁方案，是他在看源码的时候偶然发现的切入点。</p>
-<p>我们知道，multidex方案的实现，其实就是把多个dex放进app的classloader之中，从而使得所有dex的类都能被找到。而实际上findClass的过程中，如果出现了重复的类，参照下面的类加载的实现，是会使用第一个找到的类的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Class <span class="title">findClass</span><span class="params">(String name, List&lt;Throwable&gt; suppressed)</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (Element element : dexElements) &#123;  <span class="comment">//每个Element就是一个dex文件</span></span><br><span class="line">        DexFile dex = element.dexFile;</span><br><span class="line">        <span class="keyword">if</span> (dex != <span class="keyword">null</span>) &#123;</span><br><span class="line">            Class clazz = dex.loadClassBinaryName(name, definingContext, suppressed);</span><br><span class="line">            <span class="keyword">if</span> (clazz != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">return</span> clazz;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dexElementsSuppressedExceptions != <span class="keyword">null</span>) &#123;  </span><br><span class="line">        suppressed.addAll(Arrays.asList(dexElementsSuppressedExceptions));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该热补丁方案就是从这一点出发，只要把有问题的类修复后，放到一个单独的dex，通过反射插入到dexElements数组的最前面，不就可以让虚拟机加载到打完补丁的class了吗。</p>
-<p>说到此处，似乎已经是一个完整的方案了，但在实践中，会发现运行加载类的时候报preverified错误，原来在<code>DexPrepare.cpp</code>，将dex转化成odex的过程中，会在<code>DexVerify.cpp</code>进行校验，验证如果直接引用到的类和clazz是否在同一个dex，如果是，则会打上CLASS_ISPREVERIFIED标志。通过在所有类（Application除外，当时还没加载自定义类的代码）的构造函数插入一个对在单独的dex的类的引用，就可以解决这个问题。空间使用了javaassist进行编译时字节码插入。</p>
-<p>开源实现有<a href="https://github.com/jasonross/Nuwa" target="_blank" rel="external">Nuwa</a>, <a href="https://github.com/dodola/HotFix" target="_blank" rel="external">HotFix</a>, <a href="https://github.com/bunnyblue/DroidFix" target="_blank" rel="external">DroidFix</a>。</p>
-<h1 id="比较">比较</h1><p>Dexposed不支持Art模式（5.0+），且写补丁有点困难，需要反射写混淆后的代码，粒度太细，要替换的方法多的话，工作量会比较大。</p>
-<p>AndFix支持2.3-6.0，但是不清楚是否有一些机型的坑在里面，毕竟jni层不像java曾一样标准，从实现来说，方法类似Dexposed，都是通过jni来替换方法，但是实现上更简洁直接，应用patch不需要重启。但由于从实现上直接跳过了类初始化，设置为初始化完毕，所以像是静态函数、静态成员、构造函数都会出现问题，复杂点的类Class.forname很可能直接就会挂掉。</p>
-<p>ClassLoader方案支持2.3-6.0，会对启动速度略微有影响，只能在下一次应用启动时生效，在空间中已经有了较长时间的线上应用，如果可以接受在下次启动才应用补丁，是很好的选择。</p>
-<p>总的来说，在兼容性稳定性上，<strong>ClassLoader方案很可靠</strong>，如果需要应用<strong>不重启就能修复</strong>，而且方法足够简单，可以使用<strong>AndFix</strong>，而<strong>Dexposed由于还不能支持art</strong>，所以只能暂时放弃，希望开发者们可以改进使它能支持art模式，毕竟xposed的种种能力还是很吸引人的（比如hook别人app的方法拿到解密后的数据，嘿嘿），还有比如无痕埋点啊线上追踪问题之类的，随时可以下掉。</p>
-
-          
+          最近开源界涌现了很多热补丁项目，但从方案上来说，主要包括Dexposed、AndFix、ClassLoader（来源是原QZone，现淘宝的工程师陈钟，在15年年初就已经开始实现）三种。前两个都是阿里巴巴内部的不同团队做的（淘宝和支付宝），后者则来自腾讯的QQ空间团队。
+开源界往往一个方案会有好几种
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/20/HotPatchCompare/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1471,9 +1366,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2015/11/20/new-skin-toggle-way/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1545,6 +1440,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/20/new-skin-toggle-way/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/new-skin-toggle-way/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1569,13 +1471,17 @@
       
         
           
-            <h1 id="新的换肤思路">新的换肤思路</h1><p>前文见<a href="http://blog.zhaiyifan.cn/2015/09/10/Android%E6%8D%A2%E8%82%A4%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">Android换肤技术总结</a></p>
-<h2 id="资源注入">资源注入</h2><p>把资源放在另一个apk，类似android.jar一样作为基础资源，然后使用aapt联合编译，就可以让主工程像引用android资源一样，引用另一个apk的资源，不过如此一来，需要自己去做资源分区，否则可能会有id冲突。</p>
-<p>比如我们平时会直接@android:drawable，@android:anim去直接引用anrdoid资源，现在我们可以加了一个叫做skin的包，那么就可以使用@skin:drawable来引用skin包的资源。要激活其他皮肤的时候，只要换一下包就行了。</p>
-<p>相比其他方案，这种改动很小，没有那些各种hack的黑科技。希望有空能自己实现一下。</p>
-<h2 id="aapt">aapt</h2><p>关于aapt的修改，可以看看携程的DynamacAPK。</p>
-
-          
+          新的换肤思路前文见Android换肤技术总结
+资源注入把资源放在另一个apk，类似android.jar一样作为基础资源，然后使用aapt联合编译，就可以让主工程像引用android资源一样，引用另一个apk的资源，不过如此一来，需要自己去做资源分区，否则可能会有id冲突。
+比如我们平时会直接@an
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/20/new-skin-toggle-way/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1615,9 +1521,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2015/10/04/init/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1689,6 +1595,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/04/init/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/04/init/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1713,40 +1626,17 @@
       
         
           
-            <p><a href="https://github.com/markzhai/init" target="_blank" rel="external">Github Page</a></p>
-<h1 id="Init">Init <a href="https://maven-badges.herokuapp.com/maven-central/cn.zhaiyifan/init" target="_blank" rel="external"><img src="https://maven-badges.herokuapp.com/maven-central/cn.zhaiyifan/init/badge.svg?style=flat" alt="Maven Central"></a></h1><p>Init帮助Android应用调度复杂的任务流（如应用初始化流程），如下一节图示的那种任务流，处理类型、优先级、多进程（像是每个进程都会执行application的onCreate），任务依赖，提高应用启动效率。</p>
-<p>尽管Init设计的初衷是为了应用(application)初始化，但并不局限于此，它可以于应用在任何复杂的初始化流程。</p>
-<p>Init不依赖于任何第三方库，使用Java concurrent并部分依赖于Android SDK(Context, Log)，所以理论上也可以在简单修改后直接用于Java工程。</p>
-<h1 id="How">How</h1><p>初始化流程被抽象为flow、wave和task。</p>
-<p><img src="https://raw.githubusercontent.com/markzhai/init/master/art/flow.png" alt="flow" title="how it works"></p>
-<p>flow是一个粗粒度概念，通常一个应用只有一个flow，但某些情况下我们可能拥有多个flow，像是patch flow，broadcast flow，fake UI flow等等，可以把它们都交给Init处理。</p>
-<p>每个wave只有在上一wave的所有阻塞task完成后才能开始，而所有属于该wave的task会一起开始执行（除非被赋予了delay）。</p>
-<p>至于task，在本库中属于原子性操作，他们可以被分为2大类型</p>
-<ol>
-<li>阻塞task，即图中的蓝色任务。</li>
-<li>异步task，又可以被分为<ul>
-<li>完全异步或者横跨若干个wave后才需要阻塞，像图中的绿色task。</li>
-<li>异步链，像图中的红色task。</li>
-</ul>
-</li>
-</ol>
-<h1 id="使用">使用</h1><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'cn.zhaiyifan:init:1.0.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Init需要应用context来获得进程相关信息</span></span><br><span class="line">        Init.init(<span class="keyword">this</span>);</span><br><span class="line">        <span class="comment">// 可以使用自定义的log离开输出Init的Log，logProxy需要实现cn.zhaiyifan.appinit.ILog接口</span></span><br><span class="line">        <span class="comment">// Init.init(this, logProxy)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 默认Task，延迟0，且阻塞下一波task的执行，参数字符串可以用来追踪任务执行状态</span></span><br><span class="line">        Task task1 = <span class="keyword">new</span> Task(<span class="string">"task1"</span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                doSomeThing();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 仅在返回true的时候才会在对应进程执行</span></span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">runOnProcess</span><span class="params">(String processName)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> processName.equals(<span class="string">"cn.zhaiyifan.demo"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个task，非阻塞，且延时300毫秒执行</span></span><br><span class="line">        Task task2 = <span class="keyword">new</span> Task(<span class="string">"task2"</span>, <span class="keyword">false</span>, <span class="number">300</span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                doSomeThing();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 类似地，创建更多task，如task3、task4等等</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个有名flow</span></span><br><span class="line">        Flow flow = <span class="keyword">new</span> Flow(<span class="string">"flow"</span>);</span><br><span class="line">        <span class="comment">// 往flow添加刚才创建的task, 第一个参数是wave序号，会从小到大执行每个wave的task</span></span><br><span class="line">        flow.addTask(<span class="number">1</span>, task1).addTask(<span class="number">1</span>, task2).addTask(<span class="number">2</span>, task3).addTask(<span class="number">2</span>, task4);</span><br><span class="line">        <span class="comment">// 启动flow，开始初始化</span></span><br><span class="line">        Init.start(flow);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>看一下log，可以发现原来一个串行执行需要2700毫秒的任务，在我们的安排下，现在只需要1307毫秒就可以结束。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10-04 18:53:54.789 646-666/cn.zhaiyifan.init I/Task: task2 runs 500&#10;10-04 18:53:55.289 646-665/cn.zhaiyifan.init I/Task: task1 runs 1000&#10;10-04 18:53:55.591 646-741/cn.zhaiyifan.init I/Task: task3 runs 300&#10;10-04 18:53:55.592 646-646/cn.zhaiyifan.init I/Flow: flow runs 1307&#10;10-04 18:53:55.990 646-740/cn.zhaiyifan.init I/Task: task4 runs 700&#10;10-04 18:53:56.191 646-783/cn.zhaiyifan.init I/Task: task5 runs 200</span><br></pre></td></tr></table></figure></p>
-<p>Useful api:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置线程池大小</span></span><br><span class="line">Init.setThreadPoolSize(...)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取消一个已经开始的flow</span></span><br><span class="line">Init.cancel(...)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获得flow状态</span></span><br><span class="line">Init.getFlowStatus(...)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获得特定的task状态</span></span><br><span class="line">flow.getTaskStatus(taskName)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置超时限制</span></span><br><span class="line">flow.setTimeout(<span class="number">5000</span>)</span><br><span class="line"></span><br><span class="line">等等</span><br></pre></td></tr></table></figure></p>
-<p>更多详情请见demo工程。</p>
-<h1 id="为什么需要Init">为什么需要Init</h1><p>想象一下我们是怎么去初始化一个大型应用像是支付宝、QQ、微信、空间等的，我们会面对像是下面这种代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XXXApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// for multi-dex apps</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">attachBaseContext</span><span class="params">(Context base)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// log init</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// eventbus init...</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// global variables init</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// process related</span></span><br><span class="line">        String processName = ...</span><br><span class="line">        <span class="keyword">boolean</span> isMainProcess = ...</span><br><span class="line">        ProcessInit.attachBaseContext(<span class="keyword">this</span>, processName, isMainProcess);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// process related</span></span><br><span class="line">        String processName = ...</span><br><span class="line">        <span class="keyword">boolean</span> isMainProcess = ...</span><br><span class="line"></span><br><span class="line">        <span class="comment">// CrashHandler, SafeMode, plugin, image manager, database, download, update, etc init</span></span><br><span class="line"></span><br><span class="line">        ProcessInit.onCreate(<span class="keyword">this</span>, processName, isMainProcess);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProcessInit</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Application application, <span class="keyword">boolean</span> isMainProcess, String processName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isMainProcess) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (processName.contains(PUSH_PROCESS_SUFFIX)) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (processName.contains(WEB_PROCESS_SUFFIX)) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (processName.contains(MUSIC_PROCESS_SUFFIX)) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>你看到了当一个应用越来越大以后初始化能是一件多么复杂的事情，有些操作必须在另一个之后，而又有一些可以并行执行，又有的操作又需要在一个异步操作完成后才能执行……于是我们就得把每个独立的操作进行修改，有的改成异步，有的则阻塞在另一个操作后，使得代码杂乱且难以维护。</p>
-<p>怎么可以使它变得简单呢？Init就是来帮助你做这个事的。</p>
-<h1 id="路线图">路线图</h1><ul>
-<li>1.0 <em>10月 - 一个实现上述概念的可运行库</em> 已完成</li>
-<li>1.1 <strong>2015年内 - 支持更复杂的初始化flow</strong> 进行中</li>
-<li>2.0 或许明年 - 从使用本库的代码可以直接逆向出初始化flow的图</li>
-</ul>
-<h1 id="Contribute">Contribute</h1><p>任何贡献都是受欢迎的，你可以创建一个issue或者直接发一个pull请求。</p>
-
-          
+          Github Page
+Init Init帮助Android应用调度复杂的任务流（如应用初始化流程），如下一节图示的那种任务流，处理类型、优先级、多进程（像是每个进程都会执行application的onCreate），任务依赖，提高应用启动效率。
+尽管Init设计的初衷是为了应用(applicati
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/04/init/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1786,9 +1676,9 @@
   <link itemprop="mainEntityOfPage" href="http://blog.zhaiyifan.cn/2015/09/16/Try-React-Native-for-Android/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Mark Zhai">
+    <meta itemprop="name" content="Mark Zhai (翟一帆)">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
+    <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1860,6 +1750,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/16/Try-React-Native-for-Android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/16/Try-React-Native-for-Android/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1884,49 +1781,16 @@
       
         
           
-            <h1 id="Overview">Overview</h1><p>Facebook 昨天发布了 React Native for Android，把 Web 和原生平台的 JavaScript 开发技术扩展到了 Google 的流行移动平台。Android开发者们终于也能试试React了。</p>
-<p>本文就从 <a href="https://github.com/facebook/react-native" target="_blank" rel="external">https://github.com/facebook/react-native</a> 上的Android Sample来看看react Android是怎么跑起来的。</p>
-<h1 id="要求">要求</h1><p>OSX - 目前只支持OS X（Windows泪奔，不过不要弃疗，说不定你就跑成了呢）</p>
-<h1 id="Set_up">Set up</h1><p>Refers: <a href="http://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="external">http://facebook.github.io/react-native/docs/getting-started.html</a></p>
-<p>首先配置一下一些android和ios通用的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew install nvm</span><br><span class="line">nvm install node &amp;&amp; nvm <span class="built_in">alias</span> default node</span><br><span class="line">brew install watchman</span><br><span class="line">brew install flow</span><br><span class="line">brew update &amp;&amp; brew upgrade</span><br></pre></td></tr></table></figure></p>
-<p>Facebook还是比较友善的，直接把Android工程的gradle配置也上传了，可以直接import react-native目录，里面包含了<code>ReactAndroid</code>以及三个Example模块，都是已经写好的sample，本文选择UIExplorer工程来运行。</p>
-<p>发现不能编译，当然了，还没有编译配置React Native for Android。</p>
-<p>需要确保这三个安装了</p>
-<ul>
-<li>Android SDK version 23 (compileSdkVersion in <a href="build.gradle"><code>build.gradle</code></a>)</li>
-<li>SDK build tools version 23.0.1 (buildToolsVersion in <a href="build.gradle"><code>build.gradle</code></a>)</li>
-<li>Android Support Repository 17 (for Android Support Library)</li>
-</ul>
-<p>local.properties里面应该要有<br>sdk.dir=absolute_path_to_android_sdk<br>ndk.dir=absolute_path_to_android_ndk<br>即还需要安装ndk。</p>
-<h2 id="build_React_Native_for_Android">build React Native for Android</h2><p>然后要在react-native目录下执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">./gradlew :ReactAndroid:assembleDebug</span><br></pre></td></tr></table></figure></p>
-<p>就把React Native for Android给编译好了（可能会要挺久的，还要下载一些依赖）</p>
-<h2 id="run_demo">run demo</h2><p>然后就可以开始运行例子了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这步其实也可以自己导入as工程然后run</span></span><br><span class="line">./gradlew :Examples:UIExplorer:android:app:installDebug</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行后发现提示没有load到js？</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另起一个shell运行（记得在这之前要npm install安装一下各种依赖）</span></span><br><span class="line">./packager/packager.sh</span><br><span class="line"><span class="comment"># 打开安装的应用，点击RELOAD JS，这下应该有东西了</span></span><br></pre></td></tr></table></figure></p>
-<p>PS</p>
-<ul>
-<li>这里我碰到提示说const符号在strict mode下不能用，于是直接暴力把package.js里面的const都换成了var</li>
-<li>如果要在实机上运行，需要连接usb后adb reverse tcp:8081 tcp:8081</li>
-</ul>
-<h1 id="Let’s_cc">Let’s cc</h1><p>先来看几个截图</p>
-<p><img src="http://img.blog.csdn.net/20150916120100099" alt="应用首页"></p>
-<p><img src="http://img.blog.csdn.net/20150916120115057" alt="ProgressBar Example"></p>
-<p><img src="http://img.blog.csdn.net/20150916120122839" alt="抽屉"></p>
-<p>划了几下，从抽屉的行为上来看应该是fb自己写的，和DrawerLayout没什么关系（没有左边的EDGE_SIZE触发事件）</p>
-<h1 id="How_it_works">How it works</h1><h2 id="XML">XML</h2><p>先看看layout xml…恩…很简单很暴力，直接加了个match_parent的ReactRootView，啥都没了。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">RelativeLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">".UIExplorerApp"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">com.facebook.react.ReactRootView</span></span><br><span class="line">      <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">      <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">      <span class="attribute">android:id</span>=<span class="value">"@+id/react_root_view"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="Java">Java</h2><p>那看来tricky的东西都在activity里面了，看看</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UIExplorerActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">DefaultHardwareBackBtnHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> ReactInstanceManager mReactInstanceManager;</span><br><span class="line"></span><br><span class="line">  <span class="annotation">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用builder模式构建一个在ReactRootView上运行JS应用必须的ReactInstanceManager</span></span><br><span class="line">    mReactInstanceManager = ReactInstanceManager.builder()</span><br><span class="line">        .setApplication(getApplication())</span><br><span class="line">        <span class="comment">// 从应用的raw assets去读得JS bundle文件，这个例子里貌似没有实际用处</span></span><br><span class="line">        .setBundleAssetName(<span class="string">"UIExplorerApp.android.bundle"</span>)</span><br><span class="line">        <span class="comment">// JS文件路径，用于在开发时reload js，直接运行时没法读到JS就是因为文件都在这儿</span></span><br><span class="line">        .setJSMainModuleName(<span class="string">"Examples/UIExplorer/UIExplorerApp.android"</span>)</span><br><span class="line">        <span class="comment">// Package defining basic modules and view managers</span></span><br><span class="line">        .addPackage(<span class="keyword">new</span> MainReactPackage())</span><br><span class="line">        .setUseDeveloperSupport(<span class="keyword">true</span>)</span><br><span class="line">        .setInitialLifecycleState(LifecycleState.RESUMED)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 把刚才构建的ReactInstanceManager和ReactRootView做了绑定，运行起react application</span></span><br><span class="line">    ((ReactRootView) findViewById(R.id.react_root_view))</span><br><span class="line">        .startReactApplication(mReactInstanceManager, <span class="string">"UIExplorerApp"</span>, <span class="keyword">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="annotation">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onPause();</span><br><span class="line">    <span class="comment">// 把事件传到ReactInstanceManager，会更新Lifecycle和一些对应操作（如pause时候暂停一些监听）</span></span><br><span class="line">    <span class="keyword">if</span> (mReactInstanceManager != <span class="keyword">null</span>) &#123;</span><br><span class="line">      mReactInstanceManager.onPause();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>React for Android的java sdk代码就在ReactAndroid目录下，可以看到里面还有一个<code>com.facebook.jni</code>包，目测是通过来作中转，C++的源码在ReactAndroid/src/main/jni下。</p>
-<h2 id="C++_ships_what">C++ ships what</h2><p>待补</p>
-<h2 id="JS">JS</h2><p>再接着看看js吧, UIEXplorer目录下一堆JS，看得头都大了，还是看看activity里面设置的那个入口js吧。</p>
-<p><code>UIExplorerApp.android.js</code>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">'react-native'</span>);</span><br><span class="line"><span class="keyword">var</span> &#123;</span><br><span class="line">  <span class="comment">// 在Libraries下都可以找到，各种通用的库</span></span><br><span class="line">  AppRegistry,</span><br><span class="line">  BackAndroid,</span><br><span class="line">  Dimensions,</span><br><span class="line">  DrawerLayoutAndroid,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  ToolbarAndroid,</span><br><span class="line">  View,</span><br><span class="line">&#125; = React;</span><br><span class="line"><span class="comment">// 包含了具体的各个例子列表（Image、ProgressBar、ScrollView等），也就是在目录下看到的那一堆js了</span></span><br><span class="line"><span class="keyword">var</span> UIExplorerList = <span class="built_in">require</span>(<span class="string">'./UIExplorerList.android'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> DRAWER_WIDTH_LEFT = <span class="number">56</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> UIExplorerApp = React.createClass(&#123;</span><br><span class="line">  getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      example: <span class="keyword">this</span>._getUIExplorerHome(),</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  _getUIExplorerHome: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      title: <span class="string">'UIExplorer'</span>,</span><br><span class="line">      component: <span class="keyword">this</span>._renderHome(),</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  componentWillMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    BackAndroid.addEventListener(<span class="string">'hardwareBackPress'</span>, <span class="keyword">this</span>._handleBackButtonPress);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 渲染抽屉，这里是不是有点像xml了</span></span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="title">DrawerLayoutAndroid</span></span><br><span class="line">        <span class="attribute">drawerPosition</span>=<span class="value">&#123;DrawerLayoutAndroid.positions.Left&#125;</span></span><br><span class="line">        <span class="attribute">drawerWidth</span>=<span class="value">&#123;Dimensions.get('window').width</span> <span class="attribute">-</span> <span class="attribute">DRAWER_WIDTH_LEFT</span>&#125;</span><br><span class="line">        <span class="attribute">keyboardDismissMode</span>=<span class="value">"on-drag"</span></span><br><span class="line">        <span class="attribute">ref</span>=<span class="value">&#123;(drawer)</span> =&gt;</span> &#123; this.drawer = drawer; &#125;&#125;</span><br><span class="line">        renderNavigationView=&#123;this._renderNavigationView&#125;&gt;</span><br><span class="line">        &#123;this._renderNavigation()&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="title">DrawerLayoutAndroid</span>&gt;</span></span><br><span class="line">      )</span>;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 抽屉内的列表</span></span><br><span class="line">  _renderNavigationView: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="title">UIExplorerList</span></span><br><span class="line">        <span class="attribute">onSelectExample</span>=<span class="value">&#123;this.onSelectExample&#125;</span></span><br><span class="line">        <span class="attribute">isInDrawer</span>=<span class="value">&#123;true&#125;</span></span><br><span class="line">      /&gt;</span></span><br><span class="line">    )</span>;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 点击处理</span></span><br><span class="line">  onSelectExample: <span class="function"><span class="keyword">function</span>(<span class="params">example</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.drawer.closeDrawer();</span><br><span class="line">    <span class="comment">// 返回首页</span></span><br><span class="line">    <span class="keyword">if</span> (example.title === <span class="keyword">this</span>._getUIExplorerHome().title) &#123;</span><br><span class="line">      example = <span class="keyword">this</span>._getUIExplorerHome();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      example: example,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 渲染首页列表</span></span><br><span class="line">  _renderHome: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> onSelectExample = <span class="keyword">this</span>.onSelectExample;</span><br><span class="line">    <span class="keyword">return</span> React.createClass(&#123;</span><br><span class="line">      render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="xml"><span class="tag">&lt;<span class="title">UIExplorerList</span></span><br><span class="line">            <span class="attribute">onSelectExample</span>=<span class="value">&#123;onSelectExample&#125;</span></span><br><span class="line">            <span class="attribute">isInDrawer</span>=<span class="value">&#123;false&#125;</span></span><br><span class="line">          /&gt;</span></span><br><span class="line">        )</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 渲染导航栏</span></span><br><span class="line">  _renderNavigation: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> Component = <span class="keyword">this</span>.state.example.component;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">&#123;styles.container&#125;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">ToolbarAndroid</span></span><br><span class="line">          <span class="attribute">logo</span>=<span class="value">&#123;require('image!launcher_icon')&#125;</span></span><br><span class="line">          <span class="attribute">navIcon</span>=<span class="value">&#123;require('image!ic_menu_black_24dp')&#125;</span></span><br><span class="line">          <span class="attribute">onIconClicked</span>=<span class="value">&#123;()</span> =&gt;</span> this.drawer.openDrawer()&#125;</span><br><span class="line">          style=&#123;styles.toolbar&#125;</span><br><span class="line">          title=&#123;this.state.example.title&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">        <span class="tag">&lt;<span class="title">Component</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">View</span>&gt;</span></span><br><span class="line">    )</span>;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 回退按钮事件处理</span></span><br><span class="line">  _handleBackButtonPress: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 不在首页</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state.example.title !== <span class="keyword">this</span>._getUIExplorerHome().title) &#123;</span><br><span class="line">      <span class="keyword">this</span>.onSelectExample(<span class="keyword">this</span>._getUIExplorerHome());</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  toolbar: &#123;</span><br><span class="line">    backgroundColor: <span class="string">'#E9EAED'</span>,</span><br><span class="line">    height: <span class="number">56</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 还记得Activity调用的startReactApplication吗，这里就是注册了那里调用的moduleName</span></span><br><span class="line">AppRegistry.registerComponent(<span class="string">'UIExplorerApp'</span>, () =&gt; UIExplorerApp);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = UIExplorerApp;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Write_our_own_react_app">Write our own react app</h1><p>继续回到react-native目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 安装react-native命令行工具</span><br><span class="line">npm install -g react-native-cli</span><br><span class="line">// 初始化项目，又是一个漫长的等待</span><br><span class="line">react-native init OurSampleApp</span><br></pre></td></tr></table></figure></p>
-<p>待续…</p>
-<h1 id="总结">总结</h1><p>React native并不能带来1份代码2个平台跑，正如Facebook说的，<code>Learn once, write anywhere</code>，由于组件库和Hybrid API不同，所以一份代码运行在Android/iOS/Web无法通过直接使用react-native实现，可能需要改造和包装。但至少可以规划好，从而使得三个平台的react结构类似（说好的Android/iOS不同设计呢）。</p>
-<p>从UI流畅度来看，远远超越了过去的那些hybrid framework像是phonegap。</p>
-<p>对现有应用的集成，由于网络/缓存/原应有的复杂业务逻辑，集成可能还是会遇到不少麻烦的。</p>
-<p>在打开抽屉后也发现了overdraw的问题，见图<br><img src="http://img.blog.csdn.net/20150916135742418" alt="抽屉Overdraw"></p>
-
-          
+          OverviewFacebook 昨天发布了 React Native for Android，把 Web 和原生平台的 JavaScript 开发技术扩展到了 Google 的流行移动平台。Android开发者们终于也能试试React了。
+本文就从 https://github.com/faceb
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/16/Try-React-Native-for-Android/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1991,10 +1855,10 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Mark Zhai" />
-          <p class="site-author-name" itemprop="name">Mark Zhai</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+               src="/images/avatar.jpg"
+               alt="Mark Zhai (翟一帆)" />
+          <p class="site-author-name" itemprop="name">Mark Zhai (翟一帆)</p>
+          <p class="site-description motion-element" itemprop="description">白驹过隙 忽然而已</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
@@ -2006,10 +1870,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -2035,12 +1899,76 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/markzhai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhayaofen" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/markzhai" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhaiyifan.cn/" target="_blank" title="个人主页">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  个人主页
+                </a>
+              </span>
+            
+          
         </div>
 
         
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abner-nimengbo.cn" title="Abner泥阿布" target="_blank">Abner泥阿布</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://itangqi.me" title="Qi Tang" target="_blank">Qi Tang</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yifeiyuan.me" title="程序亦非猿" target="_blank">程序亦非猿</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.isming.me/" title="码农明明桑" target="_blank">码农明明桑</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
@@ -2062,7 +1990,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -2071,19 +1999,24 @@
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
 
         
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
 
         
       </div>
@@ -2115,55 +2048,74 @@
 
 
   
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"markzhai"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
   
 
 
 
 
-	
 
 
 
