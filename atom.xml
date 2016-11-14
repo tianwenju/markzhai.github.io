@@ -74,8 +74,17 @@
     <link href="http://blog.zhaiyifan.cn/2016/11/14/pwa-react-p1/"/>
     <id>http://blog.zhaiyifan.cn/2016/11/14/pwa-react-p1/</id>
     <published>2016-11-14T13:52:20.000Z</published>
-    <updated>2016-11-14T13:53:43.000Z</updated>
-    <content type="html"><![CDATA[<blockquote>
+    <updated>2016-11-14T14:04:47.000Z</updated>
+    <content type="html"><![CDATA[<p>来自译者 markzhai：大家也知道最近 Web 越来越火了，如果你还以为 Web 就是 jQuery、Ajax、CSS 什么的，那你就 out 了。给大家几个链接看一看吧：</p>
+<ul>
+<li><a href="https://shop.polymer-project.org/" target="_blank" rel="external">https://shop.polymer-project.org/</a></li>
+<li><a href="https://housing.com/" target="_blank" rel="external">https://housing.com/</a></li>
+<li><a href="https://www.flipkart.com/" target="_blank" rel="external">https://www.flipkart.com/</a></li>
+<li><a href="https://react-hn.appspot.com/" target="_blank" rel="external">https://react-hn.appspot.com/</a></li>
+<li><a href="https://mobile.twitter.com/" target="_blank" rel="external">https://mobile.twitter.com/</a></li>
+</ul>
+<p>部分可能需要自备梯子，另外建议在 Chrome 下查看，毕竟该死的 X5，大家都懂得。</p>
+<blockquote>
 <ul>
 <li>原文地址：<a href="https://medium.com/@addyosmani/progressive-web-apps-with-react-js-part-i-introduction-50679aef2b12#.g5r0gv9j5" target="_blank" rel="external">Progressive Web Apps with React.js: Part I — Introduction</a></li>
 <li>原文作者：<a href="https://medium.com/@addyosmani" target="_blank" rel="external">Addy Osmani</a></li>
@@ -119,11 +128,11 @@
 <p><a href="https://support.google.com/webmasters/answer/6073543?hl=en" target="_blank" rel="external">HTTPS</a> 防止坏人篡改你的 app 和你的用户使用的浏览器之间的通信，你可能读过 Google 正在推动 <a href="http://motherboard.vice.com/read/google-will-soon-shame-all-websites-that-are-unencrypted-chrome-https" target="_blank" rel="external">羞辱</a> 那些没有加密的网站。强大的新型 web 平台 APIs，像 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="external">Service Worker</a>，<a href="https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features" target="_blank" rel="external">require</a> 通过 HTTPS 保护来源，但是好消息是像是 <a href="https://letsencrypt.org/" target="_blank" rel="external">LetsEncrypt</a> 这样的服务商提供了免费的 <a href="https://www.globalsign.com/en/ssl-information-center/what-is-an-ssl-certificate/" target="_blank" rel="external">SSL 证书</a>，便宜的选择像是 <a href="https://www.cloudflare.com/" target="_blank" rel="external">Cloudflare</a> 可以使端到端流量 <a href="https://www.cloudflare.com/ssl/" target="_blank" rel="external">完全</a> 加密，从来没有如此简单直接地能做到现在这样。</p>
 <p>作为我的个人项目，我通常会部署到 <a href="https://cloud.google.com/appengine/" target="_blank" rel="external">Google App Engine</a>，它支持通过 appspot.com 域名的 SSL 通信服务，只需要你加上 <a href="https://cloud.google.com/appengine/docs/python/config/appref" target="_blank" rel="external">‘secure’</a> 参数到你的 app.yaml 文件。对于需要 Node.js 支持 Universal 渲染的 React apps，我使用 <a href="https://cloudplatform.googleblog.com/2016/03/Node.js-on-Google-App-Engine-goes-beta.html" target="_blank" rel="external">Node on App Engine</a>。<a href="https://github.com/blog/2186-https-for-github-pages" target="_blank" rel="external">Github Pages</a> 和 <a href="https://zeit.co/blog/now-alias" target="_blank" rel="external">Zeit.co</a> 现在也支持 HTTPS。</p>
 <p><img src="https://cdn-images-1.medium.com/max/1600/0*OzD-JvnlDlwVS8d-." alt=""></p>
-<p><em>这个</em> <a href="https://developers.google.com/web/updates/2015/12/security-panel?hl=en" target="_blank" rel="external"><em>Chrome DevTools Security 面板</em></a> <strong>允许你印证安全证书和混合内容错误的问题。</strong></p>
+<p><strong>这个</strong> <a href="https://developers.google.com/web/updates/2015/12/security-panel?hl=en" target="_blank" rel="external"><strong>Chrome DevTools Security 面板</strong></a> <strong>允许你印证安全证书和混合内容错误的问题。</strong></p>
 <p>一些更多的小贴士可以使你的网站更加安全：</p>
 <ul>
-<li>根据需要重定向用户，升级非安全请求（“HTTP” 连接）到 “HTTPS”。可以一看 <a href="https://content-security-policy.com/" target="_blank" rel="external">内容安全策略</a> 和 <a href="https://googlechrome.github.io/samples/csp-upgrade-insecure-requests/" target="_blank" rel="external">升级非安全请求</a>。</li>
-<li>更新所有引用 “http://” 的链接到 “<a href="https://”。如果你依赖第三方的脚本或者内容，跟他们商量一下让他们也支持一下" target="_blank" rel="external">https://”。如果你依赖第三方的脚本或者内容，跟他们商量一下让他们也支持一下</a> HTTPS 资源。</li>
+<li>根据需要重定向用户，升级非安全请求（”HTTP” 连接）到 “HTTPS”。可以一看 <a href="https://content-security-policy.com/" target="_blank" rel="external">内容安全策略</a> 和 <a href="https://googlechrome.github.io/samples/csp-upgrade-insecure-requests/" target="_blank" rel="external">升级非安全请求</a>。</li>
+<li>更新所有引用 “http://“ 的链接到 “<a href="https://&quot;。如果你依赖第三方的脚本或者内容，跟他们商量一下让他们也支持一下" target="_blank" rel="external">https://&quot;。如果你依赖第三方的脚本或者内容，跟他们商量一下让他们也支持一下</a> HTTPS 资源。</li>
 <li>提供页面的时候，使用 <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security" target="_blank" rel="external">HTTP 严格传输安全</a> (HSTS) 头。这是一个强制浏览器只通过 HTTPS 和你的网站交流的指令。</li>
 </ul>
 <p>我建议去看看 <a href="https://developers.google.com/web/shows/cds/2015/deploying-https-the-green-lock-and-beyond-chrome-dev-summit-2015?hl=en" target="_blank" rel="external">Deploying HTTPS: The Green Lock and Beyond</a> 和 <a href="https://developers.google.com/web/shows/google-io/2016/mythbusting-https-squashing-securitys-urban-legends-google-io-2016?hl=en" target="_blank" rel="external">Mythbusting HTTPS: Squashing security’s urban legends</a> 来了解更多。</p>
@@ -146,12 +155,12 @@
 <p><img src="https://cdn-images-1.medium.com/max/2000/0*bgAmcKHWLB_DxiRC." alt=""></p>
 <p>在系列第 2 部分，我们将会看看那 <a href="https://medium.com/@addyosmani/progressive-web-apps-with-react-js-part-2-page-load-performance-33b932d97cf2#.9ebqqaw8k" target="_blank" rel="external"><strong>使用 React 和 Webpack 的页面加载性能</strong></a>。我们会深入 code-splitting（代码分割），基于路由的 chunking（分块）以及 达到更快交互性 PRPL 模式。</p>
 <p>如果你不熟悉 React，我发现 Wes Bos 写的 <a href="https://goo.gl/G1WGxU" target="_blank" rel="external">给新手的 React</a> 很棒。</p>
-<p><em>感谢 Gray Norton, Sean Larkin, Sunil Pai, Max Stoiber, Simon Boudrias, Kyle Mathews 和 Owen Campbell-Moore 的校对</em></p>
+<p><strong>感谢 Gray Norton, Sean Larkin, Sunil Pai, Max Stoiber, Simon Boudrias, Kyle Mathews 和 Owen Campbell-Moore 的校对</strong></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<blockquote>
+    <![CDATA[<p>来自译者 markzhai：大家也知道最近 Web 越来越火了，如果你还以为 Web 就是 jQuery、Ajax、CSS 什么的，那你就 out 了。给大家几个链接看一看吧：</p>
 <ul>
-<li>原文地址：<a href="https://medium.com/@addyosmani/progressive-web-apps-with-react-js-part-i-introduction-50679aef2b12#.g5r0]]>
+<li><a href="https://shop.polymer-proje]]>
     </summary>
     
       <category term="JavaScript" scheme="http://blog.zhaiyifan.cn/tags/JavaScript/"/>
