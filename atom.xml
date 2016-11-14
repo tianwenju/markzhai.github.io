@@ -291,7 +291,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/10/17/vue-2-quick-start/"/>
     <id>http://blog.zhaiyifan.cn/2016/10/17/vue-2-quick-start/</id>
     <published>2016-10-17T10:31:47.000Z</published>
-    <updated>2016-10-21T06:44:52.000Z</updated>
+    <updated>2016-11-14T15:27:37.000Z</updated>
     <content type="html"><![CDATA[<p>Vue 2.0 出来也有一段时间了，作为一个有志向的全面发展好青年，在征服 Vue 1.x，React，React Native 后，为了之后能更快迁移公司的项目到 Vue 2.x，于是决定先看看 Vue 2.0。</p>
 <p>鉴于部分读者可能不了解 Vue，先简单看看各种特性。</p>
 <p>本文假设你有一定的 HTML 基础，并熟悉一种或以上编程语言（那就能看懂 JS 了）。</p>
@@ -591,9 +591,11 @@
     
       <category term="JavaScript" scheme="http://blog.zhaiyifan.cn/tags/JavaScript/"/>
     
+      <category term="Vue.js" scheme="http://blog.zhaiyifan.cn/tags/Vue-js/"/>
+    
       <category term="前端" scheme="http://blog.zhaiyifan.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="Vue.js" scheme="http://blog.zhaiyifan.cn/categories/Vue-js/"/>
+      <category term="Frontend" scheme="http://blog.zhaiyifan.cn/categories/Frontend/"/>
     
   </entry>
   
@@ -1495,7 +1497,7 @@
     <link href="http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/"/>
     <id>http://blog.zhaiyifan.cn/2016/04/22/trans-react-newbies-tutorial/</id>
     <published>2016-04-22T02:54:01.000Z</published>
-    <updated>2016-10-17T10:33:56.000Z</updated>
+    <updated>2016-11-14T15:27:14.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <ul>
 <li>原文链接 : <a href="http://www.leanpanda.com/blog/2016/04/06/react-newbies-tutorial/" target="_blank" rel="external">HOMEBLOG React JS: newbies tutorial</a></li>
@@ -1554,15 +1556,13 @@
 <li>原文链接 : <a href="http://www.leanpanda.com/blog/2016/04/06/react-newbies-tutorial/" target="_blank" rel="external">HOMEB]]>
     </summary>
     
-      <category term="H5" scheme="http://blog.zhaiyifan.cn/tags/H5/"/>
-    
       <category term="JavaScript" scheme="http://blog.zhaiyifan.cn/tags/JavaScript/"/>
     
       <category term="React.js" scheme="http://blog.zhaiyifan.cn/tags/React-js/"/>
     
       <category term="前端" scheme="http://blog.zhaiyifan.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="Front-end" scheme="http://blog.zhaiyifan.cn/categories/Front-end/"/>
+      <category term="Frontend" scheme="http://blog.zhaiyifan.cn/categories/Frontend/"/>
     
   </entry>
   
