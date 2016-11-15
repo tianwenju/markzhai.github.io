@@ -85,7 +85,7 @@
 </ul>
 <p>顺便一提，有一个 Lighthouse 的 <a href="https://developers.google.com/web/tools/lighthouse/" target="_blank" rel="external">快速入门指南</a>，而且它还能通过 <a href="https://github.com/GoogleChrome/lighthouse#lighthouse-w-mobile-devices" target="_blank" rel="external">远程调试</a> 工作。超级酷炫。</p>
 <p>无论在你的技术栈中使用了什么库，我想要强调的是在上面列出的一切，在今天都只需要一点小小的工作量就能完成。然而也有一些警告。</p>
-<p><strong>我们知道移动 web 是 [</strong>慢的<strong>](<a href="https://www.doubleclickbygoogle.com/articles/mobile-speed-matters/" target="_blank" rel="external">https://www.doubleclickbygoogle.com/articles/mobile-speed-matters/</a>)</strong>。</p>
+<p><strong>我们知道移动 web 是 <a href="https://www.doubleclickbygoogle.com/articles/mobile-speed-matters/" target="_blank" rel="external">慢的</a></strong>。</p>
 <p>web 从一个以文档为中心的平台演变为了头等的应用平台。同时我们主要的计算能力也从强大的，拥有快速可靠的网络连接的强大桌面机器移动到了相对不给力的，连接通常<strong>慢，断断续续或者两者都存在</strong>的移动设备上。这在下一个 10 亿用户即将上网的世界尤其真实。为了解锁更快的移动 web：</p>
 <ul>
 <li><strong>我们需要全体转移到在真实移动设备，现实的网络连接下进行测试</strong> (e.g <a href="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/network-conditions?hl=en" target="_blank" rel="external">在 DevTools 的常规 3G</a>)。 <a href="https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en" target="_blank" rel="external">chrome://inspect</a> 和 <a href="https://www.webpagetest.org/" target="_blank" rel="external">WebPageTest</a> (<a href="https://www.youtube.com/watch?v=pOynMwTyRgQ&amp;feature=youtu.be" target="_blank" rel="external">视频</a>) 是你的好帮手。Lighthouse 模拟一台有触摸事件的 Nexus 5X 设备，以及 viewport 仿真 和 被限制的网络连接 （150毫秒延迟，1.6Mbps 吞吐量)。</li>
